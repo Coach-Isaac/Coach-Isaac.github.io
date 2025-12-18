@@ -4,7 +4,7 @@ const { t, tm, rt } = useI18n()
 </script>
 
 <template>
-  <div class="home-container">
+  <div class="home-container page-container fade-in-up">
     <section class="hero">
       <h1>{{ t('home.hero_title') }}</h1>
       <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
@@ -57,9 +57,7 @@ const { t, tm, rt } = useI18n()
 
 <style scoped>
 .home-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width handled by page-container */
 }
 .hero {
   text-align: center;
@@ -97,9 +95,10 @@ const { t, tm, rt } = useI18n()
 .metaphor-section, .neuroscience-section {
   background: var(--bg-card);
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 16px; /* Playful Roundness */
   margin-bottom: 3rem;
   border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .cards-grid {

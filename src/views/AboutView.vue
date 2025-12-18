@@ -4,7 +4,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <div class="about-container">
+  <div class="about-container page-container fade-in-up">
     <section class="bio-section">
       <h1>{{ t('about.title') }}</h1>
       <p class="intro">{{ t('about.intro') }}</p>
@@ -39,9 +39,7 @@ const { t } = useI18n()
 
 <style scoped>
 .about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width handled by page-container */
 }
 
 .intro {
@@ -53,7 +51,7 @@ const { t } = useI18n()
 .bio-card {
   background: var(--bg-card);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 16px; /* More rounded */
   border: 1px solid var(--border-color);
   margin-bottom: 3rem;
 }
