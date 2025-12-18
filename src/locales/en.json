@@ -18,5 +18,39 @@
     "distinction_2_desc": "Provides expert answers and diagnosis vs Coaching believes clients have their own answers.",
     "distinction_3_title": "Mentoring",
     "distinction_3_desc": "Senior guiding junior based on experience vs Coaching is a partnership without assumptions."
+  },
+  "about": {
+    "title": "About Coach Isaac",
+    "intro": "This is a unique invitation for collaboration, aiming to support your personal growth. Let's explore and open up new possibilities through conversation.",
+    "bio_title": "My Journey & Commitment",
+    "bio_content": "I am a professional coach currently undergoing International Coaching Federation (ICF) certification training, working towards the Associate Certified Coach (ACC) credential. In my practice, I strictly adhere to the high ethical standards and core values of the ICF, committed to providing a safe, trusting, and productive environment for dialogue.",
+    "icf_title": "ICF & Professional Credentials",
+    "icf_desc": "The ICF sets rigorous standards for the global coaching profession. Advancing from ACC to PCC involves not just accumulated hours, but a continuous refinement of the 'Coaching Mindset', 'Maintains Presence', and 'Deep Listening'.",
+    "credentials": {
+      "acc": "ACC (Associate Certified Coach): Entry level, requiring 60+ training hours and 100+ experience hours.",
+      "pcc": "PCC (Professional Certified Coach): Professional level, requiring 125+ training hours and 500+ experience hours (My target goal).",
+      "mindset": "Coaching Mindset: The coach is a partner, not an expert. We believe clients have the potential for self-growth and problem-solving."
+    }
+  },
+  "services": {
+    "title": "Services & Process",
+    "philosophy": "Coaching is a journey we create together, starting with your goals and ending with your growth.",
+    "process_title": "How it Works",
+    "process_steps": [
+      {
+        "title": "1. Discovery Session",
+        "desc": "The first session to establish the 'Coaching Agreement', clarifying 'Where you want to go' and 'What you hope to achieve'."
+      },
+      {
+        "title": "2. Regular Sessions",
+        "desc": "Approx. 3 to 6 one-on-one sessions (online/offline), 45 mins each. Deep exploration and progress tracking."
+      },
+      {
+        "title": "3. Transformation & Action",
+        "desc": "Translating exploration into concrete action plans, sparking your commitment to achieve desired results."
+      }
+    ],
+    "special_offer_title": "Limited Time Offer",
+    "special_offer_desc": "As this is a special collaboration to support my certification, the fee for this service is simply 'a cup of coffee or a book'. I see this as a symbol of our shared investment in this journey."
   }
 }
