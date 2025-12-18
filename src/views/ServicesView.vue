@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
 </script>
 
 <template>
@@ -13,9 +13,9 @@ const { t } = useI18n()
     <section class="process-steps">
       <h2>{{ t('services.process_title') }}</h2>
       <div class="steps-container">
-        <div v-for="(step, index) in t('services.process_steps', { returnObjects: true })" :key="index" class="step-card">
-          <h3>{{ step.title }}</h3>
-          <p>{{ step.desc }}</p>
+        <div v-for="(step, index) in tm('services.process_steps')" :key="index" class="step-card">
+          <h3>{{ rt(step.title) }}</h3>
+          <p>{{ rt(step.desc) }}</p>
         </div>
       </div>
     </section>
