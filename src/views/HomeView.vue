@@ -1,6 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
 </script>
 
 <template>
@@ -15,22 +15,22 @@ const { t } = useI18n()
       <p class="intro-desc">{{ t('coaching.description') }}</p>
 
       <div class="metaphor-section">
-        <h3>⛰️ {{ t('coaching.hiking_metaphor_title') }}</h3>
+        <h3>{{ t('coaching.hiking_metaphor_title') }}</h3>
         <p>{{ t('coaching.hiking_metaphor_desc') }}</p>
       </div>
 
       <div class="principles-section">
         <h3>{{ t('coaching.core_principles_title') }}</h3>
         <div class="cards-grid">
-          <div v-for="(item, index) in t('coaching.principles', { returnObjects: true })" :key="index" class="feature-card">
-            <h4>{{ item.title }}</h4>
-            <p>{{ item.desc }}</p>
+          <div v-for="(item, index) in tm('coaching.principles')" :key="index" class="feature-card">
+            <h4>{{ rt(item.title) }}</h4>
+            <p>{{ rt(item.desc) }}</p>
           </div>
         </div>
       </div>
 
       <div class="neuroscience-section">
-        <h3>🧠 {{ t('coaching.neuroscience_title') }}</h3>
+        <h3>{{ t('coaching.neuroscience_title') }}</h3>
         <p>{{ t('coaching.neuroscience_desc') }}</p>
       </div>
       
