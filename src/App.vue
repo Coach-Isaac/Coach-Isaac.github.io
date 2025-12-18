@@ -33,7 +33,8 @@ main {
 footer {
   text-align: center;
   padding: 2rem;
-  background-color: #f4f4f4;
-  color: #666;
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
 }
 </style>

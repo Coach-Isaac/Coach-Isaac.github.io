@@ -33,21 +33,22 @@ const changeLanguage = (lang) => {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: var(--bg-color);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav-brand a {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
 .nav-links a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #666;
+  color: var(--text-main);
   font-weight: 500;
 }
 
@@ -56,17 +57,18 @@ const changeLanguage = (lang) => {
 }
 
 .lang-switch button {
-  background: none;
-  border: 1px solid #ddd;
+  background: transparent;
+  border: 1px solid var(--border-color);
   padding: 0.25rem 0.5rem;
   margin-left: 0.5rem;
   cursor: pointer;
   border-radius: 4px;
+  color: var(--text-main);
 }
 
 .lang-switch button.active {
-  background-color: #42b983;
+  background-color: var(--color-secondary);
   color: white;
-  border-color: #42b983;
+  border-color: var(--color-secondary);
 }
 </style>
