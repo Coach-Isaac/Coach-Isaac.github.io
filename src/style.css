@@ -4,9 +4,11 @@
   font-weight: 400;
 
   /* Color Palette - Coaching Theme */
-  --color-primary: #0f7699; /* Deep Teal */
-  --color-secondary: #42b983; /* Vue Green accent */
-  
+  --color-primary: #0f7699;
+  /* Deep Teal */
+  --color-secondary: #42b983;
+  /* Vue Green accent */
+
   /* Light Mode Defaults */
   --bg-color: #ffffff;
   --text-main: #2c3e50;
@@ -24,9 +26,66 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Playful & Polished Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Common Page Container */
+.page-container {
+  max-width: 900px !important;
+  /* Force consistency */
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Playful Organic Background Shapes */
+body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  opacity: 0.05;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  left: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  opacity: 0.05;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #4db3ce; /* Lighter Teal for dark mode */
+    --color-primary: #4db3ce;
+    /* Lighter Teal for dark mode */
     --bg-color: #1a1a1a;
     --text-main: #e0e0e0;
     --text-muted: #aaaaaa;
@@ -40,6 +99,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -50,6 +110,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* STABILITY FIX: Prevent layout shift when scrollbar appears */
+  scrollbar-gutter: stable;
+  overflow-y: auto;
 }
 
 h1 {
@@ -70,9 +133,11 @@ button {
   cursor: pointer;
   transition: all 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -90,6 +155,7 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
+
   /* Clean up default Vite overrides */
   button {
     background-color: var(--bg-card);

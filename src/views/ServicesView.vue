@@ -4,7 +4,7 @@ const { t, tm, rt } = useI18n()
 </script>
 
 <template>
-  <div class="services-container">
+  <div class="services-container page-container fade-in-up">
     <section class="service-intro">
       <h1>{{ t('services.title') }}</h1>
       <p class="philosophy">{{ t('services.philosophy') }}</p>
@@ -34,9 +34,7 @@ const { t, tm, rt } = useI18n()
 
 <style scoped>
 .services-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width handled by page-container */
 }
 
 .philosophy {
@@ -61,6 +59,12 @@ const { t, tm, rt } = useI18n()
   border-top: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .step-card h3 {
