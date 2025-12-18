@@ -38,16 +38,18 @@ const { t } = useI18n()
 }
 .hero h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: var(--text-main);
   margin-bottom: 1rem;
 }
 .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-muted);
 }
 .what-is-coaching {
-  background: #f9f9f9;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 8px;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 </style>
