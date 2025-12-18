@@ -11,9 +11,6 @@ const changeLanguage = (lang) => {
 
 <template>
   <nav class="navbar">
-    <div class="nav-brand">
-      <RouterLink to="/">Coach Isaac</RouterLink>
-    </div>
     <div class="nav-links">
       <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
       <RouterLink to="/about">{{ t('nav.about') }}</RouterLink>
@@ -36,24 +33,40 @@ const changeLanguage = (lang) => {
   background-color: var(--bg-color);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border-bottom: 1px solid var(--border-color);
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.nav-brand a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--color-primary);
-  text-decoration: none;
+/* Remove brand styles */
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
 }
 
 .nav-links a {
-  margin: 0 1rem;
   text-decoration: none;
   color: var(--text-main);
   font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.nav-links a:hover {
+  background-color: var(--bg-card);
 }
 
 .nav-links a.router-link-active {
-  color: #42b983;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
 }
 
 .lang-switch button {
@@ -64,11 +77,38 @@ const changeLanguage = (lang) => {
   cursor: pointer;
   border-radius: 4px;
   color: var(--text-main);
+  font-size: 0.9rem;
 }
 
 .lang-switch button.active {
   background-color: var(--color-secondary);
   color: white;
   border-color: var(--color-secondary);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .nav-links a {
+    padding: 0.25rem 0.5rem;
+    margin: 0;
+  }
+
+  .lang-switch {
+    width: 100%;
+    justify-content: center;
+  }
 }
 </style>
