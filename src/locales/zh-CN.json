@@ -1,3 +1,22 @@
 {
-  "hello": "你好"
+  "nav": {
+    "home": "首页 (关于教练)",
+    "about": "关于我 & 证照",
+    "services": "服务流程"
+  },
+  "home": {
+    "hero_title": "协助你从现状跨越到理想目标的伙伴",
+    "hero_subtitle": "透过专业教练对话，启发潜能，实现目标"
+  },
+  "coaching": {
+    "title": "什么是教练 (Coaching)？",
+    "description": "根据 ICF (国际教练联盟) 的定义，教练是与客户的伙伴关系，透过发人省思与创造性的过程，启发客户发挥最大的个人与专业潜能。",
+    "distinctions_title": "教练与其他助人者的区别",
+    "distinction_1_title": "心理谘商 (Therapy)",
+    "distinction_1_desc": "处理过去的创伤与疗愈 vs 教练聚焦未来的可能性与行动。",
+    "distinction_2_title": "顾问 (Consulting)",
+    "distinction_2_desc": "提供专家解答与诊断 vs 教练相信客户内在已有解答，负责引发觉察。",
+    "distinction_3_title": "导师 (Mentoring)",
+    "distinction_3_desc": "前辈传授经验给后辈 vs 教练是平等的伙伴关系，不预设立场。"
+  }
 }

@@ -1,37 +1,39 @@
 <script setup>
-import { useI18n } from 'vue-i18n'
-
-const { t, locale } = useI18n()
-
-const changeLanguage = (lang) => {
-  locale.value = lang
-}
+import NavBar from './components/NavBar.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="app-container">
+  <div class="app-layout">
     <header>
-      <nav>
-        <button @click="changeLanguage('en')">English</button>
-        <button @click="changeLanguage('zh-TW')">繁體中文</button>
-        <button @click="changeLanguage('zh-CN')">简体中文</button>
-      </nav>
+      <NavBar />
     </header>
+
     <main>
-      <h1>{{ t('hello') }}</h1>
+      <RouterView />
     </main>
+
+    <footer>
+      <p>&copy; 2025 Coach Isaac. All rights reserved.</p>
+    </footer>
   </div>
 </template>
 
 <style scoped>
-.app-container {
-  font-family: 'Inter', sans-serif;
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
   text-align: center;
   padding: 2rem;
-}
-nav button {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+  background-color: #f4f4f4;
+  color: #666;
 }
 </style>
