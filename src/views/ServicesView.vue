@@ -25,7 +25,7 @@ const { t, tm, rt } = useI18n()
         <h3>✨ {{ t('services.special_offer_title') }}</h3>
         <p>{{ t('services.special_offer_desc') }}</p>
         <div class="cta-area">
-          <a href="mailto:isaaclu@example.com" class="cta-button">Email me to Book</a>
+          <a href="mailto:coach.isaac.lu@gmail.com" class="cta-button">Email me to Book</a>
         </div>
       </div>
     </section>
