@@ -1,3 +1,22 @@
 {
-  "hello": "你好"
+  "nav": {
+    "home": "首頁 (關於教練)",
+    "about": "關於我 & 證照",
+    "services": "服務流程"
+  },
+  "home": {
+    "hero_title": "協助你從現狀跨越到理想目標的夥伴",
+    "hero_subtitle": "透過專業教練對話，啟發潛能，實現目標"
+  },
+  "coaching": {
+    "title": "什麼是教練 (Coaching)？",
+    "description": "根據 ICF (國際教練聯盟) 的定義，教練是與客戶的夥伴關係，透過發人省思與創造性的過程，啟發客戶發揮最大的個人與專業潛能。",
+    "distinctions_title": "教練與其他助人者的區別",
+    "distinction_1_title": "心理諮商 (Therapy)",
+    "distinction_1_desc": "處理過去的創傷與療癒 vs 教練聚焦未來的可能性與行動。",
+    "distinction_2_title": "顧問 (Consulting)",
+    "distinction_2_desc": "提供專家解答與診斷 vs 教練相信客戶內在已有解答，負責引發覺察。",
+    "distinction_3_title": "導師 (Mentoring)",
+    "distinction_3_desc": "前輩傳授經驗給後輩 vs 教練是平等的夥伴關係，不預設立場。"
+  }
 }

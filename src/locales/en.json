@@ -1,3 +1,22 @@
 {
-  "hello": "Hello"
+  "nav": {
+    "home": "Home (What is Coaching)",
+    "about": "About & Credential",
+    "services": "Services"
+  },
+  "home": {
+    "hero_title": "Partnering with you to bridge the gap from where you are to where you want to be.",
+    "hero_subtitle": "Unlocking potential and achieving goals through professional coaching conversations."
+  },
+  "coaching": {
+    "title": "What is Coaching?",
+    "description": "ICF defines coaching as partnering with clients in a thought-provoking and creative process that inspires them to maximize their personal and professional potential.",
+    "distinctions_title": "Distinctions from other professions",
+    "distinction_1_title": "Therapy",
+    "distinction_1_desc": "Focuses on past trauma and healing vs Coaching focuses on future possibilities and action.",
+    "distinction_2_title": "Consulting",
+    "distinction_2_desc": "Provides expert answers and diagnosis vs Coaching believes clients have their own answers.",
+    "distinction_3_title": "Mentoring",
+    "distinction_3_desc": "Senior guiding junior based on experience vs Coaching is a partnership without assumptions."
+  }
 }
