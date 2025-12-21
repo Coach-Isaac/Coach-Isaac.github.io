@@ -19,6 +19,22 @@ const { t, tm, rt } = useI18n()
         <p>{{ t('coaching.hiking_metaphor_desc') }}</p>
       </div>
 
+      <div class="metaphor-section climber-theme">
+        <h3>{{ t('coaching.climber_metaphor_title') }}</h3>
+        <p>{{ t('coaching.climber_metaphor_desc') }}</p>
+      </div>
+
+      <div class="target-audience-section">
+        <h3>{{ t('coaching.target_audience_title') }}</h3>
+        <p class="section-intro">{{ t('coaching.target_audience_desc') }}</p>
+        <div class="cards-grid">
+          <div v-for="(item, index) in tm('coaching.target_audience_list')" :key="index" class="feature-card audience-card">
+            <h4>{{ rt(item.title) }}</h4>
+            <p>{{ rt(item.desc) }}</p>
+          </div>
+        </div>
+      </div>
+
       <div class="principles-section">
         <h3>{{ t('coaching.core_principles_title') }}</h3>
         <div class="cards-grid">
@@ -109,6 +125,45 @@ const { t, tm, rt } = useI18n()
 }
 
 @media (min-width: 768px) {
+  .metaphor-section.climber-theme {
+  background-color: rgba(66, 185, 131, 0.1); /* Secondary color tint */
+  border-left: 5px solid var(--color-secondary);
+  border-right: none;
+}
+
+.target-audience-section {
+  margin: 4rem 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.audience-card h4 {
+  color: var(--color-secondary); /* Distinguish from principles */
+}
+
+.feature-card h4 {
+  margin-top: 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
   .cards-grid {
     grid-template-columns: repeat(3, 1fr);
   }
