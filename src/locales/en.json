@@ -36,7 +36,33 @@
     "distinction_2_title": "Consulting",
     "distinction_2_desc": "Provides expert answers and diagnosis vs Coaching believes clients have their own answers.",
     "distinction_3_title": "Mentoring",
-    "distinction_3_desc": "Senior guiding junior based on experience vs Coaching is a partnership without assumptions."
+    "distinction_3_desc": "Senior guiding junior based on experience vs Coaching is a partnership without assumptions.",
+    "target_audience_title": "Who is Coaching For?",
+    "target_audience_desc": "Those who are suitable for coaching usually possess a specific mindset or are in certain life stages:",
+    "target_audience_list": [
+      {
+        "title": "Those willing to take responsibility for choices & actions",
+        "desc": "A core coaching mindset is acknowledging that clients are responsible for their own choices. Suitable clients don't expect the coach to give orders or answers, but are willing to make their own decisions with guidance and support."
+      },
+      {
+        "title": "Those seeking clarity & removing 'noise'",
+        "desc": "For those who feel overwhelmed by overthinking. Coaching helps find focus, reprioritize goals, and find momentum when goals feel too open-ended."
+      },
+      {
+        "title": "Those desiring self-transformation & 'becoming' better",
+        "desc": "Coaching isn't just about achieving goals, but who you become in the process. For those seeking self-awareness, challenging blind spots, and meaningful change."
+      },
+      {
+        "title": "Those in life transitions, challenges, or 'Survival Mode'",
+        "desc": "Whether feeling stuck in survival mode, seeking structure amidst chaos, or wanting 'go-forward healing', coaching helps reconnect with your inner self."
+      },
+      {
+        "title": "Those wanting to enhance leadership or relationships",
+        "desc": "Helping professionals navigate complex dynamics, improve leadership effectiveness, and handle difficult conversations involving both emotion and logic."
+      }
+    ],
+    "climber_metaphor_title": "The Climber's Mindset",
+    "climber_metaphor_desc": "People seeking a coach are like climbers preparing for a new path. They don't want someone to carry their backpack or carry them to the summit. They want a guide who knows the terrain to point out paths, but ultimately, the climber retains the decision of which way to go, building strength along the way."
   },
   "about": {
     "title": "About Coach Isaac",
@@ -53,7 +79,26 @@
   },
   "services": {
     "title": "Services & Process",
-    "philosophy": "Coaching is a journey we create together, starting with your goals and ending with your growth.",
+    "philosophy": "My coaching practice is built on trust, respect, and a deep belief in your capacity for growth. I stand as your partner in exploration, genuinely believing in your potential. My goal is to guide and support you with an open, curious, and client-centered mindset, helping you discover your own solutions.",
+    "agreement_title": "Coaching Agreement & Ethics",
+    "agreement_items": [
+      {
+        "title": "Recording & Transcripts",
+        "desc": "To facilitate ICF core competency assessment for my ACC credentialing, sessions will be recorded and may be transcribed."
+      },
+      {
+        "title": "Client Consent",
+        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for association review."
+      },
+      {
+        "title": "Strict Confidentiality",
+        "desc": "As an ICF professional coach, I adhere to the Gold Standard of ICF Ethics. I guarantee your conversations are strictly confidential and will not be disclosed to third parties, used solely for the ICF certification process."
+      },
+      {
+        "title": "Client Responsibility",
+        "desc": "Throughout the coaching relationship, you remain responsible for your own choices and actions."
+      }
+    ],
     "process_title": "How it Works",
     "process_steps": [
       {

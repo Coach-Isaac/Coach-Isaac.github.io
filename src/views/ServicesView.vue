@@ -20,6 +20,16 @@ const { t, tm, rt } = useI18n()
       </div>
     </section>
 
+    <section class="agreement-section page-container">
+      <h2>{{ t('services.agreement_title') }}</h2>
+      <div class="agreement-grid">
+        <div v-for="(item, index) in tm('services.agreement_items')" :key="index" class="agreement-card">
+          <h3>{{ rt(item.title) }}</h3>
+          <p>{{ rt(item.desc) }}</p>
+        </div>
+      </div>
+    </section>
+
     <section class="offer-section">
       <div class="offer-box">
         <h3>✨ {{ t('services.special_offer_title') }}</h3>
@@ -70,6 +80,30 @@ const { t, tm, rt } = useI18n()
 .step-card h3 {
   margin-top: 0;
   color: var(--text-main);
+}
+
+.agreement-section {
+  margin: 4rem 0;
+}
+
+.agreement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.agreement-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.agreement-card h3 {
+  color: var(--color-primary);
+  margin-top: 0;
+  font-size: 1.1rem;
 }
 
 .offer-section {
