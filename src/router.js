@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './views/HomeView.vue'
-import AboutView from './views/AboutView.vue'
+
 import ServicesView from './views/ServicesView.vue'
 
 const router = createRouter({
@@ -12,9 +12,23 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      component: AboutView
+      path: '/coaches',
+      name: 'coaches',
+      component: () => import('./views/CoachesIndexView.vue')
+    },
+    {
+      path: '/about', // Legacy Redirect
+      redirect: '/coaches/isaac'
+    },
+    {
+      path: '/coaches/isaac',
+      name: 'coach-isaac',
+      component: () => import('./views/CoachIsaacView.vue') // Was AboutView
+    },
+    {
+      path: '/coaches/pauline',
+      name: 'coach-pauline',
+      component: () => import('./views/CoachPaulineView.vue')
     },
     {
       path: '/services',
