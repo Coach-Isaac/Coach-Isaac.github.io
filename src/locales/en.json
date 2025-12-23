@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "About Coaching",
-    "about": "About & Credential",
+    "about": "Our Coaches",
     "services": "Services"
   },
   "home": {
@@ -116,5 +116,49 @@
     ],
     "special_offer_title": "Limited Time Offer",
     "special_offer_desc": "As this is a special collaboration to support my certification, the fee for this service is simply 'a cup of coffee or a book'. I see this as a symbol of our shared investment in this journey."
+  },
+  "coach_pauline": {
+    "title": "Life Vision & Enhancement Coach",
+    "name": "Pauline Lin",
+    "intro": "I believe everyone holds their own answers. A coach's role is to accompany you currently through deep listening and powerful questioning to see the situation clearly and move towards the change you truly desire.",
+    "background_title": "Professional Background",
+    "background_list": [
+      "HR & Organizational Development",
+      "Organizational Transformation, Cross-departmental Communication & Strategy",
+      "Planning & Executing Internal Workshops and Training",
+      "Managing tension and transition challenges between individual contributors, professionals, and management roles",
+      "Lumina Spark Certified Practitioner"
+    ],
+    "about_title": "About Me",
+    "about_quote": "Many stuck points are not due to lack of ability, but because expectations and inner conflicts haven't been sorted out.",
+    "about_content": "I believe everyone holds their own answers. A coach's role is to accompany you through deep listening and powerful questioning to see the current situation clearly, clarify stuck points, and move towards the change you truly desire.",
+    "focus_title": "Coaching Focus",
+    "focus_list": [
+      "Self-Awareness & Inner Belief Exploration",
+      "Self-Labeling & Limiting Beliefs",
+      "Workplace Challenges, Decision-making Difficulties & Inner Conflicts"
+    ],
+    "focus_quote": "A coach isn't here to tell you what to do, but to help you find the choices you are willing to be responsible for.",
+    "style_title": "My Coaching Style",
+    "style_list": [
+      "Gentle but Direct: I will appropriately challenge limiting narratives.",
+      "Safety with Logic: My safety isn't just emotional soothing, but ensuring your logic is caught and your inner self respected."
+    ],
+    "style_core": "In coaching conversations, I care about one thing: Helping you translate vague feelings into clear, understandable language.",
+    "practice_title": "Practice Coaching Service",
+    "practice_content": "I am currently in the coaching certification phase. Suitable for:",
+    "practice_list": [
+      "Those wanting to experience coaching conversations",
+      "Those feeling stuck in a role or inner state",
+      "Those hoping to be heard and organize their thoughts in a safe space"
+    ]
+  },
+  "coaches_index": {
+    "title": "Our Coaches",
+    "subtitle": "Choose the partner that fits your journey",
+    "tab_all": "Overview"
+  },
+  "common": {
+    "view_profile": "View Profile"
   }
 }
