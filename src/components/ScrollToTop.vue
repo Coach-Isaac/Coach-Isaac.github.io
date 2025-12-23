@@ -30,9 +30,7 @@ onUnmounted(() => {
         @click="scrollToTop"
         aria-label="Scroll to top"
     >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
+        <span class="top-text">TOP</span>
     </button>
 </template>
 
@@ -57,6 +55,13 @@ onUnmounted(() => {
     transform: translateY(20px);
     transition: all 0.3s ease;
     z-index: 99;
+    font-family: inherit; /* Ensure font matches */
+}
+
+.top-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .scroll-to-top:hover {
