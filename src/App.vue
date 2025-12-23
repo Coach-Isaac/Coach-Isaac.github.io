@@ -1,5 +1,6 @@
 <script setup>
 import NavBar from './components/NavBar.vue'
+import ScrollToTop from './components/ScrollToTop.vue'
 import { RouterView } from 'vue-router'
 </script>
 
@@ -16,6 +17,8 @@ import { RouterView } from 'vue-router'
     <footer>
       <p>&copy; 2025 Coach Isaac. All rights reserved.</p>
     </footer>
+
+    <ScrollToTop />
   </div>
 </template>
 
