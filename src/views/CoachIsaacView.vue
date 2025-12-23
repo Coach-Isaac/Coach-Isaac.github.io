@@ -1,10 +1,12 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import CoachTabNav from '../components/CoachTabNav.vue'
 const { t } = useI18n()
 </script>
 
 <template>
   <div class="about-container page-container fade-in-up">
+    <CoachTabNav />
     <section class="bio-section">
       <h1>{{ t('about.title') }}</h1>
       <p class="intro">{{ t('about.intro') }}</p>
@@ -38,9 +40,7 @@ const { t } = useI18n()
 </template>
 
 <style scoped>
-.about-container {
-  /* max-width handled by page-container */
-}
+
 
 .intro {
   font-size: 1.2rem;
