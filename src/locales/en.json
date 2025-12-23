@@ -77,6 +77,43 @@
       "mindset": "Coaching Mindset: The coach is a partner, not an expert. We believe clients have the potential for self-growth and problem-solving."
     }
   },
+  "coach_isaac": {
+    "title": "Life Exploration & Practice Coach",
+    "name": "Isaac Lu",
+    "intro": "Coaching is a profound companionship: accompanying you to explore the unknown, awaken awareness, and create change.",
+    "background_title": "Professional Background",
+    "background_list": [
+      "Software Development & Agile Practice",
+      "Cross-functional Communication & Collaboration",
+      "Team Facilitation & Consensus Building",
+      "Professional Teaching Techniques & Curriculum Design",
+      "The DEEP - Facilitator",
+      "The DEEP - Intuitive Coach"
+    ],
+    "about_title": "About Me",
+    "about_quote": "\"You already possess all the resources needed to solve your problems. The answers are within you, just waiting to be seen.\"",
+    "about_content": "We all experience low points in life. When navigating through the fog, it's easy to miss clues and overlook opportunities for growth. Yet, I deeply believe that everyone holds a goal they yearn to move towards. My vision is to partner with you, helping to minimize future regrets and increase your capacity for happiness.",
+    "focus_title": "Coaching Focus",
+    "focus_list": [
+      "Personal Growth & Self-Realization",
+      "Career Navigation & Role Transition",
+      "Leadership Mindset & Communication"
+    ],
+    "focus_quote": "\"Coaching is a profound companionship: accompanying you to explore the unknown, awaken awareness, and create change.\"",
+    "style_title": "My Coaching Style",
+    "style_list": [
+      "Structured Logic with Empathetic Listening",
+      "Safe, Inclusive & Non-judgmental Space"
+    ],
+    "style_core": "Combining logical structure with deep empathy, I help you organize chaotic thoughts into clear action paths, discovering your own answers in a safe space.",
+    "practice_title": "Coaching Services",
+    "practice_content": "I am currently in the coaching certification phase. Suitable for:",
+    "practice_list": [
+      "Those who crave continuous growth and self-breakthrough",
+      "Those who have goals but feel stuck or unsatisfied with current progress",
+      "Those who feel lost about the future, seeking clarity on the next step"
+    ]
+  },
   "services": {
     "title": "Services & Process",
     "philosophy": "My coaching practice is built on trust, respect, and a deep belief in your capacity for growth. I stand as your partner in exploration, genuinely believing in your potential. My goal is to guide and support you with an open, curious, and client-centered mindset, helping you discover your own solutions.",
