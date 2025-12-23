@@ -13,7 +13,7 @@ const changeLanguage = (lang) => {
   <nav class="navbar">
     <div class="nav-links">
       <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
-      <RouterLink to="/about">{{ t('nav.about') }}</RouterLink>
+      <RouterLink to="/coaches">{{ t('nav.about') }}</RouterLink>
       <RouterLink to="/services">{{ t('nav.services') }}</RouterLink>
     </div>
     <div class="lang-switch">
