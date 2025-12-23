@@ -64,10 +64,17 @@ onUnmounted(() => {
     letter-spacing: 0.5px;
 }
 
-.scroll-to-top:hover {
+@media (hover: hover) {
+    .scroll-to-top:hover {
+        background-color: var(--color-secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+}
+
+.scroll-to-top:active {
     background-color: var(--color-secondary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    transform: scale(0.95);
 }
 
 .scroll-to-top.is-visible {
