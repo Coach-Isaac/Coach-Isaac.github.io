@@ -155,9 +155,9 @@
     "special_offer_desc": "由于这是一次支持我完成认证的特殊合作，本次服务的收费标准是“一杯咖啡或一本书”。我将其视为我们在这段旅程中共同投入的一份象征。"
   },
   "coach_pauline": {
-    "title": "人生愿景与提升教练",
-    "name": "林依雯 Pauline Lin",
-    "intro": "我相信每个人都拥有属于自己的答案，而教练的角色，是透过深度倾听与有力量的提问，陪伴你看清现状、走向改变。",
+    "title": "人才优选与领导力教练",
+    "name": "林依雯\nPauline Lin",
+    "intro": "我相信每个人都拥有属于自己的答案，而教练的角色，是透过深度倾听与有力量的提问，陪伴你看清现况、走向改变。",
     "background_title": "专业背景 (Professional Background)",
     "background_list": [
       "人力资源、组织发展背景",
@@ -192,7 +192,7 @@
   },
   "coach_vince": {
     "title": "职涯、生活与领导力教练",
-    "name": "阿哲 Vincent",
+    "name": "阿哲\nVincent",
     "intro": "我相信每一位人生旅者都拥有足够的潜能和待开启的知见来面对、理解、并处理在工作与人生旅程中种种的遇见！",
     "background_title": "专业背景 (Professional Background)",
     "background_list": [

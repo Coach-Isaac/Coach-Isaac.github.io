@@ -142,6 +142,8 @@ const navigateTo = (path) => {
     font-size: 1.6rem;
     letter-spacing: 0.5px;
     font-weight: 600;
+    white-space: pre-line; /* Allow newlines for dual-language names */
+    line-height: 1.4; /* Better spacing for 2 lines */
 }
 
 .coach-card p {
