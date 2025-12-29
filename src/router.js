@@ -31,9 +31,9 @@ const router = createRouter({
       component: () => import('./views/CoachPaulineView.vue')
     },
     {
-      path: '/coaches/vince',
-      name: 'coach-vince',
-      component: () => import('./views/CoachVinceView.vue')
+      path: '/coaches/vincent',
+      name: 'coach-vincent',
+      component: () => import('./views/CoachVincentView.vue')
     },
     {
       path: '/services',
