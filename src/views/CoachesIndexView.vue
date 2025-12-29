@@ -95,9 +95,10 @@ const navigateTo = (path) => {
 .coaches-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem; /* Increased gap */
-  max-width: 900px;
-  margin: 0 auto 4rem auto; /* Added bottom margin */
+  gap: 2rem;
+  max-width: 1200px; /* Wider to fit 3 cards */
+  margin: 0 auto 5rem auto;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
@@ -106,54 +107,75 @@ const navigateTo = (path) => {
   }
 }
 
+@media (min-width: 1024px) {
+  .coaches-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns on desktop */
+  }
+}
+
 .coach-card {
   background: var(--bg-card);
   padding: 2.5rem 2rem;
   border-radius: 16px;
   border: 1px solid var(--border-color);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   height: 100%;
-  overflow: hidden; /* Prevent spill */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Subtle base shadow */
 }
 
-
-
 .coach-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary);
 }
 
 .coach-card h2 {
     color: var(--color-primary);
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
 .coach-card p {
     color: var(--text-muted);
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
     flex-grow: 1;
+    font-size: 1.05rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Limit text lines for consistency */
+    line-clamp: 5; /* Standard property */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .view-profile-btn {
-    background-color: var(--color-primary);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-top: auto; /* Push to bottom */
 }
 
 .view-profile-btn:hover {
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(66, 185, 131, 0.3);
 }
 
 .credentials-section {
