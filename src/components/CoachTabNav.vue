@@ -36,9 +36,9 @@ const isActive = (path) => {
       Pauline
     </RouterLink>
     <RouterLink 
-      to="/coaches/vince" 
+      to="/coaches/vincent" 
       class="tab-item" 
-      :class="{ active: isActive('/coaches/vince') }"
+      :class="{ active: isActive('/coaches/vincent') }"
     >
       Vincent
     </RouterLink>

@@ -20,10 +20,10 @@ const coaches = [
     route: '/coaches/pauline'
   },
   {
-    id: 'vince',
+    id: 'vincent',
     nameKey: 'coach_vince.name',
     descriptionKey: 'coach_vince.intro',
-    route: '/coaches/vince'
+    route: '/coaches/vincent'
   }
 ]
 
