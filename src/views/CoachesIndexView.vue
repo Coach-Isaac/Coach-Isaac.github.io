@@ -18,6 +18,12 @@ const coaches = [
     nameKey: 'coach_pauline.name',
     descriptionKey: 'coach_pauline.intro',
     route: '/coaches/pauline'
+  },
+  {
+    id: 'vince',
+    nameKey: 'coach_vince.name',
+    descriptionKey: 'coach_vince.intro',
+    route: '/coaches/vince'
   }
 ]
 
