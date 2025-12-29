@@ -49,10 +49,13 @@ const isActive = (path) => {
 .coach-tabs {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping for many coaches */
   gap: 1rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
+  padding-left: 1rem; /* Safety padding */
+  padding-right: 1rem;
 }
 
 .tab-item {
