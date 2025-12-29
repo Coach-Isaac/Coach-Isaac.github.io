@@ -40,7 +40,7 @@ const isActive = (path) => {
       class="tab-item" 
       :class="{ active: isActive('/coaches/vince') }"
     >
-      VINCENT
+      Vincent
     </RouterLink>
   </nav>
 </template>
