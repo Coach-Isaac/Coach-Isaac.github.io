@@ -95,9 +95,9 @@ const navigateTo = (path) => {
 .coaches-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap */
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 4rem auto; /* Added bottom margin */
 }
 
 @media (min-width: 768px) {
@@ -118,7 +118,10 @@ const navigateTo = (path) => {
   align-items: center;
   text-align: center;
   height: 100%;
+  overflow: hidden; /* Prevent spill */
 }
+
+
 
 .coach-card:hover {
   transform: translateY(-5px);
@@ -152,13 +155,11 @@ const navigateTo = (path) => {
 .view-profile-btn:hover {
     background-color: var(--color-secondary);
 }
-</style>
 
-<style scoped>
 .credentials-section {
-  text-align: center; /* Centered for overview page */
-  margin-top: 4rem;
-  padding-top: 2rem;
+  text-align: center;
+  margin-top: 5rem; /* Increased top margin */
+  padding-top: 3rem;
   border-top: 1px solid var(--border-color);
 }
 
