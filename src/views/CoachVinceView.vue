@@ -11,8 +11,8 @@ const { t, tm, rt } = useI18n()
     <div class="profile-card">
         <!-- Header / Name Section -->
         <header class="card-header">
-            <h1 class="english-name">VINCENT W. LI</h1>
-            <h2 class="chinese-name">Vince / 阿 哲</h2>
+            <h1 class="english-name">Vincent</h1>
+            <h2 class="chinese-name">阿哲</h2>
             <p class="role-title">{{ t('coach_vince.title') }}</p>
         </header>
 
