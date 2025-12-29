@@ -18,6 +18,12 @@ const coaches = [
     nameKey: 'coach_pauline.name',
     descriptionKey: 'coach_pauline.intro',
     route: '/coaches/pauline'
+  },
+  {
+    id: 'vincent',
+    nameKey: 'coach_vince.name',
+    descriptionKey: 'coach_vince.intro',
+    route: '/coaches/vincent'
   }
 ]
 
@@ -71,23 +77,27 @@ const navigateTo = (path) => {
 .hero {
   text-align: center;
   margin-bottom: 3rem;
+  margin-top: 2rem; /* Add space from tabs */
 }
 .hero h1 {
   font-size: 2.5rem;
   color: var(--text-main);
   margin-bottom: 1rem;
+  line-height: 1.3; /* Ensure spacing if text wraps */
 }
 .subtitle {
   font-size: 1.2rem;
   color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0;
 }
 
 .coaches-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap */
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 4rem auto; /* Added bottom margin */
 }
 
 @media (min-width: 768px) {
@@ -108,7 +118,10 @@ const navigateTo = (path) => {
   align-items: center;
   text-align: center;
   height: 100%;
+  overflow: hidden; /* Prevent spill */
 }
+
+
 
 .coach-card:hover {
   transform: translateY(-5px);
@@ -142,13 +155,11 @@ const navigateTo = (path) => {
 .view-profile-btn:hover {
     background-color: var(--color-secondary);
 }
-</style>
 
-<style scoped>
 .credentials-section {
-  text-align: center; /* Centered for overview page */
-  margin-top: 4rem;
-  padding-top: 2rem;
+  text-align: center;
+  margin-top: 5rem; /* Increased top margin */
+  padding-top: 3rem;
   border-top: 1px solid var(--border-color);
 }
 
