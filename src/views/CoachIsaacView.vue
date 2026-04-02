@@ -335,4 +335,25 @@ const { t, tm, rt } = useI18n()
     fill: currentColor;
     flex-shrink: 0;
 }
+
+/* ===== MOBILE ===== */
+@media (max-width: 767px) {
+    .card-header {
+        padding: 2rem 1.5rem;
+    }
+
+    .english-name {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+}
 </style>
