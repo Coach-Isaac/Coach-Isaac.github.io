@@ -8,6 +8,14 @@
   /* Deep Teal */
   --color-secondary: #42b983;
   /* Vue Green accent */
+  --color-primary-light: #1a9dc0;
+  /* Gradient midpoint */
+  --hero-gradient: linear-gradient(135deg, #0f7699 0%, #1a9dc0 50%, #42b983 100%);
+  --shadow-card: 0 4px 16px rgba(15, 118, 153, 0.08);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --coach-avatar-bg: #e8f4f8;
+  --coach-avatar-size: 88px;
 
   /* Light Mode Defaults */
   --bg-color: #ffffff;
@@ -98,6 +106,10 @@ body::after {
     --text-muted: #aaaaaa;
     --bg-card: #2a2a2a;
     --border-color: #444444;
+    --hero-gradient: linear-gradient(135deg, #095870 0%, #0f7699 50%, #2d9467 100%);
+    --coach-avatar-bg: #1e3040;
+    --trust-strip-bg: #1a2a35;
+    --trust-strip-border: #2a3a45;
   }
 }
 
