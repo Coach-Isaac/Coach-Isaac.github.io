@@ -101,6 +101,12 @@ const infoCards = [
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -357,6 +363,12 @@ const infoCards = [
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   padding: 4rem 0;
+}
+
+@media (max-width: 600px) {
+  .testimonials-section {
+    padding: 2.5rem 0;
+  }
 }
 
 .testimonials-title {

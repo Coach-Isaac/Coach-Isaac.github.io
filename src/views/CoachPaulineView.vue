@@ -337,4 +337,29 @@ const { t, tm, rt } = useI18n()
     margin-right: 0.5rem;
     fill: currentColor;
 }
+
+/* ===== MOBILE ===== */
+@media (max-width: 767px) {
+    .card-header {
+        padding: 2rem 1.5rem;
+    }
+
+    .english-name {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .chinese-name {
+        letter-spacing: 4px;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+}
 </style>
