@@ -1,28 +1,28 @@
 :root {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
   line-height: 1.6;
   font-weight: 400;
 
-  /* Color Palette - Coaching Theme */
-  --color-primary: #0f7699;
-  /* Deep Teal */
-  --color-secondary: #42b983;
-  /* Vue Green accent */
-  --color-primary-light: #1a9dc0;
-  /* Gradient midpoint */
-  --hero-gradient: linear-gradient(135deg, #0f7699 0%, #1a9dc0 50%, #42b983 100%);
-  --shadow-card: 0 4px 16px rgba(15, 118, 153, 0.08);
+  /* Color Palette - Warm Coaching */
+  --color-primary: #4a6741;
+  --color-primary-light: #6a8f5e;
+  --color-secondary: #c17f4a;
+  --color-accent: #d4956a;
+
+  --hero-gradient: linear-gradient(135deg, #4a6741 0%, #6a8f5e 50%, #8aab7e 100%);
+  --shadow-card: 0 4px 16px rgba(74, 103, 65, 0.10);
   --radius-lg: 16px;
   --radius-xl: 24px;
-  --coach-avatar-bg: #e8f4f8;
+  --coach-avatar-bg: #e8f0e5;
   --coach-avatar-size: 88px;
 
-  /* Light Mode Defaults */
-  --bg-color: #ffffff;
-  --text-main: #2c3e50;
-  --text-muted: #666666;
-  --bg-card: #f9f9f9;
-  --border-color: #eeeeee;
+  /* Light Mode Defaults — warm off-white */
+  --bg-color: #faf7f2;
+  --text-main: #2d2a26;
+  --text-muted: #6b6460;
+  --bg-card: #f3ede4;
+  --border-color: #e5ddd2;
 
   color-scheme: light dark;
   color: var(--text-main);
@@ -99,28 +99,34 @@ body::after {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #4db3ce;
-    /* Lighter Teal for dark mode */
-    --bg-color: #1a1a1a;
-    --text-main: #e0e0e0;
-    --text-muted: #aaaaaa;
-    --bg-card: #2a2a2a;
-    --border-color: #444444;
-    --hero-gradient: linear-gradient(135deg, #095870 0%, #0f7699 50%, #2d9467 100%);
-    --coach-avatar-bg: #1e3040;
-    --trust-strip-bg: #1a2a35;
-    --trust-strip-border: #2a3a45;
+    --color-primary: #8aab7e;
+    --color-secondary: #d4956a;
+    --bg-color: #1c1a18;
+    --text-main: #e8e2d8;
+    --text-muted: #a09890;
+    --bg-card: #272420;
+    --border-color: #3a3630;
+    --hero-gradient: linear-gradient(135deg, #2d3d2a 0%, #3d5238 50%, #4d6645 100%);
+    --coach-avatar-bg: #2d3d2a;
+    --trust-strip-bg: #231f1c;
+    --trust-strip-border: #3a3630;
   }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-primary);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--color-primary-light);
 }
 
 body {
@@ -154,7 +160,7 @@ button {
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-primary);
 }
 
 button:focus,
