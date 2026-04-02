@@ -1,27 +1,52 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 const { t, tm, rt } = useI18n()
+
+const ctaEmail = 'coach.isaac.lu@gmail.com'
+
+const infoCards = [
+  { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
+  { titleKey: 'coaching.card_science_title', descKey: 'coaching.neuroscience_desc' },
+  { titleKey: 'coaching.card_principles_title', descKey: 'coaching.card_principles_desc' },
+  { titleKey: 'coaching.card_vs_therapy_title', descKey: 'coaching.distinction_1_desc' },
+  { titleKey: 'coaching.card_vs_consult_title', descKey: 'coaching.distinction_2_desc' },
+  { titleKey: 'coaching.card_vs_mentor_title', descKey: 'coaching.distinction_3_desc' },
+]
 </script>
 
 <template>
-  <div class="home-container page-container fade-in-up">
+  <div class="home-container fade-in-up">
+    <!-- Hero -->
     <section class="hero">
+      <span class="hero-tag">{{ t('home.hero_badge') }}</span>
       <h1>{{ t('home.hero_title') }}</h1>
       <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
+      <div class="hero-actions">
+        <a :href="'mailto:' + ctaEmail" class="btn-hero-primary">{{ t('nav.free_trial_cta') }}</a>
+        <a href="#what-is-coaching" class="btn-hero-secondary">{{ t('home.hero_learn_more') }}</a>
+      </div>
+      <p class="hero-note">{{ t('home.hero_note') }}</p>
     </section>
 
-    <section class="what-is-coaching">
+    <!-- Trust Strip -->
+    <section class="trust-strip">
+      <div v-for="item in tm('home.trust')" :key="rt(item.text)" class="trust-item">
+        <span class="trust-icon">{{ rt(item.icon) }}</span>
+        {{ rt(item.text) }}
+      </div>
+    </section>
+
+    <!-- What is Coaching -->
+    <section id="what-is-coaching" class="what-is-coaching page-container">
       <h2>{{ t('coaching.title') }}</h2>
       <p class="intro-desc">{{ t('coaching.description') }}</p>
 
-      <div class="metaphor-section">
-        <h3>{{ t('coaching.hiking_metaphor_title') }}</h3>
-        <p>{{ t('coaching.hiking_metaphor_desc') }}</p>
-      </div>
-
-      <div class="metaphor-section climber-theme">
-        <h3>{{ t('coaching.climber_metaphor_title') }}</h3>
-        <p>{{ t('coaching.climber_metaphor_desc') }}</p>
+      <!-- 2x2 Info Cards (replaces verbose metaphor sections) -->
+      <div class="info-cards-grid">
+        <div v-for="card in infoCards" :key="card.titleKey" class="info-card">
+          <h4>{{ t(card.titleKey) }}</h4>
+          <p>{{ t(card.descKey) }}</p>
+        </div>
       </div>
 
       <div class="target-audience-section">
@@ -44,61 +69,210 @@ const { t, tm, rt } = useI18n()
           </div>
         </div>
       </div>
-
-      <div class="neuroscience-section">
-        <h3>{{ t('coaching.neuroscience_title') }}</h3>
-        <p>{{ t('coaching.neuroscience_desc') }}</p>
-      </div>
-      
-      <div class="distinctions">
-        <h3>{{ t('coaching.distinctions_title') }}</h3>
-        <div class="distinction-grid">
-          <div class="distinction-item">
-            <h4>{{ t('coaching.distinction_1_title') }}</h4>
-            <p>{{ t('coaching.distinction_1_desc') }}</p>
-          </div>
-          <div class="distinction-item">
-            <h4>{{ t('coaching.distinction_2_title') }}</h4>
-            <p>{{ t('coaching.distinction_2_desc') }}</p>
-          </div>
-          <div class="distinction-item">
-            <h4>{{ t('coaching.distinction_3_title') }}</h4>
-            <p>{{ t('coaching.distinction_3_desc') }}</p>
-          </div>
-        </div>
-      </div>
     </section>
   </div>
 </template>
 
 <style scoped>
 .home-container {
-  /* max-width handled by page-container */
-}
-.hero {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  color: var(--text-main);
-  margin-bottom: 1rem;
-}
-.subtitle {
-  font-size: 1.2rem;
-  color: var(--text-muted);
+  width: 100%;
 }
 
-.intro-desc {
+/* ===== HERO ===== */
+.hero {
+  background: var(--hero-gradient);
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #fff;
+  margin: 0 auto 1.25rem;
+  max-width: 700px;
+}
+
+.subtitle {
   font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.btn-hero-primary {
+  background: #fff;
+  color: var(--color-primary);
+  padding: 0.85rem 2rem;
+  border-radius: 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: var(--color-primary);
+}
+
+.btn-hero-secondary {
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  padding: 0.75rem 1.75rem;
+  border-radius: 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.btn-hero-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.hero-note {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+/* ===== TRUST STRIP ===== */
+.trust-strip {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  background: var(--trust-strip-bg, #fff);
+  border-bottom: 1px solid var(--trust-strip-border, var(--border-color));
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.trust-icon {
+  font-size: 0.95rem;
+}
+
+/* ===== WHAT IS COACHING ===== */
+.what-is-coaching {
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
 }
 
 .what-is-coaching h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   color: var(--color-primary);
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.what-is-coaching h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+.intro-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* 2x2 info cards */
+.info-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 600px) {
+  .info-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+}
+
+.info-card h4 {
+  margin: 0 0 0.6rem 0;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--color-secondary);
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
 }
 
 .what-is-coaching h3 {
@@ -108,38 +282,32 @@ const { t, tm, rt } = useI18n()
   padding-left: 1rem;
 }
 
-.metaphor-section, .neuroscience-section {
-  background: var(--bg-card);
-  padding: 2rem;
-  border-radius: 16px; /* Playful Roundness */
-  margin-bottom: 3rem;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+.target-audience-section {
+  margin: 3rem 0;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
 @media (min-width: 768px) {
-  .metaphor-section.climber-theme {
-  background-color: rgba(66, 185, 131, 0.1); /* Secondary color tint */
-  border-left: 5px solid var(--color-secondary);
-  border-right: none;
-}
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
 
-.target-audience-section {
-  margin: 4rem 0;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  .hero h1 {
+    font-size: 3rem;
+  }
 }
 
 .feature-card {
@@ -151,64 +319,22 @@ const { t, tm, rt } = useI18n()
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.audience-card h4 {
-  color: var(--color-secondary); /* Distinguish from principles */
-}
-
-.feature-card h4 {
-  margin-top: 0;
-  color: var(--color-primary);
-  font-size: 1.2rem;
-}
-  .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.feature-card {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  transition: transform 0.2s;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
 }
 
 .feature-card h4 {
   color: var(--color-secondary);
   margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.distinctions {
-  margin-top: 3rem;
+.audience-card h4 {
+  color: var(--color-primary);
 }
 
-.distinction-grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.distinction-item {
-  background: var(--bg-color);
-  padding: 1rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.distinction-item h4 {
-  margin: 0 0 0.5rem 0;
-  color: var(--text-main);
-}
-
-.distinction-item p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-muted);
+.principles-section {
+  margin-top: 1rem;
 }
 </style>

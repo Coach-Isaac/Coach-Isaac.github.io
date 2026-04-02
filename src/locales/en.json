@@ -2,11 +2,37 @@
   "nav": {
     "home": "About Coaching",
     "about": "Our Coaches",
-    "services": "Services"
+    "services": "Services",
+    "free_trial_cta": "✨ Free Trial Session"
   },
   "home": {
     "hero_title": "Partnering with you to bridge the gap from where you are to where you want to be.",
-    "hero_subtitle": "Unlocking potential and achieving goals through professional coaching conversations."
+    "hero_subtitle": "Unlocking potential and achieving goals through professional coaching conversations.",
+    "hero_badge": "🌿 ICF Coaches in Training",
+    "hero_learn_more": "What is coaching? →",
+    "hero_note": "First session free · 45 min online",
+    "trust": [
+      {
+        "icon": "🏅",
+        "text": "ICF In Training"
+      },
+      {
+        "icon": "💬",
+        "text": "3 Coaches"
+      },
+      {
+        "icon": "🌐",
+        "text": "Bilingual EN/ZH"
+      },
+      {
+        "icon": "🔒",
+        "text": "Strict Confidentiality"
+      },
+      {
+        "icon": "⭐",
+        "text": "Free First Session"
+      }
+    ]
   },
   "coaching": {
     "title": "What is Coaching?",
@@ -59,10 +85,21 @@
       {
         "title": "Those wanting to enhance leadership or relationships",
         "desc": "Helping professionals navigate complex dynamics, improve leadership effectiveness, and handle difficult conversations involving both emotion and logic."
+      },
+      {
+        "title": "People facing an important decision who want greater clarity",
+        "desc": "Whether it is a career pivot, a relationship choice, or a values-level crossroads, coaching helps you slow down, examine your assumptions, and make a decision you can own with confidence."
       }
     ],
     "climber_metaphor_title": "The Climber's Mindset",
-    "climber_metaphor_desc": "People seeking a coach are like climbers preparing for a new path. They don't want someone to carry their backpack or carry them to the summit. They want a guide who knows the terrain to point out paths, but ultimately, the climber retains the decision of which way to go, building strength along the way."
+    "climber_metaphor_desc": "People seeking a coach are like climbers preparing for a new path. They don't want someone to carry their backpack or carry them to the summit. They want a guide who knows the terrain to point out paths, but ultimately, the climber retains the decision of which way to go, building strength along the way.",
+    "card_guide_title": "The Guide Metaphor",
+    "card_science_title": "The Science Behind It",
+    "card_vs_therapy_title": "vs. Therapy",
+    "card_vs_consult_title": "vs. Consulting / Mentoring",
+    "card_vs_mentor_title": "Coaching vs. Mentoring",
+    "card_principles_title": "The 3 Core Principles",
+    "card_principles_desc": "Coaches are partners, not experts. We listen deeply and ask questions. The ultimate goal is to inspire your own commitment to action."
   },
   "about": {
     "title": "About Coach Isaac",
@@ -80,6 +117,8 @@
   "coach_isaac": {
     "title": "Life Exploration & Practice Coach",
     "name": "Isaac Lu",
+    "tag_career": "Career Development",
+    "tag_relationships": "Relationships",
     "intro": "I deeply believe that everyone holds a goal they yearn to move towards. My vision is to partner with you, helping to minimize future regrets and increase your capacity for happiness.",
     "background_title": "Professional Background",
     "background_list": [
@@ -134,6 +173,14 @@
       {
         "title": "Client Responsibility",
         "desc": "Throughout the coaching relationship, you remain responsible for your own choices and actions."
+      },
+      {
+        "title": "Scheduling & Attendance",
+        "desc": "Sessions are held online and scheduled by mutual agreement. Please give at least 24 hours notice for cancellations. Consistent attendance is key to progress."
+      },
+      {
+        "title": "Scope of Coaching",
+        "desc": "Coaching is a forward-focused, action-oriented partnership. It is not therapy or counseling. If deeper mental health support is needed, your coach will refer you to the right professional."
       }
     ],
     "process_title": "How it Works",
@@ -152,11 +199,16 @@
       }
     ],
     "special_offer_title": "Limited Time Offer",
-    "special_offer_desc": "As this is a special collaboration to support my certification, the fee for this service is simply 'a cup of coffee or a book'. I see this as a symbol of our shared investment in this journey."
+    "special_offer_desc": "As part of my certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
+    "offer_headline": "First Trial Session\nCompletely Free",
+    "offer_note": "45 min free trial · No obligation",
+    "cta_button": "Contact us to book →"
   },
   "coach_pauline": {
     "title": "Life Vision & Enhancement Coach",
     "name": "Pauline Lin",
+    "tag_self": "Self-Discovery",
+    "tag_transition": "Career Transition",
     "intro": "I believe everyone holds their own answers. A coach's role is to accompany you currently through deep listening and powerful questioning to see the situation clearly and move towards the change you truly desire.",
     "background_title": "Professional Background",
     "background_list": [
@@ -193,6 +245,8 @@
   "coach_vince": {
     "title": "Career, Life & Leadership Coach",
     "name": "Vincent Li",
+    "tag_leadership": "Leadership",
+    "tag_performance": "Work Performance",
     "intro": "I believe every traveler of life possesses enough potential and yet-to-be-unlocked wisdom to face, understand, and handle the various encounters on their work and life journey!",
     "background_title": "Professional Background",
     "background_list": [
