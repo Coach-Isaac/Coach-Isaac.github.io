@@ -11,8 +11,10 @@ const { t, tm, rt } = useI18n()
     <div class="profile-card">
         <!-- Header / Name Section -->
         <header class="card-header">
+            <div class="profile-photo-wrapper">
+              <div class="profile-photo-placeholder">I</div>
+            </div>
             <h1 class="english-name">ISAAC LU</h1>
-
             <p class="role-title">{{ t('coach_isaac.title') }}</p>
         </header>
 
@@ -108,11 +110,36 @@ const { t, tm, rt } = useI18n()
 }
 
 .profile-card {
-    background: white;
-    border-radius: 0; 
+    background: var(--bg-color);
+    border-radius: var(--radius-lg);
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
-    color: #333;
+    color: var(--text-main);
+}
+
+/* Photo Avatar */
+.profile-photo-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    color: white;
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
 /* Header */
@@ -159,10 +186,10 @@ const { t, tm, rt } = useI18n()
 
 /* Sidebar */
 .sidebar {
-    background-color: #f8f9fa; /* Light grey background */
+    background-color: var(--bg-card);
     padding: 2.5rem;
-    flex: 1; /* Approx 33% */
-    border-right: 1px solid #eee;
+    flex: 1;
+    border-right: 1px solid var(--border-color);
 }
 
 @media (min-width: 768px) {
@@ -189,7 +216,7 @@ const { t, tm, rt } = useI18n()
     list-style: none;
     padding: 0;
     font-size: 0.95rem;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .sidebar-list li {
@@ -208,9 +235,9 @@ const { t, tm, rt } = useI18n()
 .sidebar-core {
     font-size: 0.9rem;
     font-style: italic;
-    color: #666;
+    color: var(--text-muted);
     margin-top: 1rem;
-    border-top: 1px dotted #ccc;
+    border-top: 1px dotted var(--border-color);
     padding-top: 0.8rem;
 }
 
@@ -222,7 +249,7 @@ const { t, tm, rt } = useI18n()
 .contact-link {
     display: flex;
     align-items: center;
-    color: #555;
+    color: var(--text-muted);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s;
@@ -237,13 +264,13 @@ const { t, tm, rt } = useI18n()
 .main-content {
     flex: 2;
     padding: 3rem 4rem;
-    background: white;
+    background: var(--bg-color);
 }
 
 .main-title {
     font-size: 1.4rem;
     letter-spacing: 2px;
-    color: #2c3e50;
+    color: var(--text-main);
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
@@ -257,24 +284,25 @@ const { t, tm, rt } = useI18n()
 }
 
 .body-text {
-    color: #4a4a4a;
+    color: var(--text-main);
     line-height: 1.8;
     margin-bottom: 2rem;
     font-size: 1.05rem;
 }
 
 .quote-block {
-    background-color: rgba(66, 185, 131, 0.08);
+    background-color: var(--bg-card);
     padding: 2rem;
-    border-radius: 4px;
+    border-radius: var(--radius-lg);
     margin: 2rem 0;
-    border-left: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-secondary);
 }
 
 .large-quote {
     font-size: 1.15rem;
     font-style: italic;
-    color: #2c3e50;
+    font-family: var(--font-heading);
+    color: var(--text-main);
     margin: 0;
     text-align: center;
 }
