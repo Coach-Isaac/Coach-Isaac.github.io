@@ -6,11 +6,29 @@
     "free_trial_cta": "✨ Free Trial Session"
   },
   "home": {
-    "hero_title": "Partnering with you to bridge the gap from where you are to where you want to be.",
-    "hero_subtitle": "Unlocking potential and achieving goals through professional coaching conversations.",
+    "hero_title": "Stuck?\nLet's find your way forward.",
+    "hero_subtitle": "Not advice, not therapy — coaching helps you discover your own answers. ICF certified coaches in training, bilingual EN/ZH.",
     "hero_badge": "🌿 ICF Coaches in Training",
     "hero_learn_more": "What is coaching? →",
     "hero_note": "First session free · 45 min online",
+    "testimonials_title": "What clients say",
+    "testimonials": [
+      {
+        "quote": "Through coaching, I saw my own patterns at work for the first time — and found a way to shift them. No judgment, just deep accompaniment.",
+        "name": "Client A",
+        "context": "Career Development, 2024"
+      },
+      {
+        "quote": "I used to think coaching and therapy were the same thing. Now I know how different they are. Coaching gave me more agency over my own decisions.",
+        "name": "Client B",
+        "context": "Relationships, 2024"
+      },
+      {
+        "quote": "I thought my problems weren't 'serious enough' to talk to someone about. But after the first free session, I realized how different it feels to be truly heard.",
+        "name": "Client C",
+        "context": "Self-Discovery, 2025"
+      }
+    ],
     "trust": [
       {
         "icon": "🏅",

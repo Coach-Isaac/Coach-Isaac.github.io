@@ -6,11 +6,8 @@ const ctaEmail = 'coach.isaac.lu@gmail.com'
 
 const infoCards = [
   { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
-  { titleKey: 'coaching.card_science_title', descKey: 'coaching.neuroscience_desc' },
-  { titleKey: 'coaching.card_principles_title', descKey: 'coaching.card_principles_desc' },
   { titleKey: 'coaching.card_vs_therapy_title', descKey: 'coaching.distinction_1_desc' },
   { titleKey: 'coaching.card_vs_consult_title', descKey: 'coaching.distinction_2_desc' },
-  { titleKey: 'coaching.card_vs_mentor_title', descKey: 'coaching.distinction_3_desc' },
 ]
 </script>
 
@@ -33,6 +30,22 @@ const infoCards = [
       <div v-for="item in tm('home.trust')" :key="rt(item.text)" class="trust-item">
         <span class="trust-icon">{{ rt(item.icon) }}</span>
         {{ rt(item.text) }}
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="page-container">
+        <h2 class="testimonials-title">{{ t('home.testimonials_title') }}</h2>
+        <div class="testimonials-grid">
+          <div v-for="(item, i) in tm('home.testimonials')" :key="i" class="testimonial-card">
+            <p class="testimonial-quote">"{{ rt(item.quote) }}"</p>
+            <div class="testimonial-author">
+              <span class="author-name">— {{ rt(item.name) }}</span>
+              <span class="author-context">{{ rt(item.context) }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -336,5 +349,80 @@ const infoCards = [
 
 .principles-section {
   margin-top: 1rem;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 4rem 0;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.testimonials-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--color-secondary);
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.testimonial-card {
+  background: var(--bg-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-main);
+  margin: 0 0 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.author-context {
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 </style>
