@@ -67,6 +67,17 @@ const ctaEmail = 'coach.isaac.lu@gmail.com'
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .offer-box {
+    padding: 2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .offer-box h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .offer-box::before {
   content: '✦';
   position: absolute;
