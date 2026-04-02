@@ -2,11 +2,37 @@
   "nav": {
     "home": "關於教練",
     "about": "教練團隊",
-    "services": "服務流程"
+    "services": "服務流程",
+    "free_trial_cta": "✨ 免費體驗首次會談"
   },
   "home": {
     "hero_title": "協助你從現狀跨越到理想目標的夥伴",
-    "hero_subtitle": "透過專業教練對話，啟發潛能，實現目標"
+    "hero_subtitle": "透過專業教練對話，啟發潛能，實現目標",
+    "hero_badge": "🌿 ICF 認證培訓中的教練團隊",
+    "hero_learn_more": "了解什麼是教練 →",
+    "hero_note": "首次體驗完全免費 · 45 分鐘線上會談",
+    "trust": [
+      {
+        "icon": "🏅",
+        "text": "ICF 認證課程"
+      },
+      {
+        "icon": "💬",
+        "text": "3 位專業教練"
+      },
+      {
+        "icon": "🌐",
+        "text": "中英雙語服務"
+      },
+      {
+        "icon": "🔒",
+        "text": "嚴格保密原則"
+      },
+      {
+        "icon": "⭐",
+        "text": "免費首次體驗"
+      }
+    ]
   },
   "coaching": {
     "title": "什麼是教練 (Coaching)？",
@@ -59,10 +85,21 @@
       {
         "title": "想要提升領導力或改善人際關係的人",
         "desc": "協助專業人士處理複雜的人際動態，提升領導效能，或學習如何處理情感與邏輯交織的困難對話。"
+      },
+      {
+        "title": "面臨重要決策、想要想得更清晰的人",
+        "desc": "無論是職涯轉換、關係抉擇，還是人生價值觀層面的十字路口，教練對話能協助您放慢思緒、看清假設，做出一個真正屬於自己的決定。"
       }
     ],
     "climber_metaphor_title": "登山者的心態",
-    "climber_metaphor_desc": "尋找教練的人就像是準備挑戰新路徑的登山者。他們不想要一個幫他們背背包或直接把他們抱到山頂的人，而是想要一位熟悉地形的嚮導，指點出可能的路徑，但在面臨陡坡或岔路時，登山者仍保有最終的決定權，決定自己要走哪一條路，並在過程中鍛鍊出更強壯的體魄。"
+    "climber_metaphor_desc": "尋找教練的人就像是準備挑戰新路徑的登山者。他們不想要一個幫他們背背包或直接把他們抱到山頂的人，而是想要一位熟悉地形的嚮導，指點出可能的路徑，但在面臨陡坡或岔路時，登山者仍保有最終的決定權，決定自己要走哪一條路，並在過程中鍛鍊出更強壯的體魄。",
+    "card_guide_title": "登山嚮導的比喻",
+    "card_science_title": "教練背後的科學",
+    "card_vs_therapy_title": "vs. 心理諮商",
+    "card_vs_consult_title": "vs. 顧問／導師",
+    "card_vs_mentor_title": "教練 vs 導師",
+    "card_principles_title": "三大核心精神",
+    "card_principles_desc": "教練是夥伴，而非專家。我們深度傾聽、提出好問題，引導您從內部找到答案，最終激發您對行動的承諾。"
   },
   "about": {
     "title": "關於教練 Isaac",
@@ -80,6 +117,8 @@
   "coach_isaac": {
     "title": "人生探索與實踐教練",
     "name": "Isaac Lu",
+    "tag_career": "職涯發展",
+    "tag_relationships": "人際關係",
     "intro": "我深信，每個人的內心深處，都有著渴望前進的目標。我的願景是透過真誠的交流與陪伴，協助你減少未來的遺憾，並為自己創造更多的幸福感。",
     "background_title": "專業背景 (Professional Background)",
     "background_list": [
@@ -134,6 +173,14 @@
       {
         "title": "客戶責任",
         "desc": "在整個教練關係中，您將對自己的選擇和行為負起責任。"
+      },
+      {
+        "title": "會談安排與出席",
+        "desc": "會談以線上方式進行，時間由雙方協商確認。如需取消請提前 24 小時告知。穩定出席是旅程推進的基礎。"
+      },
+      {
+        "title": "教練關係的界限",
+        "desc": "教練是以未來為導向的夥伴關係，並非心理治療或諮商。若您在會談中發現需要更深層的心理健康支持，教練將協助您轉介適合的專業人員。"
       }
     ],
     "process_title": "會談進行方式",
@@ -152,11 +199,16 @@
       }
     ],
     "special_offer_title": "限時合作方案",
-    "special_offer_desc": "由於這是一次支持我完成認證的特殊合作，本次服務的收費標準是「一杯咖啡或一本書」。我將其視為我們在這段旅程中共同投入的一份象徵。"
+    "special_offer_desc": "由於這是一次支持我完成認證的特殊合作，本服務採完整教練旅程的形式進行，包含三到六次會談。收費標準僅象徵性地定為「一杯咖啡或一本書」，代表我們共同投入這段探索旅程的心意。",
+    "offer_headline": "首次體驗會談\n完全免費",
+    "offer_note": "45 分鐘免費體驗 · 無任何義務",
+    "cta_button": "立即聯繫，預約體驗 →"
   },
   "coach_pauline": {
     "title": "人生願景與提升教練",
     "name": "林依雯\nPauline Lin",
+    "tag_self": "自我探索",
+    "tag_transition": "生涯轉換",
     "intro": "我相信每個人都擁有屬於自己的答案，而教練的角色，是透過深度傾聽與有力量的提問，陪伴你看清現況、走向改變。",
     "background_title": "專業背景 (Professional Background)",
     "background_list": [
@@ -193,6 +245,8 @@
   "coach_vince": {
     "title": "職涯、生活與領導力教練",
     "name": "阿哲\nVincent Li",
+    "tag_leadership": "領導力",
+    "tag_performance": "工作表現",
     "intro": "我相信每一位人生旅者都擁有足夠的潛能和待開啟的知見來面對、理解、並處理在工作與人生旅程中種種的遇見！",
     "background_title": "專業背景 (Professional Background)",
     "background_list": [
