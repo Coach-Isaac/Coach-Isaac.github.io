@@ -2,22 +2,41 @@
 import { useI18n } from 'vue-i18n'
 const { t, tm, rt } = useI18n()
 
-const ctaEmail = 'coach.isaac.lu@gmail.com'
+const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
+
+const coaches = [
+  {
+    key: 'isaac',
+    nameKey: 'coach_isaac.name',
+    titleKey: 'coach_isaac.title',
+    tags: ['coach_isaac.tag_career', 'coach_isaac.tag_relationships'],
+    email: 'coach.isaac.lu@gmail.com',
+    social: { url: 'https://www.instagram.com/coach.isaac.lu/', label: 'Instagram' },
+    route: '/coaches/isaac',
+  },
+  {
+    key: 'pauline',
+    nameKey: 'coach_pauline.name',
+    titleKey: 'coach_pauline.title',
+    tags: ['coach_pauline.tag_self', 'coach_pauline.tag_transition'],
+    email: 'hrpaulinelin@gmail.com',
+    social: { url: 'https://www.linkedin.com/in/paulinelin/', label: 'LinkedIn' },
+    route: '/coaches/pauline',
+  },
+  {
+    key: 'vincent',
+    nameKey: 'coach_vince.name',
+    titleKey: 'coach_vince.title',
+    tags: ['coach_vince.tag_leadership', 'coach_vince.tag_performance'],
+    email: 'coach_vincewli@myyahoo.com',
+    social: { url: 'https://www.linkedin.com/in/vincent-w-li-8924372a9', label: 'LinkedIn' },
+    route: '/coaches/vincent',
+  },
+]
 </script>
 
 <template>
   <div class="services-container page-container fade-in-up">
-
-    <!-- FREE TRIAL CTA — moved to top -->
-    <section class="offer-section">
-      <div class="offer-box">
-        <span class="offer-badge">✨ {{ t('services.special_offer_title') }}</span>
-        <h2>{{ t('services.offer_headline') }}</h2>
-        <p>{{ t('services.special_offer_desc') }}</p>
-        <a :href="'mailto:' + ctaEmail" class="cta-button">{{ t('services.cta_button') }}</a>
-        <p class="offer-note">{{ t('services.offer_note') }}</p>
-      </div>
-    </section>
 
     <!-- Page title + philosophy -->
     <section class="service-intro">
@@ -48,100 +67,32 @@ const ctaEmail = 'coach.isaac.lu@gmail.com'
       </div>
     </section>
 
+    <!-- Coach Cards CTA -->
+    <section class="coaches-cta">
+      <h2>{{ t('services.coaches_cta_title') }}</h2>
+      <p class="coaches-cta-subtitle">{{ t('services.coaches_cta_subtitle') }}</p>
+      <div class="coaches-cta-grid">
+        <div v-for="coach in coaches" :key="coach.key" class="coach-cta-card">
+          <div class="coach-cta-avatar">{{ t(coach.nameKey).charAt(0) }}</div>
+          <h3>{{ t(coach.nameKey) }}</h3>
+          <p class="coach-cta-role">{{ t(coach.titleKey) }}</p>
+          <div class="coach-cta-tags">
+            <span v-for="tag in coach.tags" :key="tag" class="coach-tag">{{ t(tag) }}</span>
+          </div>
+          <a :href="bookingUrl" target="_blank" rel="noopener" class="contact-btn book-btn">{{ t('services.cta_book') }}</a>
+          <div class="coach-cta-links">
+            <a :href="'mailto:' + coach.email" class="contact-btn email-btn">✉ Email</a>
+            <a :href="coach.social.url" target="_blank" rel="noopener" class="contact-btn social-btn">↗ {{ coach.social.label }}</a>
+          </div>
+          <RouterLink :to="coach.route" class="profile-link">{{ t('common.view_profile') }} →</RouterLink>
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <style scoped>
-/* ===== FREE TRIAL OFFER (top of page) ===== */
-.offer-section {
-  margin-bottom: 3rem;
-}
-
-.offer-box {
-  background: var(--hero-gradient);
-  color: #fff;
-  padding: 3.5rem 2.5rem;
-  border-radius: var(--radius-xl);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 600px) {
-  .offer-box {
-    padding: 2rem 1.25rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .offer-box h2 {
-    font-size: 1.5rem;
-  }
-}
-
-.offer-box::before {
-  content: '✦';
-  position: absolute;
-  top: -16px; right: 40px;
-  font-size: 96px;
-  opacity: 0.05;
-  color: #fff;
-  pointer-events: none;
-}
-
-.offer-badge {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  margin-bottom: 1.25rem;
-}
-
-.offer-box h2 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff;
-  margin: 0 0 1rem 0;
-  line-height: 1.3;
-}
-
-.offer-box > p {
-  font-size: 1rem;
-  opacity: 0.9;
-  max-width: 480px;
-  margin: 0 auto 2rem;
-  line-height: 1.75;
-}
-
-.cta-button {
-  display: inline-block;
-  background: #fff;
-  color: var(--color-primary);
-  padding: 0.9rem 2.2rem;
-  border-radius: 32px;
-  font-size: 1rem;
-  font-weight: 800;
-  text-decoration: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
-  color: var(--color-primary);
-}
-
-.offer-note {
-  font-size: 0.8rem;
-  opacity: 0.65;
-  margin: 1rem 0 0 0;
-}
-
 /* ===== PAGE INTRO ===== */
 .service-intro {
   margin-bottom: 2.5rem;
@@ -288,5 +239,157 @@ const ctaEmail = 'coach.isaac.lu@gmail.com'
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.65;
+}
+
+/* ===== COACH CARDS CTA ===== */
+.coaches-cta {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.coaches-cta h2 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--color-secondary);
+}
+
+.coaches-cta-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 2rem 0;
+  padding-left: 0.75rem;
+}
+
+.coaches-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .coaches-cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.coach-cta-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.coach-cta-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.coach-cta-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--hero-gradient);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coach-cta-card h3 {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: pre-line;
+}
+
+.coach-cta-role {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.coach-cta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.coach-tag {
+  background: var(--bg-surface, #f5f0eb);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.coach-cta-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.contact-btn {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.contact-btn:hover {
+  opacity: 0.8;
+}
+
+.book-btn {
+  width: 100%;
+  background: var(--hero-gradient);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.55rem 1rem;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.email-btn {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.social-btn {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.profile-link {
+  font-size: 0.82rem;
+  color: var(--color-secondary, #b07d5b);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
 }
 </style>
