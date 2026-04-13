@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 
 const { locale, t } = useI18n()
-const ctaEmail = 'coach.isaac.lu@gmail.com'
+const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const changeLanguage = (lang) => {
   locale.value = lang
@@ -24,7 +24,7 @@ const changeLanguage = (lang) => {
         <button :class="{ active: locale === 'zh-TW' }" @click="changeLanguage('zh-TW')">繁</button>
         <button :class="{ active: locale === 'zh-CN' }" @click="changeLanguage('zh-CN')">简</button>
       </div>
-      <a :href="'mailto:' + ctaEmail" class="nav-cta">{{ t('nav.free_trial_cta') }}</a>
+      <a :href="bookingUrl" target="_blank" rel="noopener" class="nav-cta">{{ t('nav.free_trial_cta') }}</a>
     </div>
   </nav>
 </template>
