@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 const { t, tm, rt } = useI18n()
 
-const ctaEmail = 'coach.isaac.lu@gmail.com'
+const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const infoCards = [
   { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
@@ -19,7 +19,7 @@ const infoCards = [
       <h1>{{ t('home.hero_title') }}</h1>
       <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
       <div class="hero-actions">
-        <a :href="'mailto:' + ctaEmail" class="btn-hero-primary">{{ t('nav.free_trial_cta') }}</a>
+        <a :href="bookingUrl" target="_blank" rel="noopener" class="btn-hero-primary">{{ t('nav.free_trial_cta') }}</a>
         <a href="#what-is-coaching" class="btn-hero-secondary">{{ t('home.hero_learn_more') }}</a>
       </div>
       <p class="hero-note">{{ t('home.hero_note') }}</p>
