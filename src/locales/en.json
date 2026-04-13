@@ -220,7 +220,10 @@
     "special_offer_desc": "As part of my certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
     "offer_headline": "First Trial Session\nCompletely Free",
     "offer_note": "45 min free trial · No obligation",
-    "cta_button": "Contact us to book →"
+    "cta_button": "Contact us to book →",
+    "cta_book": "Book a Free Intro Call",
+    "coaches_cta_title": "Find Your Coach",
+    "coaches_cta_subtitle": "Choose the coach that feels right for you and reach out through their contact"
   },
   "coach_pauline": {
     "title": "Life Vision & Enhancement Coach",
