@@ -97,8 +97,10 @@ body::after {
   pointer-events: none;
 }
 
+/* Dark mode vars — applied by system preference (when no manual override)
+   OR by [data-theme="dark"] set via theme toggle */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-primary: #8aab7e;
     --color-secondary: #d4956a;
     --bg-color: #1c1a18;
@@ -111,6 +113,36 @@ body::after {
     --trust-strip-bg: #231f1c;
     --trust-strip-border: #3a3630;
   }
+}
+
+/* Manual dark override — applied when user explicitly toggles to dark */
+[data-theme="dark"] {
+  --color-primary: #8aab7e;
+  --color-secondary: #d4956a;
+  --bg-color: #1c1a18;
+  --text-main: #e8e2d8;
+  --text-muted: #a09890;
+  --bg-card: #272420;
+  --border-color: #3a3630;
+  --hero-gradient: linear-gradient(135deg, #2d3d2a 0%, #3d5238 50%, #4d6645 100%);
+  --coach-avatar-bg: #2d3d2a;
+  --trust-strip-bg: #231f1c;
+  --trust-strip-border: #3a3630;
+}
+
+/* Manual light override — applied when user explicitly toggles to light */
+[data-theme="light"] {
+  --color-primary: #4a6741;
+  --color-primary-light: #6a8f5e;
+  --color-secondary: #c17f4a;
+  --color-accent: #d4956a;
+  --hero-gradient: linear-gradient(135deg, #4a6741 0%, #6a8f5e 50%, #8aab7e 100%);
+  --bg-color: #faf7f2;
+  --text-main: #2d2a26;
+  --text-muted: #6b6460;
+  --bg-card: #f3ede4;
+  --border-color: #e5ddd2;
+  --coach-avatar-bg: #e8f0e5;
 }
 
 h1, h2, h3 {
