@@ -3,14 +3,14 @@
     "home": "關於教練",
     "about": "教練團隊",
     "services": "服務流程",
-    "free_trial_cta": "✨ 免費體驗首次會談"
+    "free_trial_cta": "✨ 預約初次會談"
   },
   "home": {
     "hero_title": "卡關了嗎？\n教練陪你找到前進的方向",
     "hero_subtitle": "不是告訴你答案，而是幫你找到屬於自己的路。ICF 認證培訓中的教練團隊，中英雙語服務。",
     "hero_badge": "🌿 ICF 認證培訓中的教練團隊",
     "hero_learn_more": "了解什麼是教練 →",
-    "hero_note": "首次體驗完全免費 · 45 分鐘線上會談",
+    "hero_note": "象徵性費用 · 45 分鐘線上會談",
     "testimonials_title": "客戶怎麼說",
     "testimonials": [
       {
@@ -47,8 +47,8 @@
         "text": "嚴格保密原則"
       },
       {
-        "icon": "⭐",
-        "text": "免費首次體驗"
+        "icon": "☕",
+        "text": "象徵性費用"
       }
     ]
   },
@@ -218,10 +218,10 @@
     ],
     "special_offer_title": "限時合作方案",
     "special_offer_desc": "由於這是一次支持我完成認證的特殊合作，本服務採完整教練旅程的形式進行，包含三到六次會談。收費標準僅象徵性地定為「一杯咖啡或一本書」，代表我們共同投入這段探索旅程的心意。",
-    "offer_headline": "首次體驗會談\n完全免費",
-    "offer_note": "45 分鐘免費體驗 · 無任何義務",
-    "cta_button": "立即聯繫，預約體驗 →",
-    "cta_book": "預約免費初次對話",
+    "offer_headline": "象徵性費用\n一杯咖啡或一本書",
+    "offer_note": "45 分鐘線上會談 · 象徵性費用",
+    "cta_button": "立即聯繫，預約會談 →",
+    "cta_book": "預約初次對話",
     "coaches_cta_title": "找你的教練",
     "coaches_cta_subtitle": "選擇最適合你的教練，透過他們提供的聯絡方式預約"
   },
