@@ -3,14 +3,14 @@
     "home": "About Coaching",
     "about": "Our Coaches",
     "services": "Services",
-    "free_trial_cta": "✨ Free Trial Session"
+    "free_trial_cta": "✨ Book a Session"
   },
   "home": {
     "hero_title": "Stuck?\nLet's find your way forward.",
     "hero_subtitle": "Not advice, not therapy — coaching helps you discover your own answers. ICF certified coaches in training, bilingual EN/ZH.",
     "hero_badge": "🌿 ICF Coaches in Training",
     "hero_learn_more": "What is coaching? →",
-    "hero_note": "First session free · 45 min online",
+    "hero_note": "Symbolic fee · 45 min online",
     "testimonials_title": "What clients say",
     "testimonials": [
       {
@@ -47,8 +47,8 @@
         "text": "Strict Confidentiality"
       },
       {
-        "icon": "⭐",
-        "text": "Free First Session"
+        "icon": "☕",
+        "text": "Symbolic Fee"
       }
     ]
   },
@@ -218,10 +218,10 @@
     ],
     "special_offer_title": "Limited Time Offer",
     "special_offer_desc": "As part of my certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
-    "offer_headline": "First Trial Session\nCompletely Free",
-    "offer_note": "45 min free trial · No obligation",
+    "offer_headline": "Symbolic Fee\nA coffee or a book",
+    "offer_note": "45 min online · Symbolic fee",
     "cta_button": "Contact us to book →",
-    "cta_book": "Book a Free Intro Call",
+    "cta_book": "Book an Intro Call",
     "coaches_cta_title": "Find Your Coach",
     "coaches_cta_subtitle": "Choose the coach that feels right for you and reach out through their contact"
   },
