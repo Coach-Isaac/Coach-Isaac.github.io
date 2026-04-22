@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 const { t, tm, rt } = useI18n()
 
@@ -55,9 +55,15 @@ onMounted(() => {
   }
 })
 
+// 當 bar 顯示時，在 body 加 class，讓 footer 和 TOP 按鈕自動上移
+watch(showBar, (val) => {
+  document.body.classList.toggle('has-mobile-bar', val)
+})
+
 onUnmounted(() => {
   heroObserver?.disconnect()
   fadeObserver?.disconnect()
+  document.body.classList.remove('has-mobile-bar')
 })
 </script>
 
@@ -612,6 +618,15 @@ onUnmounted(() => {
     box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     letter-spacing: 0.3px;
+  }
+
+  /* 當 bar 出現時，footer 和 TOP 按鈕往上移 */
+  body.has-mobile-bar footer {
+    padding-bottom: calc(2rem + 56px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.has-mobile-bar .scroll-to-top {
+    bottom: calc(1.5rem + 56px + env(safe-area-inset-bottom, 0px));
   }
 }
 </style>
