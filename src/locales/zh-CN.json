@@ -3,14 +3,14 @@
     "home": "关于教练",
     "about": "教练团队",
     "services": "服务流程",
-    "free_trial_cta": "✨ 免费体验首次会谈"
+    "free_trial_cta": "✨ 预约初次会谈"
   },
   "home": {
     "hero_title": "卡住了吗？\n教练陪你找到前进的方向",
     "hero_subtitle": "不是告诉你答案，而是帮你找到属于自己的路。ICF 认证培训中的教练团队，中英双语服务。",
     "hero_badge": "🌿 ICF 认证培训中的教练团队",
     "hero_learn_more": "了解什么是教练 →",
-    "hero_note": "首次体验完全免费 · 45 分钟线上会谈",
+    "hero_note": "象征性费用 · 45 分钟线上会谈",
     "testimonials_title": "客户怎么说",
     "testimonials": [
       {
@@ -47,8 +47,8 @@
         "text": "严格保密原则"
       },
       {
-        "icon": "⭐",
-        "text": "免费首次体验"
+        "icon": "☕",
+        "text": "象征性费用"
       }
     ]
   },
@@ -218,10 +218,10 @@
     ],
     "special_offer_title": "限时合作方案",
     "special_offer_desc": "由于这是一次支持我完成认证的特殊合作，本服务采完整教练旅程的形式进行，包含三到六次会谈。收费标准仅象征性地定为「一杯咖啡或一本书」，代表我们共同投入这段探索旅程的心意。",
-    "offer_headline": "首次体验会谈\n完全免费",
-    "offer_note": "45 分钟免费体验 · 无任何义务",
+    "offer_headline": "象征性费用\n一杯咖啡或一本书",
+    "offer_note": "45 分钟线上会谈 · 象征性费用",
     "cta_button": "立即联系，预约体验 →",
-    "cta_book": "预约免费初次对话",
+    "cta_book": "预约初次对话",
     "coaches_cta_title": "找你的教练",
     "coaches_cta_subtitle": "选择最适合你的教练，通过他们提供的联系方式预约"
   },
