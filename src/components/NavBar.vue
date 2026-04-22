@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+import { useTheme } from '../composables/useTheme'
 
 const { locale, t } = useI18n()
 const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
@@ -8,6 +9,8 @@ const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 const changeLanguage = (lang) => {
   locale.value = lang
 }
+
+const { isDark, toggle } = useTheme()
 </script>
 
 <template>
@@ -24,6 +27,10 @@ const changeLanguage = (lang) => {
         <button :class="{ active: locale === 'zh-TW' }" @click="changeLanguage('zh-TW')">繁</button>
         <button :class="{ active: locale === 'zh-CN' }" @click="changeLanguage('zh-CN')">简</button>
       </div>
+      <button class="theme-toggle" :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'" @click="toggle">
+        <span v-if="isDark">☀️</span>
+        <span v-else>🌙</span>
+      </button>
       <a :href="bookingUrl" target="_blank" rel="noopener" class="nav-cta">{{ t('nav.free_trial_cta') }}</a>
     </div>
   </nav>
@@ -111,6 +118,23 @@ const changeLanguage = (lang) => {
   background-color: var(--color-secondary);
   color: white;
   border-color: var(--color-secondary);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
 }
 
 .nav-cta {
