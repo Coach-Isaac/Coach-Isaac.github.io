@@ -2,6 +2,9 @@
 import NavBar from './components/NavBar.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
 import { RouterView } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -15,7 +18,7 @@ import { RouterView } from 'vue-router'
     </main>
 
     <footer>
-      <p>&copy; 2025 Coach Isaac. All rights reserved.</p>
+      <p>&copy; 2025 Coach Isaac. All rights reserved. {{ t('footer.updating') }}</p>
     </footer>
 
     <ScrollToTop />

@@ -308,5 +308,8 @@
   },
   "common": {
     "view_profile": "View Profile"
+  },
+  "footer": {
+    "updating": "This site is continually being updated."
   }
 }

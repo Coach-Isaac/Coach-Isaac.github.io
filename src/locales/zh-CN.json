@@ -308,5 +308,8 @@
   },
   "common": {
     "view_profile": "查看个人介绍"
+  },
+  "footer": {
+    "updating": "网站持续更新中"
   }
 }

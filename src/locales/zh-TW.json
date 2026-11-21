@@ -308,5 +308,8 @@
   },
   "common": {
     "view_profile": "查看個人介紹"
+  },
+  "footer": {
+    "updating": "網站持續更新中"
   }
 }
