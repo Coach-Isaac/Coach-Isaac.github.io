@@ -1,18 +1,34 @@
 <script setup>
-import { watch } from 'vue'
+import { computed, watch, watchEffect } from 'vue'
 import NavBar from './components/NavBar.vue'
 import BottomTabBar from './components/BottomTabBar.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView, RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { BOOKING_URL, findCoach } from './data/coaches'
 
 const { t, locale } = useI18n()
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
+const route = useRoute()
+const bookingUrl = BOOKING_URL
 const year = new Date().getFullYear()
 
 watch(locale, (lang) => {
   document.documentElement.lang = lang
 }, { immediate: true })
+
+// Browser tab title per page and language, e.g. "林依雯 Pauline Lin｜Coach Isaac".
+const pageName = computed(() => {
+  const coach = route.meta.coachId && findCoach(route.meta.coachId)
+  if (coach) return t(`${coach.prefix}.name`).replace(/\n/g, ' ')
+  if (route.meta.titleKey) return t(route.meta.titleKey)
+  return null
+})
+
+watchEffect(() => {
+  document.title = pageName.value
+    ? t('site.page_title', { page: pageName.value })
+    : t('site.home_title')
+})
 </script>
 
 <template>

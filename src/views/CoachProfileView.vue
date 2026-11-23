@@ -13,9 +13,12 @@ const { t, tm, rt, locale } = useI18n()
 
 const coach = computed(() => findCoach(props.coachId))
 const key = (name) => `${coach.value.prefix}.${name}`
-const shortName = computed(() =>
-  locale.value.startsWith('zh') ? coach.value.shortName.zh : coach.value.shortName.en
-)
+// Chinese copy puts no spaces around the name; a Latin name still gets one on each side ("想和 Isaac 聊聊嗎" vs "想和阿哲聊聊嗎").
+const ctaName = computed(() => {
+  if (!locale.value.startsWith('zh')) return coach.value.shortName.en
+  const name = coach.value.shortName.zh
+  return /^[A-Za-z]/.test(name) ? ` ${name} ` : name
+})
 
 const socialName = computed(() => {
   const platform = coach.value.social.type === 'instagram' ? 'Instagram' : 'LinkedIn'
@@ -107,7 +110,7 @@ const sideSections = computed(() => [
 
       <section class="cta-card">
         <div>
-          <h2>{{ t('profile.cta_title', { name: shortName }) }}</h2>
+          <h2>{{ t('profile.cta_title', { name: ctaName }) }}</h2>
           <p>{{ t('profile.cta_desc') }}</p>
         </div>
         <a :href="BOOKING_URL" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>

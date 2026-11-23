@@ -317,9 +317,13 @@
     "view_profile": "查看个人介绍"
   },
   "profile": {
-    "cta_title": "想和 {name} 聊聊吗？",
+    "cta_title": "想和{name}聊聊吗？",
     "cta_desc": "45 分钟线上会谈，一杯咖啡、饮料或一本书的心意就好。",
     "contact": "联系方式"
+  },
+  "site": {
+    "home_title": "Coach Isaac｜预约初次教练会谈",
+    "page_title": "{page}｜Coach Isaac"
   },
   "not_found": {
     "title": "找不到这个页面",

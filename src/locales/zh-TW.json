@@ -317,9 +317,13 @@
     "view_profile": "查看個人介紹"
   },
   "profile": {
-    "cta_title": "想和 {name} 聊聊嗎？",
+    "cta_title": "想和{name}聊聊嗎？",
     "cta_desc": "45 分鐘線上會談，一杯咖啡、飲料或一本書的心意就好。",
     "contact": "聯絡方式"
+  },
+  "site": {
+    "home_title": "Coach Isaac｜預約初次教練會談",
+    "page_title": "{page}｜Coach Isaac"
   },
   "not_found": {
     "title": "找不到這個頁面",

@@ -2,10 +2,11 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
+import { BOOKING_URL } from '../data/coaches'
 
 const { t } = useI18n()
 const route = useRoute()
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
+const bookingUrl = BOOKING_URL
 
 const isHome = computed(() => route.path === '/')
 const isCoaches = computed(() => route.path === '/coaches' || route.path.startsWith('/coaches/'))
