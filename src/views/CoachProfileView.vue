@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import CoachTabNav from '../components/CoachTabNav.vue'
 import ContactIcon from '../components/ContactIcon.vue'
-import { findCoach, BOOKING_URL } from '../data/coaches'
+import { findCoach } from '../data/coaches'
 
 const props = defineProps({
   coachId: { type: String, required: true },
@@ -55,7 +55,7 @@ const sideSections = computed(() => [
             <span v-for="tag in coach.tags" :key="tag" class="tag">{{ t(key(tag)) }}</span>
           </div>
           <div class="hero-actions">
-            <a :href="BOOKING_URL" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
+            <a :href="coach.bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
             <a :href="`mailto:${coach.email}`" class="icon-link" :aria-label="`Email ${coach.email}`">
               <ContactIcon type="email" />
             </a>
@@ -113,7 +113,7 @@ const sideSections = computed(() => [
           <h2>{{ t('profile.cta_title', { name: ctaName }) }}</h2>
           <p>{{ t('profile.cta_desc') }}</p>
         </div>
-        <a :href="BOOKING_URL" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
+        <a :href="coach.bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
       </section>
     </div>
   </div>

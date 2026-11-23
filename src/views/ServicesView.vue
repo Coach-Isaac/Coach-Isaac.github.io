@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import ContactIcon from '../components/ContactIcon.vue'
-import { coaches, BOOKING_URL } from '../data/coaches'
+import { coaches } from '../data/coaches'
 
 const { t, tm, rt } = useI18n()
 
@@ -78,7 +78,7 @@ const agreementIcons = [
               <span v-for="tag in c.tags" :key="tag" class="tag">{{ t(`${c.prefix}.${tag}`) }}</span>
             </span>
             <div class="actions">
-              <a :href="BOOKING_URL" target="_blank" rel="noopener" class="btn btn-accent">{{ t('services.cta_book') }}</a>
+              <a :href="c.bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('services.cta_book') }}</a>
               <div class="contact-row">
                 <a :href="`mailto:${c.email}`" class="btn btn-outline">
                   <ContactIcon type="email" />Email
