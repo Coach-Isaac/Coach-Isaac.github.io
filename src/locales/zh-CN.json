@@ -1,9 +1,13 @@
 {
   "nav": {
-    "home": "关于教练",
+    "home": "首页",
     "about": "教练团队",
     "services": "服务流程",
-    "free_trial_cta": "✨ 预约初次会谈"
+    "free_trial_cta": "✨ 预约初次会谈",
+    "book": "预约",
+    "language": "语言",
+    "theme_dark": "深色模式",
+    "theme_light": "浅色模式"
   },
   "home": {
     "hero_title": "卡住了吗？\n教练陪你找到前进的方向",
@@ -11,6 +15,8 @@
     "hero_badge": "🌿 ICF 认证培训中的教练团队",
     "hero_learn_more": "了解什么是教练 →",
     "hero_note": "象征性费用 · 45 分钟线上会谈",
+    "coaches_title": "认识教练",
+    "coaches_subtitle": "三位教练，各有专长",
     "testimonials_title": "客户怎么说",
     "testimonials": [
       {
@@ -310,6 +316,7 @@
     "view_profile": "查看个人介绍"
   },
   "footer": {
-    "updating": "网站持续更新中"
+    "updating": "网站持续更新中",
+    "tagline": "ICF 认证培训中的教练团队 · 中英双语"
   }
 }

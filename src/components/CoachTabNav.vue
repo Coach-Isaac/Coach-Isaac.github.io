@@ -75,7 +75,7 @@ const isActive = (path) => {
 
 .tab-item.active {
   background-color: var(--color-primary);
-  color: white;
-  box-shadow: 0 2px 4px rgba(66, 185, 131, 0.2);
+  color: var(--bg-color);
+  box-shadow: var(--shadow-soft);
 }
 </style>

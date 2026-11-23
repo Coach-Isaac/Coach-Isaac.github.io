@@ -1,9 +1,13 @@
 {
   "nav": {
-    "home": "關於教練",
+    "home": "首頁",
     "about": "教練團隊",
     "services": "服務流程",
-    "free_trial_cta": "✨ 預約初次會談"
+    "free_trial_cta": "✨ 預約初次會談",
+    "book": "預約",
+    "language": "語言",
+    "theme_dark": "深色模式",
+    "theme_light": "淺色模式"
   },
   "home": {
     "hero_title": "卡關了嗎？\n教練陪你找到前進的方向",
@@ -11,6 +15,8 @@
     "hero_badge": "🌿 ICF 認證培訓中的教練團隊",
     "hero_learn_more": "了解什麼是教練 →",
     "hero_note": "象徵性費用 · 45 分鐘線上會談",
+    "coaches_title": "認識教練",
+    "coaches_subtitle": "三位教練，各有專長",
     "testimonials_title": "客戶怎麼說",
     "testimonials": [
       {
@@ -310,6 +316,7 @@
     "view_profile": "查看個人介紹"
   },
   "footer": {
-    "updating": "網站持續更新中"
+    "updating": "網站持續更新中",
+    "tagline": "ICF 認證培訓中的教練團隊 · 中英雙語"
   }
 }

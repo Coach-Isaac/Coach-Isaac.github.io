@@ -40,7 +40,7 @@ onUnmounted(() => {
     bottom: 2rem;
     right: 2rem;
     background-color: var(--color-primary);
-    color: white;
+    color: var(--bg-color);
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -67,6 +67,7 @@ onUnmounted(() => {
 @media (hover: hover) {
     .scroll-to-top:hover {
         background-color: var(--color-secondary);
+        color: var(--accent-ink);
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(0,0,0,0.2);
     }
@@ -74,6 +75,7 @@ onUnmounted(() => {
 
 .scroll-to-top:active {
     background-color: var(--color-secondary);
+    color: var(--accent-ink);
     transform: scale(0.95);
 }
 
@@ -83,10 +85,10 @@ onUnmounted(() => {
     transform: translateY(0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .scroll-to-top {
-        bottom: 1.5rem;
-        right: 1.5rem;
+        bottom: calc(var(--tabbar-h) + 1rem + env(safe-area-inset-bottom, 0px));
+        right: max(1rem, env(safe-area-inset-right, 0px));
         width: 40px;
         height: 40px;
     }

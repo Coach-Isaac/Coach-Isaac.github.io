@@ -1,9 +1,13 @@
 {
   "nav": {
-    "home": "About Coaching",
+    "home": "Home",
     "about": "Our Coaches",
     "services": "Services",
-    "free_trial_cta": "✨ Book a Session"
+    "free_trial_cta": "✨ Book a Session",
+    "book": "Book",
+    "language": "Language",
+    "theme_dark": "Dark mode",
+    "theme_light": "Light mode"
   },
   "home": {
     "hero_title": "Stuck?\nLet's find your way forward.",
@@ -11,6 +15,8 @@
     "hero_badge": "🌿 ICF Coaches in Training",
     "hero_learn_more": "What is coaching? →",
     "hero_note": "Symbolic fee · 45 min online",
+    "coaches_title": "Meet the coaches",
+    "coaches_subtitle": "Three coaches, each with their own focus",
     "testimonials_title": "What clients say",
     "testimonials": [
       {
@@ -310,6 +316,7 @@
     "view_profile": "View Profile"
   },
   "footer": {
-    "updating": "This site is continually being updated."
+    "updating": "This site is continually being updated.",
+    "tagline": "ICF coaches in training · bilingual EN/ZH"
   }
 }

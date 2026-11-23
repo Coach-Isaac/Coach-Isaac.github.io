@@ -164,7 +164,7 @@ const navigateTo = (path) => {
 
 .coach-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(15, 118, 153, 0.12);
+  box-shadow: var(--shadow-card);
   border-color: var(--color-primary);
 }
 
@@ -220,10 +220,10 @@ const navigateTo = (path) => {
   font-size: 0.75rem;
   padding: 0.2rem 0.65rem;
   border-radius: 12px;
-  background: rgba(66, 185, 131, 0.12);
-  color: var(--color-secondary);
+  background: var(--color-soft);
+  color: var(--color-primary);
   font-weight: 600;
-  border: 1px solid rgba(66, 185, 131, 0.25);
+  border: 1px solid var(--border-color);
 }
 
 /* ===== DESCRIPTION ===== */
@@ -258,7 +258,7 @@ const navigateTo = (path) => {
 
 .view-profile-btn:hover {
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--bg-color);
 }
 
 /* ===== CREDENTIALS ===== */
@@ -297,7 +297,7 @@ const navigateTo = (path) => {
 
 .cred-card.highlight {
   border-color: var(--color-secondary);
-  background: rgba(66, 185, 131, 0.05);
+  background: var(--color-soft);
 }
 
 .cred-card h3 {
