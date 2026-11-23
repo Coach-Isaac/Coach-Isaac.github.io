@@ -5,7 +5,6 @@ Branch: develop
 Repo: Coach-Isaac/Coach-Isaac.github.io
 Date: 2026-04-22
 Status: DRAFT
-Design doc: docs/design-client-acquisition.md
 
 ## Context
 
