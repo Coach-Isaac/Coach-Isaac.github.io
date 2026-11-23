@@ -1,14 +1,14 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import CoachTabNav from '../components/CoachTabNav.vue'
 
 const { t } = useI18n()
-const router = useRouter()
 
 const coaches = [
   {
     id: 'isaac',
+    initial: 'I',
     nameKey: 'coach_isaac.name',
     descriptionKey: 'coach_isaac.intro',
     route: '/coaches/isaac',
@@ -17,6 +17,7 @@ const coaches = [
   },
   {
     id: 'pauline',
+    initial: '林',
     nameKey: 'coach_pauline.name',
     descriptionKey: 'coach_pauline.intro',
     route: '/coaches/pauline',
@@ -25,6 +26,7 @@ const coaches = [
   },
   {
     id: 'vincent',
+    initial: '哲',
     nameKey: 'coach_vince.name',
     descriptionKey: 'coach_vince.intro',
     route: '/coaches/vincent',
@@ -33,15 +35,6 @@ const coaches = [
   }
 ]
 
-const getInitial = (nameKey) => {
-  const name = t(nameKey)
-  // Return first non-whitespace character
-  return name.trim().charAt(0)
-}
-
-const navigateTo = (path) => {
-  router.push(path)
-}
 </script>
 
 <template>
@@ -53,11 +46,17 @@ const navigateTo = (path) => {
     </section>
 
     <div class="coaches-grid">
-      <div v-for="coach in coaches" :key="coach.id" class="coach-card" @click="navigateTo(coach.route)">
+      <RouterLink
+        v-for="coach in coaches"
+        :key="coach.id"
+        :to="coach.route"
+        class="coach-card"
+        :aria-label="`${t(coach.nameKey).replace(/\n/g, ' ')} — ${t('common.view_profile')}`"
+      >
         <!-- Avatar -->
         <div class="coach-avatar">
           <img v-if="coach.photo" :src="coach.photo" :alt="t(coach.nameKey)" />
-          <div v-else class="avatar-placeholder">{{ getInitial(coach.nameKey) }}</div>
+          <div v-else class="avatar-placeholder">{{ coach.initial }}</div>
         </div>
         <!-- Name -->
         <h2>{{ t(coach.nameKey) }}</h2>
@@ -67,8 +66,8 @@ const navigateTo = (path) => {
         </div>
         <!-- Description -->
         <p>{{ t(coach.descriptionKey) }}</p>
-        <button class="view-profile-btn">{{ t('common.view_profile') || 'View Profile' }}</button>
-      </div>
+        <span class="view-profile-btn">{{ t('common.view_profile') }}</span>
+      </RouterLink>
     </div>
 
     <!-- Credentials -->
@@ -82,7 +81,7 @@ const navigateTo = (path) => {
           <p>{{ t('about.credentials.acc') }}</p>
         </div>
         <div class="cred-card highlight">
-          <h3>PCC Goal</h3>
+          <h3>{{ t('about.credentials.pcc_title') }}</h3>
           <p>{{ t('about.credentials.pcc') }}</p>
         </div>
       </div>
@@ -150,6 +149,8 @@ const navigateTo = (path) => {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  color: var(--text-main);
+  text-decoration: none;
 }
 
 /* Gradient top accent bar */
@@ -242,6 +243,8 @@ const navigateTo = (path) => {
 
 /* ===== BUTTON ===== */
 .view-profile-btn {
+  display: block;
+  box-sizing: border-box;
   background: transparent;
   color: var(--color-primary);
   border: 1.5px solid var(--color-primary);
@@ -256,7 +259,7 @@ const navigateTo = (path) => {
   margin-top: auto;
 }
 
-.view-profile-btn:hover {
+.coach-card:hover .view-profile-btn {
   background-color: var(--color-primary);
   color: var(--bg-color);
 }
@@ -307,7 +310,7 @@ const navigateTo = (path) => {
 
 .mindset-box {
   background: var(--color-primary);
-  color: #fff;
+  color: var(--bg-color);
   padding: 1.5rem;
   border-radius: 8px;
   margin-top: 2rem;

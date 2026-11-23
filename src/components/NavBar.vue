@@ -1,10 +1,12 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
+import { LOCALE_STORAGE_KEY } from '../i18n'
 
 const { locale, t } = useI18n()
+const route = useRoute()
 const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const languages = [
@@ -19,7 +21,15 @@ const langMenuRef = ref(null)
 const changeLanguage = (lang) => {
   locale.value = lang
   langOpen.value = false
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, lang)
+  } catch {
+    // Storage can be unavailable (private mode); the choice then lasts only for this visit.
+  }
 }
+
+const isCoachesPage = computed(() => route.path === '/coaches' || route.path.startsWith('/coaches/'))
+const isServicesPage = computed(() => route.path === '/services' || route.path.startsWith('/services/'))
 
 const currentLanguageShort = computed(() => languages.find(l => l.code === locale.value)?.short ?? 'EN')
 
@@ -51,8 +61,8 @@ const { isDark, toggle } = useTheme()
 
       <div class="nav-links">
         <RouterLink to="/" exact-active-class="is-active">{{ t('nav.home') }}</RouterLink>
-        <RouterLink to="/coaches" active-class="is-active">{{ t('nav.about') }}</RouterLink>
-        <RouterLink to="/services" active-class="is-active">{{ t('nav.services') }}</RouterLink>
+        <RouterLink to="/coaches" :class="{ 'is-active': isCoachesPage }" :aria-current="isCoachesPage ? 'page' : null">{{ t('nav.about') }}</RouterLink>
+        <RouterLink to="/services" :class="{ 'is-active': isServicesPage }" :aria-current="isServicesPage ? 'page' : null">{{ t('nav.services') }}</RouterLink>
       </div>
 
       <div class="nav-right">

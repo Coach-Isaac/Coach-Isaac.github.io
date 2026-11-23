@@ -36,7 +36,7 @@ watch(locale, (lang) => {
         </nav>
         <a :href="bookingUrl" target="_blank" rel="noopener" class="footer-cta">{{ t('nav.free_trial_cta') }}</a>
       </div>
-      <p class="footer-copy">&copy; {{ year }} Coach Isaac. All rights reserved. {{ t('footer.updating') }}</p>
+      <p class="footer-copy">&copy; {{ year }} Coach Isaac. All rights reserved.</p>
     </footer>
 
     <BottomTabBar />

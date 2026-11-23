@@ -13,14 +13,13 @@ const infoCards = [
 ]
 
 const coaches = [
-  { id: 'isaac', prefix: 'coach_isaac', route: '/coaches/isaac', tags: ['tag_career', 'tag_relationships'] },
-  { id: 'pauline', prefix: 'coach_pauline', route: '/coaches/pauline', tags: ['tag_self', 'tag_transition'] },
-  { id: 'vincent', prefix: 'coach_vince', route: '/coaches/vincent', tags: ['tag_leadership', 'tag_performance'] },
+  { id: 'isaac', prefix: 'coach_isaac', initial: 'I', route: '/coaches/isaac', tags: ['tag_career', 'tag_relationships'] },
+  { id: 'pauline', prefix: 'coach_pauline', initial: '林', route: '/coaches/pauline', tags: ['tag_self', 'tag_transition'] },
+  { id: 'vincent', prefix: 'coach_vince', initial: '哲', route: '/coaches/vincent', tags: ['tag_leadership', 'tag_performance'] },
 ]
 
 // Locale names may contain "\n" (e.g. "林依雯\nPauline Lin"); show them on one line in the small cards.
 const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
-const coachInitial = (c) => t(`${c.prefix}.name`).trim().charAt(0)
 
 // Trust strip SVG icons — mapped by locale icon emoji key
 const svgIcons = {
@@ -76,7 +75,7 @@ onUnmounted(() => {
         <!-- Desktop: coach cards beside the hero text -->
         <div class="hero-coaches">
           <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
-            <span class="avatar" aria-hidden="true">{{ coachInitial(c) }}</span>
+            <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
             <span class="coach-info">
               <span class="coach-name">{{ coachName(c) }}</span>
               <span class="coach-title">{{ t(`${c.prefix}.title`) }}</span>
@@ -109,7 +108,7 @@ onUnmounted(() => {
         <p class="section-sub">{{ t('home.coaches_subtitle') }}</p>
         <div class="coach-list">
           <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
-            <span class="avatar" aria-hidden="true">{{ coachInitial(c) }}</span>
+            <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
             <span class="coach-info">
               <span class="coach-name">{{ coachName(c) }}</span>
               <span class="coach-title">{{ t(`${c.prefix}.title`) }}</span>

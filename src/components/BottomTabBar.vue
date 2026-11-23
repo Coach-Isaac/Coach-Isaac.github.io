@@ -8,8 +8,8 @@ const route = useRoute()
 const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const isHome = computed(() => route.path === '/')
-const isCoaches = computed(() => route.path.startsWith('/coaches'))
-const isServices = computed(() => route.path.startsWith('/services'))
+const isCoaches = computed(() => route.path === '/coaches' || route.path.startsWith('/coaches/'))
+const isServices = computed(() => route.path === '/services' || route.path.startsWith('/services/'))
 </script>
 
 <template>

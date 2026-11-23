@@ -85,12 +85,10 @@ onUnmounted(() => {
     transform: translateY(0);
 }
 
+/* Phones have the bottom tab bar; the button there only covered content. */
 @media (max-width: 767px) {
     .scroll-to-top {
-        bottom: calc(var(--tabbar-h) + 1rem + env(safe-area-inset-bottom, 0px));
-        right: max(1rem, env(safe-area-inset-right, 0px));
-        width: 40px;
-        height: 40px;
+        display: none;
     }
 }
 </style>

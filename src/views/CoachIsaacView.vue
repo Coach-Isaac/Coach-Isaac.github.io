@@ -23,7 +23,7 @@ const { t, tm, rt } = useI18n()
             <aside class="sidebar">
                 <!-- Professional Background -->
                 <section class="section-group">
-                    <h3 class="sidebar-title">PROFESSIONAL BACKGROUND</h3>
+                    <h3 class="sidebar-title">{{ t('coach_isaac.background_title') }}</h3>
                     <ul class="sidebar-list">
                         <li v-for="(item, index) in tm('coach_isaac.background_list')" :key="index">
                             {{ rt(item) }}
@@ -33,7 +33,7 @@ const { t, tm, rt } = useI18n()
 
                 <!-- Coaching Focus -->
                 <section class="section-group">
-                    <h3 class="sidebar-title">COACHING FOCUS</h3>
+                    <h3 class="sidebar-title">{{ t('coach_isaac.focus_title') }}</h3>
                     <ul class="sidebar-list">
                         <li v-for="(item, index) in tm('coach_isaac.focus_list')" :key="index">
                             {{ rt(item) }}
@@ -43,7 +43,7 @@ const { t, tm, rt } = useI18n()
 
                  <!-- Coaching Style -->
                  <section class="section-group">
-                    <h3 class="sidebar-title">COACHING STYLE</h3>
+                    <h3 class="sidebar-title">{{ t('coach_isaac.style_title') }}</h3>
                     <ul class="sidebar-list">
                         <li v-for="(item, index) in tm('coach_isaac.style_list')" :key="index">
                             {{ rt(item) }}
@@ -71,10 +71,10 @@ const { t, tm, rt } = useI18n()
             </aside>
 
             <!-- Main Content (Right Column) -->
-            <main class="main-content">
+            <div class="main-content">
                 <!-- About Me -->
                 <section class="content-block about">
-                    <h3 class="main-title">ABOUT ME</h3>
+                    <h3 class="main-title">{{ t('coach_isaac.about_title') }}</h3>
                     
                     <div class="highlight-quote">
                         <p>{{ t('coach_isaac.about_quote') }}</p>
@@ -89,7 +89,7 @@ const { t, tm, rt } = useI18n()
 
                  <!-- Practice Coaching / Services -->
                 <section class="content-block practice">
-                    <h3 class="main-title">PRACTICE COACHING</h3>
+                    <h3 class="main-title">{{ t('coach_isaac.practice_title') }}</h3>
                     <p class="body-text">{{ t('coach_isaac.practice_content') }}</p>
                     <ul class="check-list">
                         <li v-for="(item, index) in tm('coach_isaac.practice_list')" :key="index">
@@ -97,7 +97,7 @@ const { t, tm, rt } = useI18n()
                         </li>
                     </ul>
                 </section>
-            </main>
+            </div>
         </div>
     </div>
   </div>
@@ -137,15 +137,15 @@ const { t, tm, rt } = useI18n()
     justify-content: center;
     font-size: 3rem;
     font-family: var(--font-heading);
-    color: white;
+    color: var(--on-hero);
     font-weight: 600;
     letter-spacing: -1px;
 }
 
 /* Header */
 .card-header {
-    background-color: var(--color-primary); 
-    color: white;
+    background: var(--hero-gradient);
+    color: var(--on-hero);
     padding: 3rem 2rem;
     text-align: center;
 }
@@ -176,9 +176,10 @@ const { t, tm, rt } = useI18n()
 .card-layout {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
     .card-layout {
         flex-direction: row;
     }
@@ -192,16 +193,17 @@ const { t, tm, rt } = useI18n()
     border-right: 1px solid var(--border-color);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
     .sidebar {
         flex: 0 0 320px;
     }
 }
 
 .sidebar-title {
-    font-size: 0.9rem;
-    color: var(--color-secondary);
-    letter-spacing: 1.5px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-text);
+    letter-spacing: 0.5px;
     border-bottom: 2px solid var(--color-secondary);
     padding-bottom: 0.5rem;
     margin-bottom: 1.5rem;
@@ -263,7 +265,7 @@ const { t, tm, rt } = useI18n()
 /* Main Content */
 .main-content {
     flex: 2;
-    padding: 3rem 4rem;
+    padding: 2.5rem 3rem;
     background: var(--bg-color);
 }
 
@@ -336,8 +338,8 @@ const { t, tm, rt } = useI18n()
     flex-shrink: 0;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 767px) {
+/* ===== MOBILE + TABLET (single column) ===== */
+@media (max-width: 959px) {
     .card-header {
         padding: 2rem 1.5rem;
     }

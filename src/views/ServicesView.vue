@@ -7,6 +7,7 @@ const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 const coaches = [
   {
     key: 'isaac',
+    initial: 'I',
     nameKey: 'coach_isaac.name',
     titleKey: 'coach_isaac.title',
     tags: ['coach_isaac.tag_career', 'coach_isaac.tag_relationships'],
@@ -16,6 +17,7 @@ const coaches = [
   },
   {
     key: 'pauline',
+    initial: '林',
     nameKey: 'coach_pauline.name',
     titleKey: 'coach_pauline.title',
     tags: ['coach_pauline.tag_self', 'coach_pauline.tag_transition'],
@@ -25,6 +27,7 @@ const coaches = [
   },
   {
     key: 'vincent',
+    initial: '哲',
     nameKey: 'coach_vince.name',
     titleKey: 'coach_vince.title',
     tags: ['coach_vince.tag_leadership', 'coach_vince.tag_performance'],
@@ -73,7 +76,7 @@ const coaches = [
       <p class="coaches-cta-subtitle">{{ t('services.coaches_cta_subtitle') }}</p>
       <div class="coaches-cta-grid">
         <div v-for="coach in coaches" :key="coach.key" class="coach-cta-card">
-          <div class="coach-cta-avatar">{{ t(coach.nameKey).charAt(0) }}</div>
+          <div class="coach-cta-avatar">{{ coach.initial }}</div>
           <h3>{{ t(coach.nameKey) }}</h3>
           <p class="coach-cta-role">{{ t(coach.titleKey) }}</p>
           <div class="coach-cta-tags">
@@ -93,6 +96,10 @@ const coaches = [
 </template>
 
 <style scoped>
+.services-container {
+  text-align: left;
+}
+
 /* ===== PAGE INTRO ===== */
 .service-intro {
   margin-bottom: 2.5rem;
@@ -178,7 +185,7 @@ const coaches = [
   height: 52px;
   border-radius: 50%;
   background: var(--hero-gradient);
-  color: #fff;
+  color: var(--on-hero);
   font-size: 1.3rem;
   font-weight: 800;
   display: flex;
@@ -298,7 +305,7 @@ const coaches = [
   height: 56px;
   border-radius: 50%;
   background: var(--hero-gradient);
-  color: #fff;
+  color: var(--on-hero);
   font-size: 1.4rem;
   font-weight: 800;
   display: flex;
@@ -326,10 +333,13 @@ const coaches = [
   flex-wrap: wrap;
   gap: 0.4rem;
   justify-content: center;
+  align-content: flex-start;
+  /* Absorb the height difference from one- vs two-line names so buttons line up across cards */
+  flex-grow: 1;
 }
 
 .coach-tag {
-  background: var(--bg-surface, #f5f0eb);
+  background: var(--bg-surface);
   color: var(--color-primary);
   font-size: 0.75rem;
   font-weight: 600;
@@ -347,10 +357,14 @@ const coaches = [
 }
 
 .contact-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 44px;
   font-size: 0.82rem;
   font-weight: 600;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 1rem;
   border-radius: 20px;
   text-decoration: none;
   transition: opacity 0.15s;
@@ -363,7 +377,7 @@ const coaches = [
 .book-btn {
   width: 100%;
   background: var(--hero-gradient);
-  color: #fff;
+  color: var(--on-hero);
   font-size: 0.9rem;
   padding: 0.55rem 1rem;
   border-radius: 20px;
@@ -372,7 +386,7 @@ const coaches = [
 
 .email-btn {
   background: var(--color-primary);
-  color: #fff;
+  color: var(--bg-color);
 }
 
 .social-btn {
@@ -383,7 +397,7 @@ const coaches = [
 
 .profile-link {
   font-size: 0.82rem;
-  color: var(--color-secondary, #b07d5b);
+  color: var(--accent-text);
   text-decoration: none;
   font-weight: 600;
   margin-top: auto;
