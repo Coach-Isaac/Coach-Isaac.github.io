@@ -208,6 +208,33 @@
         "desc": "Coaching is a forward-focused, action-oriented partnership. It is not therapy or counseling. If deeper mental health support is needed, your coach will refer you to the right professional."
       }
     ],
+    "faq_title": "FAQ",
+    "faq_items": [
+      {
+        "q": "Which video app do you use?",
+        "a": "It depends on the coach, usually Google Meet or Zoom. Once the time is set, your coach sends you the meeting link."
+      },
+      {
+        "q": "Can we meet in person?",
+        "a": "Sessions are mainly online. If you would rather meet in person, talk it over with your coach."
+      },
+      {
+        "q": "How do I give the coffee, drink or book?",
+        "a": "It's up to you after the session, for example buying your coach a coffee or a drink, or sending a book. There is no set amount."
+      },
+      {
+        "q": "Do I have to continue after the first session?",
+        "a": "No. The first session comes with no commitment. If it feels right, you and your coach can decide whether to continue, usually for about 3 to 6 sessions."
+      },
+      {
+        "q": "Is what I share kept confidential?",
+        "a": "Yes. We follow the ICF Code of Ethics and do not share your conversations with third parties. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review."
+      },
+      {
+        "q": "How is coaching different from counseling?",
+        "a": "Coaching is a forward-focused partnership. Through listening and questions, your coach helps you clarify your goals, find your own answers and act on them. It is not therapy or counseling; if you need deeper mental health support, your coach will help refer you to the right professional."
+      }
+    ],
     "process_title": "How it Works",
     "process_steps": [
       {

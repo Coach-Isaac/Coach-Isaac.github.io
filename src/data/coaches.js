@@ -1,5 +1,7 @@
 // Single source for coach facts shown on the home, coaches, services and profile pages.
 // Translated text (title, tags, bio…) lives in src/locales under each coach's `prefix`.
+// scripts/page-meta.js also imports this file with plain Node at build time, so it must not
+// import anything Vite-only (e.g. an image file); reference photos by public URL instead.
 
 // Booking form with no coach chosen; used by the general booking buttons.
 export const BOOKING_URL = 'https://forms.gle/t65d74KfDD28cQkaA'
