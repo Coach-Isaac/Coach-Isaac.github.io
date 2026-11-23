@@ -4,10 +4,11 @@ import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
 import { LOCALE_STORAGE_KEY } from '../i18n'
+import { BOOKING_URL } from '../data/coaches'
 
 const { locale, t } = useI18n()
 const route = useRoute()
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
+const bookingUrl = BOOKING_URL
 
 const languages = [
   { code: 'en', short: 'EN' },

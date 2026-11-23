@@ -1,9 +1,9 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+import { BOOKING_URL as bookingUrl } from '../data/coaches'
 
 const { t } = useI18n()
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 </script>
 
 <template>

@@ -321,6 +321,10 @@
     "cta_desc": "A 45-minute online session — a coffee, a drink or a book as a thank-you is all we ask.",
     "contact": "Contact"
   },
+  "site": {
+    "home_title": "Coach Isaac {'|'} Book an intro coaching session",
+    "page_title": "{page} {'|'} Coach Isaac"
+  },
   "not_found": {
     "title": "Page not found",
     "desc": "The link may be mistyped, or the page has moved.",

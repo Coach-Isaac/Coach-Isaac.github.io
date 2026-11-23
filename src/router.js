@@ -5,6 +5,7 @@ import ServicesView from './views/ServicesView.vue'
 
 const CoachProfileView = () => import('./views/CoachProfileView.vue')
 
+// meta.titleKey / meta.coachId drive the browser tab title (see App.vue).
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
@@ -22,7 +23,8 @@ const router = createRouter({
     {
       path: '/coaches',
       name: 'coaches',
-      component: () => import('./views/CoachesIndexView.vue')
+      component: () => import('./views/CoachesIndexView.vue'),
+      meta: { titleKey: 'coaches_index.title' }
     },
     {
       path: '/about', // Legacy Redirect
@@ -32,29 +34,34 @@ const router = createRouter({
       path: '/coaches/isaac',
       name: 'coach-isaac',
       component: CoachProfileView,
-      props: { coachId: 'isaac' }
+      props: { coachId: 'isaac' },
+      meta: { coachId: 'isaac' }
     },
     {
       path: '/coaches/pauline',
       name: 'coach-pauline',
       component: CoachProfileView,
-      props: { coachId: 'pauline' }
+      props: { coachId: 'pauline' },
+      meta: { coachId: 'pauline' }
     },
     {
       path: '/coaches/vincent',
       name: 'coach-vincent',
       component: CoachProfileView,
-      props: { coachId: 'vincent' }
+      props: { coachId: 'vincent' },
+      meta: { coachId: 'vincent' }
     },
     {
       path: '/services',
       name: 'services',
-      component: ServicesView
+      component: ServicesView,
+      meta: { titleKey: 'services.title' }
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
-      component: () => import('./views/NotFoundView.vue')
+      component: () => import('./views/NotFoundView.vue'),
+      meta: { titleKey: 'not_found.title' }
     }
   ]
 })
