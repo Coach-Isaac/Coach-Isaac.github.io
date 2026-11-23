@@ -39,6 +39,15 @@ Low
 Not changed: testimonial labels (need client consent), "Coach Isaac" brand (owner decision),
 new-tab announcement on booking links, agreement icons keyed by index (commented in place).
 
+## Round 2 (fresh reviewers, same two lenses)
+
+No Blocker or High; all round-1 fixes verified. Stop rule met. Small follow-ups fixed without a
+third round: PCC goal badge outlined too; credentials heading "ICF 認證之路 / The ICF credential
+path"; en recording/consent wording ("ACC application", "the coach's ICF credential review");
+Safari < 14 matchMedia listener fallback; privacy page names the coach's email provider.
+Left as is: agreement items 1-3 overlap on recording (structure tied to icon order; owner can
+reword later); "線上進行 / online" in the home hero (not contradictory).
+
 ## Acceptance
 - Build passes; every page renders in three languages without console errors (except the expected
   local Cloudflare CORS error).

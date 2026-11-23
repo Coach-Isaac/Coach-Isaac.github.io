@@ -44,12 +44,15 @@ watchEffect(() => {
   applyTheme(isDark.value)
 })
 
-const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-mediaQuery.addEventListener('change', (e) => {
+const followSystem = (e) => {
   if (!readStored()) {
     isDark.value = e.matches
   }
-})
+}
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+// Safari before 14 only has the older addListener; calling addEventListener there would throw and blank the page.
+if (mediaQuery.addEventListener) mediaQuery.addEventListener('change', followSystem)
+else mediaQuery.addListener?.(followSystem)
 
 function toggle() {
   isDark.value = !isDark.value

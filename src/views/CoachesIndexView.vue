@@ -242,7 +242,7 @@ const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
   color: var(--text-main);
 }
 
-/* "In training" reads as a status, not an earned credential: outlined, not solid. */
+/* Neither credential is held yet, so both badges are outlined; a solid badge would read as earned. */
 .cred-badge {
   display: inline-block;
   font-size: 0.78rem;
@@ -255,8 +255,8 @@ const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 }
 
 .cred-badge.goal {
-  background: var(--color-secondary);
-  color: var(--accent-ink);
+  color: var(--accent-text);
+  box-shadow: inset 0 0 0 1.5px var(--color-secondary);
 }
 
 .mindset {

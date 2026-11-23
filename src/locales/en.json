@@ -130,7 +130,7 @@
     "card_principles_desc": "Coaches are partners, not experts. We listen deeply and ask questions. The ultimate goal is to inspire your own commitment to action."
   },
   "about": {
-    "icf_title": "ICF & Professional Credentials",
+    "icf_title": "The ICF credential path",
     "icf_desc": "The ICF sets rigorous standards for the global coaching profession. Advancing from ACC to PCC involves not just accumulated hours, but a continuous refinement of the 'Coaching Mindset', 'Maintains Presence', and 'Deep Listening'.",
     "credentials": {
       "acc_title": "ACC in training",
@@ -186,11 +186,11 @@
     "agreement_items": [
       {
         "title": "Recording & Transcripts",
-        "desc": "For the ICF core competency assessment of the coach's ACC credential, sessions are recorded, and may be transcribed, with your consent. You can decline recording and still have your session."
+        "desc": "For the ICF core competency assessment in the coach's ACC application, sessions are recorded, and may be transcribed, with your consent. You can decline recording and still have your session."
       },
       {
         "title": "Client Consent",
-        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for association review."
+        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for the coach's ICF credential review."
       },
       {
         "title": "Strict Confidentiality",
@@ -382,7 +382,7 @@
       },
       {
         "title": "Emailing a coach directly",
-        "body": "If you email a coach directly, only that coach receives it, and it is used only to answer you."
+        "body": "If you email a coach directly, only that coach receives it; it is stored by the coach's email provider (such as Gmail) and used only to answer you."
       },
       {
         "title": "Keeping and deleting",
