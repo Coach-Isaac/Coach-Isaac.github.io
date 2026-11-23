@@ -461,10 +461,13 @@ const sideSections = computed(() => [
 @media (min-width: 960px) {
   .layout {
     grid-template-columns: minmax(0, 1fr) 340px;
+    /* The empty 4th row absorbs the extra height of a tall side card, so the left cards stay packed at the top */
+    grid-template-rows: auto auto auto 1fr auto;
     grid-template-areas:
       "about side"
       "quote side"
       "practice side"
+      ". side"
       "cta cta";
     gap: 1.25rem 1.5rem;
     padding-top: 2rem;
