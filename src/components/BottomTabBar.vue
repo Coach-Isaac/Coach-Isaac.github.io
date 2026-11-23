@@ -27,9 +27,11 @@ const isServices = computed(() => route.path === '/services' || route.path.start
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>
       <span>{{ t('nav.services') }}</span>
     </RouterLink>
-    <a :href="bookingUrl" target="_blank" rel="noopener" class="tab book">
+    <!-- Styled like the other tabs so it is never mistaken for the current page; the arrow marks that it opens the form in a new tab. -->
+    <a :href="bookingUrl" target="_blank" rel="noopener" class="tab">
       <span class="book-ic">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
       </span>
       <span>{{ t('nav.book') }}</span>
     </a>
@@ -80,23 +82,17 @@ const isServices = computed(() => route.path === '/services' || route.path.start
   color: var(--color-primary);
 }
 
-.tab.book {
-  color: var(--accent-text);
-}
-
 .book-ic {
+  position: relative;
   display: grid;
-  place-items: center;
-  width: 46px;
-  height: 28px;
-  border-radius: 12px;
-  background: var(--color-secondary);
-  color: var(--accent-ink);
 }
 
-.book-ic svg {
-  width: 17px;
-  height: 17px;
+.tab .ext {
+  position: absolute;
+  top: -3px;
+  right: -10px;
+  width: 11px;
+  height: 11px;
 }
 
 @media (min-width: 768px) {
