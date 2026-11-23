@@ -113,6 +113,7 @@ main {
   font-weight: 700;
   padding: 0.75rem 1.4rem;
   border-radius: 999px;
+  white-space: nowrap;
 }
 
 .footer-cta:hover {
@@ -135,6 +136,9 @@ main {
     padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
   }
 
+}
+
+@media (min-width: 960px) {
   .footer-inner {
     flex-direction: row;
     justify-content: space-between;
