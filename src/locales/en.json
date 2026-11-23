@@ -322,8 +322,8 @@
     "contact": "Contact"
   },
   "site": {
-    "home_title": "Coach Isaac | Book an intro coaching session",
-    "page_title": "{page} | Coach Isaac"
+    "home_title": "Coach Isaac {'|'} Book an intro coaching session",
+    "page_title": "{page} {'|'} Coach Isaac"
   },
   "not_found": {
     "title": "Page not found",
