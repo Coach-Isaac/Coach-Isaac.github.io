@@ -358,6 +358,9 @@
     "home": "回首頁"
   },
   "footer": {
-    "tagline": "ICF 認證培訓中的教練團隊 · 中英雙語"
+    "tagline": "ICF 認證培訓中的教練團隊 · 中英雙語",
+    "contact_title": "聯絡我們",
+    "contact_desc": "預約前有任何問題，都歡迎先來信詢問。",
+    "contact_coaches": "個別聯絡教練 →"
   }
 }

@@ -72,8 +72,8 @@ const agreementIcons = [
         </div>
       </section>
 
-      <!-- Coaches -->
-      <section class="block">
+      <!-- Coaches (the footer's "contact a coach" link jumps here) -->
+      <section id="coaches" class="block">
         <h2 class="block-title">{{ t('services.coaches_cta_title') }}</h2>
         <p class="block-sub">{{ t('services.coaches_cta_subtitle') }}</p>
         <div class="coach-grid">

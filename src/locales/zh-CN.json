@@ -358,6 +358,9 @@
     "home": "回首页"
   },
   "footer": {
-    "tagline": "ICF 认证培训中的教练团队 · 中英双语"
+    "tagline": "ICF 认证培训中的教练团队 · 中英双语",
+    "contact_title": "联系我们",
+    "contact_desc": "预约前有任何问题，都欢迎先来信询问。",
+    "contact_coaches": "个别联系教练 →"
   }
 }

@@ -358,6 +358,9 @@
     "home": "Back to home"
   },
   "footer": {
-    "tagline": "ICF coaches in training · bilingual EN/ZH"
+    "tagline": "ICF coaches in training · bilingual EN/ZH",
+    "contact_title": "Contact us",
+    "contact_desc": "Questions before you book? Feel free to email us first.",
+    "contact_coaches": "Contact a coach directly →"
   }
 }
