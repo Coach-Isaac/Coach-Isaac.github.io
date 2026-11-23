@@ -58,8 +58,22 @@ const agreementIcons = [
         </ul>
       </section>
 
-      <!-- Coaches -->
+      <!-- FAQ -->
       <section class="block">
+        <h2 class="block-title">{{ t('services.faq_title') }}</h2>
+        <div class="faq">
+          <details v-for="(item, i) in tm('services.faq_items')" :key="i" class="faq-item">
+            <summary>
+              <span>{{ rt(item.q) }}</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p>{{ rt(item.a) }}</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Coaches (the footer's "contact a coach" link jumps here) -->
+      <section id="coaches" class="block">
         <h2 class="block-title">{{ t('services.coaches_cta_title') }}</h2>
         <p class="block-sub">{{ t('services.coaches_cta_subtitle') }}</p>
         <div class="coach-grid">
@@ -245,6 +259,71 @@ const agreementIcons = [
   font-size: 0.92rem;
   line-height: 1.7;
   color: var(--text-muted);
+}
+
+/* ===== FAQ ===== */
+.faq {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.faq-item {
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding: 0.9rem 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:hover {
+  color: var(--color-primary);
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+.faq-chevron {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 1.25rem 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-chevron {
+    transition: none;
+  }
 }
 
 /* ===== Coach cards ===== */

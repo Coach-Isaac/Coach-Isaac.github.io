@@ -11,14 +11,29 @@ const messages = {
   'zh-CN': zhCN
 }
 
+// First site language the browser prefers; English when it prefers none of ours.
+// Crawlers get zh-TW so search results match the zh-TW share previews in the page <head>.
+function browserLocale() {
+  // "bot/" and a whole-word "bot" match Googlebot/2.1, bingbot/2.0 etc. but not phone models like "CUBOT X30".
+  if (/bot\/|\bbot\b|crawler|spider|slurp/i.test(navigator.userAgent)) return 'zh-TW'
+  const preferred = navigator.languages?.length ? navigator.languages : [navigator.language]
+  for (const raw of preferred) {
+    const tag = String(raw || '').toLowerCase()
+    if (tag.startsWith('zh')) return /^zh[-_](cn|sg|my)|hans/.test(tag) ? 'zh-CN' : 'zh-TW'
+    if (tag.startsWith('en')) return 'en'
+  }
+  return 'en'
+}
+
+// A language the visitor picked before wins over the browser's; detection itself saves nothing.
 function getInitialLocale() {
   try {
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY)
     if (stored && Object.hasOwn(messages, stored)) return stored
   } catch {
-    // Storage unavailable: fall back to the default below.
+    // Storage unavailable: use the browser language below.
   }
-  return 'zh-TW'
+  return browserLocale()
 }
 
 const i18n = createI18n({

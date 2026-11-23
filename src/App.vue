@@ -3,9 +3,10 @@ import { computed, watch, watchEffect } from 'vue'
 import NavBar from './components/NavBar.vue'
 import BottomTabBar from './components/BottomTabBar.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
+import ContactIcon from './components/ContactIcon.vue'
 import { RouterView, RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { BOOKING_URL, findCoach } from './data/coaches'
+import { BOOKING_URL, CONTACT_EMAIL, findCoach } from './data/coaches'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -44,6 +45,14 @@ watchEffect(() => {
         <div class="footer-brand">
           <RouterLink to="/" class="footer-logo">Coach <span>Isaac</span></RouterLink>
           <p>{{ t('footer.tagline') }}</p>
+          <div class="footer-contact">
+            <h2>{{ t('footer.contact_title') }}</h2>
+            <p>{{ t('footer.contact_desc') }}</p>
+            <a :href="`mailto:${CONTACT_EMAIL}`" class="contact-email">
+              <ContactIcon type="email" />{{ CONTACT_EMAIL }}
+            </a>
+            <RouterLink to="/services#coaches" class="contact-coaches">{{ t('footer.contact_coaches') }}</RouterLink>
+          </div>
         </div>
         <nav class="footer-links">
           <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
@@ -106,6 +115,46 @@ main {
   font-size: 0.9rem;
 }
 
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  margin-top: 1.25rem;
+}
+
+.footer-contact h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.footer-contact p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.contact-email,
+.contact-coaches {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.contact-coaches {
+  min-height: 32px;
+}
+
+.contact-email:hover,
+.contact-coaches:hover {
+  color: var(--color-primary-light);
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -159,6 +208,10 @@ main {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+  }
+
+  .footer-contact {
+    align-items: flex-start;
   }
 }
 </style>
