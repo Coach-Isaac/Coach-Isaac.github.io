@@ -2,326 +2,299 @@
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import CoachTabNav from '../components/CoachTabNav.vue'
+import { coaches } from '../data/coaches'
 
 const { t } = useI18n()
-
-const coaches = [
-  {
-    id: 'isaac',
-    initial: 'I',
-    nameKey: 'coach_isaac.name',
-    descriptionKey: 'coach_isaac.intro',
-    route: '/coaches/isaac',
-    photo: null,
-    tags: ['coach_isaac.tag_career', 'coach_isaac.tag_relationships']
-  },
-  {
-    id: 'pauline',
-    initial: '林',
-    nameKey: 'coach_pauline.name',
-    descriptionKey: 'coach_pauline.intro',
-    route: '/coaches/pauline',
-    photo: null,
-    tags: ['coach_pauline.tag_self', 'coach_pauline.tag_transition']
-  },
-  {
-    id: 'vincent',
-    initial: '哲',
-    nameKey: 'coach_vince.name',
-    descriptionKey: 'coach_vince.intro',
-    route: '/coaches/vincent',
-    photo: null,
-    tags: ['coach_vince.tag_leadership', 'coach_vince.tag_performance']
-  }
-]
-
+const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 </script>
 
 <template>
-  <div class="coaches-container page-container fade-in-up">
-    <CoachTabNav />
-    <section class="hero">
-      <h1>{{ t('coaches_index.title') }}</h1>
-      <p class="subtitle">{{ t('coaches_index.subtitle') }}</p>
-    </section>
+  <div class="coaches fade-in-up">
+    <div class="container">
+      <div class="tabs-wrap">
+        <CoachTabNav />
+      </div>
 
-    <div class="coaches-grid">
-      <RouterLink
-        v-for="coach in coaches"
-        :key="coach.id"
-        :to="coach.route"
-        class="coach-card"
-        :aria-label="`${t(coach.nameKey).replace(/\n/g, ' ')} — ${t('common.view_profile')}`"
-      >
-        <!-- Avatar -->
-        <div class="coach-avatar">
-          <img v-if="coach.photo" :src="coach.photo" :alt="t(coach.nameKey)" />
-          <div v-else class="avatar-placeholder">{{ coach.initial }}</div>
+      <header class="page-head">
+        <h1>{{ t('coaches_index.title') }}</h1>
+        <p>{{ t('coaches_index.subtitle') }}</p>
+      </header>
+
+      <div class="coach-grid">
+        <RouterLink
+          v-for="c in coaches"
+          :key="c.id"
+          :to="c.route"
+          class="coach-card"
+          :aria-label="`${coachName(c)} — ${t('common.view_profile')}`"
+        >
+          <div class="card-top">
+            <span class="avatar">
+              <img v-if="c.photo" :src="c.photo" alt="" />
+              <span v-else aria-hidden="true">{{ c.initial }}</span>
+            </span>
+            <span class="who">
+              <span class="name">{{ coachName(c) }}</span>
+              <span class="role">{{ t(`${c.prefix}.title`) }}</span>
+            </span>
+          </div>
+          <span class="tags">
+            <span v-for="tag in c.tags" :key="tag" class="tag">{{ t(`${c.prefix}.${tag}`) }}</span>
+          </span>
+          <span class="intro">{{ t(`${c.prefix}.intro`) }}</span>
+          <span class="more">{{ t('common.view_profile') }} →</span>
+        </RouterLink>
+      </div>
+
+      <!-- ICF credentials -->
+      <section class="cred-panel">
+        <h2>{{ t('about.icf_title') }}</h2>
+        <p class="cred-desc">{{ t('about.icf_desc') }}</p>
+        <div class="cred-grid">
+          <div class="cred-card">
+            <span class="cred-badge">ICF / ACC</span>
+            <p>{{ t('about.credentials.acc') }}</p>
+          </div>
+          <div class="cred-card">
+            <span class="cred-badge goal">{{ t('about.credentials.pcc_title') }}</span>
+            <p>{{ t('about.credentials.pcc') }}</p>
+          </div>
         </div>
-        <!-- Name -->
-        <h2>{{ t(coach.nameKey) }}</h2>
-        <!-- Tags -->
-        <div class="coach-tags">
-          <span v-for="tag in coach.tags" :key="tag" class="coach-tag">{{ t(tag) }}</span>
-        </div>
-        <!-- Description -->
-        <p>{{ t(coach.descriptionKey) }}</p>
-        <span class="view-profile-btn">{{ t('common.view_profile') }}</span>
-      </RouterLink>
+        <blockquote class="mindset">{{ t('about.credentials.mindset') }}</blockquote>
+      </section>
     </div>
-
-    <!-- Credentials -->
-    <section class="credentials-section">
-      <h2>{{ t('about.icf_title') }}</h2>
-      <p>{{ t('about.icf_desc') }}</p>
-
-      <div class="credential-grid">
-        <div class="cred-card">
-          <h3>ICF / ACC</h3>
-          <p>{{ t('about.credentials.acc') }}</p>
-        </div>
-        <div class="cred-card highlight">
-          <h3>{{ t('about.credentials.pcc_title') }}</h3>
-          <p>{{ t('about.credentials.pcc') }}</p>
-        </div>
-      </div>
-
-      <div class="mindset-box">
-        <blockquote>{{ t('about.credentials.mindset') }}</blockquote>
-      </div>
-    </section>
   </div>
 </template>
 
 <style scoped>
-.hero {
-  text-align: center;
-  margin-bottom: 2.5rem;
-  margin-top: 2rem;
+.coaches {
+  text-align: left;
+  padding-bottom: 3rem;
 }
 
-.hero h1 {
-  font-size: 2.2rem;
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+
+.tabs-wrap {
+  padding-top: 1.25rem;
+}
+
+.page-head {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.page-head h1 {
+  font-size: clamp(1.75rem, 6vw, 2.4rem);
+  line-height: 1.25;
+  margin: 0 0 0.4rem;
   color: var(--text-main);
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+.page-head p {
   margin: 0;
+  color: var(--text-muted);
 }
 
-/* ===== COACHES GRID ===== */
-.coaches-grid {
+/* ===== Coach cards ===== */
+.coach-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  gap: 1rem;
 }
 
-@media (min-width: 640px) {
-  .coaches-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  .coaches-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ===== COACH CARD ===== */
 .coach-card {
-  background: var(--bg-card);
-  padding: 2rem 1.5rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
+  gap: 0.9rem;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   color: var(--text-main);
-  text-decoration: none;
-}
-
-/* Gradient top accent bar */
-.coach-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--hero-gradient);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .coach-card:hover {
-  transform: translateY(-6px);
+  color: var(--text-main);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-card);
-  border-color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--border-color));
 }
 
-/* ===== AVATAR ===== */
-.coach-avatar {
-  width: var(--coach-avatar-size);
-  height: var(--coach-avatar-size);
-  border-radius: 50%;
-  margin: 0 auto 1.25rem;
-  border: 3px solid var(--color-primary);
-  overflow: hidden;
-  background: var(--coach-avatar-bg);
+.card-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  gap: 0.9rem;
 }
 
-.coach-avatar img {
+.avatar {
+  flex: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--color-soft);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.avatar-placeholder {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1;
-  user-select: none;
-}
-
-/* ===== NAME ===== */
-.coach-card h2 {
-  color: var(--text-main);
-  margin: 0 0 0.6rem 0;
-  font-size: 1.35rem;
-  font-weight: 700;
-  white-space: pre-line;
-  line-height: 1.4;
-}
-
-/* ===== TAGS ===== */
-.coach-tags {
+.who {
   display: flex;
-  gap: 0.4rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
-.coach-tag {
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
   font-size: 0.75rem;
-  padding: 0.2rem 0.65rem;
-  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
   background: var(--color-soft);
   color: var(--color-primary);
-  font-weight: 600;
-  border: 1px solid var(--border-color);
 }
 
-/* ===== DESCRIPTION ===== */
-.coach-card p {
+.intro {
+  flex: 1;
+  font-size: 0.93rem;
+  line-height: 1.75;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-  flex-grow: 1;
-  font-size: 0.95rem;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* ===== BUTTON ===== */
-.view-profile-btn {
-  display: block;
-  box-sizing: border-box;
-  background: transparent;
+.more {
+  font-weight: 700;
+  font-size: 0.92rem;
   color: var(--color-primary);
-  border: 1.5px solid var(--color-primary);
-  padding: 0.6rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  width: 100%;
-  margin-top: auto;
 }
 
-.coach-card:hover .view-profile-btn {
-  background-color: var(--color-primary);
-  color: var(--bg-color);
-}
-
-/* ===== CREDENTIALS ===== */
-.credentials-section {
-  text-align: center;
-  padding-top: 3rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.credentials-section h2 {
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-}
-
-.credential-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin: 2rem auto;
-  max-width: 800px;
-}
-
-@media (min-width: 640px) {
-  .credential-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.cred-card {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  text-align: left;
-}
-
-.cred-card.highlight {
-  border-color: var(--color-secondary);
+/* ===== Credentials ===== */
+.cred-panel {
+  margin-top: 2.5rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radius-xl);
   background: var(--color-soft);
 }
 
-.cred-card h3 {
-  color: var(--color-primary);
-  margin-top: 0;
+.cred-panel h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: var(--text-main);
 }
 
-.mindset-box {
+.cred-desc {
+  margin: 0 0 1.25rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.cred-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.cred-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+}
+
+.cred-card p {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+.cred-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
   background: var(--color-primary);
   color: var(--bg-color);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-top: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.mindset-box blockquote {
-  margin: 0;
-  font-style: italic;
+.cred-badge.goal {
+  background: var(--color-secondary);
+  color: var(--accent-ink);
+}
+
+.mindset {
+  margin: 1rem 0 0;
+  padding: 1.1rem 1.25rem;
+  border-left: 4px solid var(--color-secondary);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-family: var(--font-heading);
   font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+/* ===== Breakpoints ===== */
+@media (min-width: 640px) {
+  .coach-grid,
+  .cred-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cred-panel {
+    padding: 2rem;
+  }
+}
+
+/* Two columns: let an odd last card span the row instead of sitting alone */
+@media (min-width: 640px) and (max-width: 959px) {
+  .coach-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 960px) {
+  .coach-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .page-head {
+    margin-bottom: 2rem;
+  }
 }
 </style>

@@ -316,6 +316,11 @@
   "common": {
     "view_profile": "View Profile"
   },
+  "profile": {
+    "cta_title": "Want to talk with {name}?",
+    "cta_desc": "A 45-minute online session for the price of a coffee.",
+    "contact": "Contact"
+  },
   "not_found": {
     "title": "Page not found",
     "desc": "The link may be mistyped, or the page has moved.",

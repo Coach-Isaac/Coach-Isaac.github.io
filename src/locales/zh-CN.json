@@ -316,6 +316,11 @@
   "common": {
     "view_profile": "查看个人介绍"
   },
+  "profile": {
+    "cta_title": "想和 {name} 聊聊吗？",
+    "cta_desc": "45 分钟线上会谈，一杯咖啡的费用。",
+    "contact": "联系方式"
+  },
   "not_found": {
     "title": "找不到这个页面",
     "desc": "网址可能输错了，或页面已经移除。",

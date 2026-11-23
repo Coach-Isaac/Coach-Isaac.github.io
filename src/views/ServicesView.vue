@@ -1,409 +1,435 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
+import ContactIcon from '../components/ContactIcon.vue'
+import { coaches, BOOKING_URL } from '../data/coaches'
+
 const { t, tm, rt } = useI18n()
 
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
+const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 
-const coaches = [
-  {
-    key: 'isaac',
-    initial: 'I',
-    nameKey: 'coach_isaac.name',
-    titleKey: 'coach_isaac.title',
-    tags: ['coach_isaac.tag_career', 'coach_isaac.tag_relationships'],
-    email: 'coach.isaac.lu@gmail.com',
-    social: { url: 'https://www.instagram.com/coach.isaac.lu/', label: 'Instagram' },
-    route: '/coaches/isaac',
-  },
-  {
-    key: 'pauline',
-    initial: '林',
-    nameKey: 'coach_pauline.name',
-    titleKey: 'coach_pauline.title',
-    tags: ['coach_pauline.tag_self', 'coach_pauline.tag_transition'],
-    email: 'hrpaulinelin@gmail.com',
-    social: { url: 'https://www.linkedin.com/in/paulinelin/', label: 'LinkedIn' },
-    route: '/coaches/pauline',
-  },
-  {
-    key: 'vincent',
-    initial: '哲',
-    nameKey: 'coach_vince.name',
-    titleKey: 'coach_vince.title',
-    tags: ['coach_vince.tag_leadership', 'coach_vince.tag_performance'],
-    email: 'coach_vincewli@myyahoo.com',
-    social: { url: 'https://www.linkedin.com/in/vincent-w-li-8924372a9', label: 'LinkedIn' },
-    route: '/coaches/vincent',
-  },
+// Icons for the six agreement items, in locale order:
+// recording, consent, confidentiality, responsibility, scheduling, scope.
+const agreementIcons = [
+  '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/>',
+  '<path d="M20 6 9 17l-5-5"/>',
+  '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+  '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+  '<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>',
 ]
 </script>
 
 <template>
-  <div class="services-container page-container fade-in-up">
+  <div class="services fade-in-up">
+    <div class="container">
+      <header class="page-head">
+        <h1>{{ t('services.title') }}</h1>
+        <p>{{ t('services.philosophy') }}</p>
+      </header>
 
-    <!-- Page title + philosophy -->
-    <section class="service-intro">
-      <h1>{{ t('services.title') }}</h1>
-      <p class="philosophy">{{ t('services.philosophy') }}</p>
-    </section>
+      <!-- Process -->
+      <section class="block">
+        <h2 class="block-title">{{ t('services.process_title') }}</h2>
+        <ol class="steps">
+          <li v-for="(step, i) in tm('services.process_steps')" :key="i" class="step">
+            <span class="step-no" aria-hidden="true">{{ i + 1 }}</span>
+            <div class="step-body">
+              <h3>{{ rt(step.title) }}</h3>
+              <p>{{ rt(step.desc) }}</p>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-    <!-- Process Steps -->
-    <section class="process-steps">
-      <h2>{{ t('services.process_title') }}</h2>
-      <div class="steps-container">
-        <div v-for="(step, index) in tm('services.process_steps')" :key="index" class="step-card">
-          <div class="step-number">{{ index + 1 }}</div>
-          <h3>{{ rt(step.title) }}</h3>
-          <p>{{ rt(step.desc) }}</p>
+      <!-- Agreement -->
+      <section class="block">
+        <h2 class="block-title">{{ t('services.agreement_title') }}</h2>
+        <ul class="agreement">
+          <li v-for="(item, i) in tm('services.agreement_items')" :key="i">
+            <span class="agree-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" v-html="agreementIcons[i]"></svg>
+            </span>
+            <div>
+              <h3>{{ rt(item.title) }}</h3>
+              <p>{{ rt(item.desc) }}</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Coaches -->
+      <section class="block">
+        <h2 class="block-title">{{ t('services.coaches_cta_title') }}</h2>
+        <p class="block-sub">{{ t('services.coaches_cta_subtitle') }}</p>
+        <div class="coach-grid">
+          <article v-for="c in coaches" :key="c.id" class="coach-card">
+            <RouterLink :to="c.route" class="card-top">
+              <span class="avatar">
+                <img v-if="c.photo" :src="c.photo" alt="" />
+                <span v-else aria-hidden="true">{{ c.initial }}</span>
+              </span>
+              <span class="who">
+                <span class="name">{{ coachName(c) }}</span>
+                <span class="role">{{ t(`${c.prefix}.title`) }}</span>
+              </span>
+            </RouterLink>
+            <span class="tags">
+              <span v-for="tag in c.tags" :key="tag" class="tag">{{ t(`${c.prefix}.${tag}`) }}</span>
+            </span>
+            <div class="actions">
+              <a :href="BOOKING_URL" target="_blank" rel="noopener" class="btn btn-accent">{{ t('services.cta_book') }}</a>
+              <div class="contact-row">
+                <a :href="`mailto:${c.email}`" class="btn btn-outline">
+                  <ContactIcon type="email" />Email
+                </a>
+                <a :href="c.social.url" target="_blank" rel="noopener" class="btn btn-outline">
+                  <ContactIcon :type="c.social.type" />{{ c.social.type === 'instagram' ? 'Instagram' : 'LinkedIn' }}
+                </a>
+              </div>
+              <RouterLink :to="c.route" class="more">{{ t('common.view_profile') }} →</RouterLink>
+            </div>
+          </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Agreement Section -->
-    <section class="agreement-section">
-      <h2>{{ t('services.agreement_title') }}</h2>
-      <div class="agreement-grid">
-        <div v-for="(item, index) in tm('services.agreement_items')" :key="index" class="agreement-card">
-          <h3>{{ rt(item.title) }}</h3>
-          <p>{{ rt(item.desc) }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Coach Cards CTA -->
-    <section class="coaches-cta">
-      <h2>{{ t('services.coaches_cta_title') }}</h2>
-      <p class="coaches-cta-subtitle">{{ t('services.coaches_cta_subtitle') }}</p>
-      <div class="coaches-cta-grid">
-        <div v-for="coach in coaches" :key="coach.key" class="coach-cta-card">
-          <div class="coach-cta-avatar">{{ coach.initial }}</div>
-          <h3>{{ t(coach.nameKey) }}</h3>
-          <p class="coach-cta-role">{{ t(coach.titleKey) }}</p>
-          <div class="coach-cta-tags">
-            <span v-for="tag in coach.tags" :key="tag" class="coach-tag">{{ t(tag) }}</span>
-          </div>
-          <a :href="bookingUrl" target="_blank" rel="noopener" class="contact-btn book-btn">{{ t('services.cta_book') }}</a>
-          <div class="coach-cta-links">
-            <a :href="'mailto:' + coach.email" class="contact-btn email-btn">✉ Email</a>
-            <a :href="coach.social.url" target="_blank" rel="noopener" class="contact-btn social-btn">↗ {{ coach.social.label }}</a>
-          </div>
-          <RouterLink :to="coach.route" class="profile-link">{{ t('common.view_profile') }} →</RouterLink>
-        </div>
-      </div>
-    </section>
-
+      </section>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.services-container {
+.services {
   text-align: left;
+  padding-bottom: 3rem;
 }
 
-/* ===== PAGE INTRO ===== */
-.service-intro {
-  margin-bottom: 2.5rem;
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
 }
 
-.service-intro h1 {
-  font-size: 1.8rem;
+.page-head {
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.page-head h1 {
+  font-size: clamp(1.75rem, 6vw, 2.4rem);
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
   color: var(--text-main);
-  margin-bottom: 0.75rem;
 }
 
-.philosophy {
-  font-size: 1.1rem;
-  color: var(--color-primary);
-  font-style: italic;
-  line-height: 1.75;
+.page-head p {
   margin: 0;
+  max-width: 46em;
+  line-height: 1.85;
+  color: var(--text-muted);
 }
 
-/* ===== PROCESS STEPS ===== */
-.process-steps {
-  margin-bottom: 3.5rem;
+.block {
+  margin-top: 2.5rem;
 }
 
-.process-steps h2 {
-  color: var(--color-primary);
-  margin-bottom: 2rem;
-  font-size: 1.4rem;
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--color-secondary);
+.block-title {
+  font-size: clamp(1.35rem, 5vw, 1.7rem);
+  margin: 0 0 1rem;
+  color: var(--text-main);
 }
 
-/* Desktop: horizontal 3-column with connecting line */
-.steps-container {
+.block-sub {
+  margin: -0.5rem 0 1.25rem;
+  color: var(--text-muted);
+}
+
+/* ===== Process: vertical timeline on phones ===== */
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  position: relative;
+  gap: 0;
 }
 
-/* Connecting line between step circles */
-.steps-container::before {
+.step {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* connector line between numbers */
+.step:not(:last-child)::before {
   content: '';
   position: absolute;
-  /* 16.6% = 1/6 of container, aligns to center of first/last columns in a 3-col grid */
-  top: 28px;
-  left: calc(16.6% + 12px);
-  right: calc(16.6% + 12px);
-  height: 2px;
-  background: var(--hero-gradient);
-  z-index: 0;
+  left: 21px;
+  top: 46px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--border-color);
 }
 
-/* Mobile: vertical stack, no connecting line */
-@media (max-width: 768px) {
-  .steps-container {
-    grid-template-columns: 1fr;
-  }
-
-  .steps-container::before {
-    display: none;
-  }
-}
-
-.step-card {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.step-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-}
-
-.step-number {
-  width: 52px;
-  height: 52px;
+.step-no {
+  flex: none;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  display: grid;
+  place-items: center;
   background: var(--hero-gradient);
   color: var(--on-hero);
-  font-size: 1.3rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-.step-card h3 {
-  margin: 0 0 0.5rem 0;
-  color: var(--text-main);
-  font-size: 1rem;
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
-.step-card p {
+.step-body h3 {
+  margin: 0.55rem 0 0.35rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.step-body p {
   margin: 0;
-  font-size: 0.9rem;
+  line-height: 1.75;
   color: var(--text-muted);
-  line-height: 1.65;
 }
 
-/* ===== AGREEMENT ===== */
-.agreement-section {
-  margin-bottom: 2rem;
-}
-
-.agreement-section h2 {
-  color: var(--color-primary);
-  margin-bottom: 1.5rem;
-  font-size: 1.4rem;
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--color-secondary);
-}
-
-.agreement-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.agreement-card {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
-
-.agreement-card h3 {
-  color: var(--color-primary);
-  margin-top: 0;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.agreement-card p {
+/* ===== Agreement list ===== */
+.agreement {
+  list-style: none;
   margin: 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-
-/* ===== COACH CARDS CTA ===== */
-.coaches-cta {
-  margin-top: 3.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.coaches-cta h2 {
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--color-secondary);
-}
-
-.coaches-cta-subtitle {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin: 0 0 2rem 0;
-  padding-left: 0.75rem;
-}
-
-.coaches-cta-grid {
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 0.75rem;
 }
 
-@media (max-width: 768px) {
-  .coaches-cta-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.coach-cta-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+.agreement li {
+  display: flex;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
   border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+}
+
+.agree-icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--color-soft);
+  color: var(--color-primary);
+}
+
+.agree-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.agreement h3 {
+  margin: 0.1rem 0 0.3rem;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.agreement p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ===== Coach cards ===== */
+.coach-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.coach-card {
   display: flex;
   flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.card-top {
+  display: flex;
   align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  gap: 0.9rem;
+  color: var(--text-main);
 }
 
-.coach-cta-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card);
+.card-top:hover {
+  color: var(--color-primary);
 }
 
-.coach-cta-avatar {
+.avatar {
+  flex: none;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--hero-gradient);
-  color: var(--on-hero);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--color-soft);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
   font-size: 1.4rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.coach-cta-card h3 {
-  margin: 0;
-  color: var(--text-main);
-  font-size: 1rem;
   font-weight: 700;
-  white-space: pre-line;
 }
 
-.coach-cta-role {
-  margin: 0;
-  font-size: 0.82rem;
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.role {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.4;
 }
 
-.coach-cta-tags {
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  align-content: flex-start;
-  /* Absorb the height difference from one- vs two-line names so buttons line up across cards */
-  flex-grow: 1;
+  gap: 0.35rem;
 }
 
-.coach-tag {
-  background: var(--bg-surface);
-  color: var(--color-primary);
+.tag {
   font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.2rem 0.65rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: var(--color-soft);
+  color: var(--color-primary);
 }
 
-.coach-cta-links {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.25rem;
+.actions {
+  margin-top: auto;
+  display: grid;
+  gap: 0.6rem;
 }
 
-.contact-btn {
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
+  gap: 0.4rem;
   min-height: 44px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: opacity 0.15s;
+  padding: 0 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  white-space: nowrap;
 }
 
-.contact-btn:hover {
-  opacity: 0.8;
+.btn-accent {
+  background: var(--color-secondary);
+  color: var(--accent-ink);
 }
 
-.book-btn {
-  width: 100%;
-  background: var(--hero-gradient);
-  color: var(--on-hero);
-  font-size: 0.9rem;
-  padding: 0.55rem 1rem;
-  border-radius: 20px;
-  text-align: center;
+.btn-accent:hover {
+  color: var(--accent-ink);
 }
 
-.email-btn {
-  background: var(--color-primary);
-  color: var(--bg-color);
-}
-
-.social-btn {
-  background: transparent;
+.btn-outline {
   color: var(--color-primary);
-  border: 1.5px solid var(--color-primary);
+  box-shadow: inset 0 0 0 1.5px var(--border-color);
 }
 
-.profile-link {
-  font-size: 0.82rem;
-  color: var(--accent-text);
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: auto;
+.btn-outline:hover {
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 1.5px var(--color-primary);
 }
 
-.profile-link:hover {
-  text-decoration: underline;
+.more {
+  justify-self: center;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ===== Breakpoints ===== */
+@media (max-width: 359px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 640px) {
+  .coach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Two columns: let an odd last card span the row instead of sitting alone */
+@media (min-width: 640px) and (max-width: 959px) {
+  .coach-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 768px) {
+  .agreement {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step {
+    flex-direction: column;
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+  }
+
+  .step:not(:last-child)::before {
+    display: none;
+  }
+
+  .step-body h3 {
+    margin-top: 0;
+  }
+
+  .coach-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>

@@ -2,9 +2,8 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
+import { coaches, BOOKING_URL as bookingUrl } from '../data/coaches'
 const { t, tm, rt } = useI18n()
-
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const infoCards = [
   { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
@@ -12,11 +11,6 @@ const infoCards = [
   { titleKey: 'coaching.card_vs_consult_title', descKey: 'coaching.distinction_2_desc' },
 ]
 
-const coaches = [
-  { id: 'isaac', prefix: 'coach_isaac', initial: 'I', route: '/coaches/isaac', tags: ['tag_career', 'tag_relationships'] },
-  { id: 'pauline', prefix: 'coach_pauline', initial: '林', route: '/coaches/pauline', tags: ['tag_self', 'tag_transition'] },
-  { id: 'vincent', prefix: 'coach_vince', initial: '哲', route: '/coaches/vincent', tags: ['tag_leadership', 'tag_performance'] },
-]
 
 // Locale names may contain "\n" (e.g. "林依雯\nPauline Lin"); show them on one line in the small cards.
 const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
