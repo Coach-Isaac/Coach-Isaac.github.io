@@ -54,7 +54,7 @@ watchEffect(() => {
             <RouterLink to="/services#coaches" class="contact-coaches">{{ t('footer.contact_coaches') }}</RouterLink>
           </div>
         </div>
-        <nav class="footer-links">
+        <nav class="footer-links" :aria-label="t('nav.landmark_footer')">
           <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
           <RouterLink to="/coaches">{{ t('nav.about') }}</RouterLink>
           <RouterLink to="/services">{{ t('nav.services') }}</RouterLink>

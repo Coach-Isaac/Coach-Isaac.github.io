@@ -16,14 +16,14 @@ const dist = join(root, 'dist')
 // Share previews use zh-TW, the site's default language and the one index.html is written in.
 const zh = JSON.parse(readFileSync(join(root, 'src/locales/zh-TW.json'), 'utf8'))
 
-// Reads the raw locale string, so vue-i18n syntax ({name}, @:link, {'|'}) would leak into the
+// Reads the raw locale string, so vue-i18n syntax ({name}, @:link, plural |) would leak into the
 // preview; such text is rejected instead. site.page_title's own {page} is filled in below.
 function text(key, { allowPlaceholder = false } = {}) {
   const value = key.split('.').reduce((node, part) => node?.[part], zh)
   if (typeof value !== 'string' || !value.trim()) {
     throw new Error(`page-meta: zh-TW text "${key}" is missing`)
   }
-  if (!allowPlaceholder && /[{}@]/.test(value)) {
+  if (!allowPlaceholder && /[{}@|]/.test(value)) {
     throw new Error(`page-meta: zh-TW text "${key}" uses vue-i18n syntax, which previews cannot show`)
   }
   return value.replace(/\n/g, ' ')
@@ -31,7 +31,7 @@ function text(key, { allowPlaceholder = false } = {}) {
 
 function pageTitle(name) {
   const title = text('site.page_title', { allowPlaceholder: true }).replace('{page}', () => name)
-  if (/[{}@]/.test(title)) throw new Error(`page-meta: unexpected placeholder in "${title}"`)
+  if (/[{}@|]/.test(title)) throw new Error(`page-meta: unexpected placeholder in "${title}"`)
   return title
 }
 
@@ -51,6 +51,8 @@ const pages = [
   ...coaches.map((c) => ({
     path: c.route,
     file: `${c.route.slice(1)}.html`,
+    // The old /about URL redirects to Isaac in the router; give it his page so old links get a 200 and his preview.
+    alsoAt: c.id === 'isaac' ? ['about.html'] : [],
     title: pageTitle(text(`${c.prefix}.name`)),
     description: coachDescription(c),
   })),

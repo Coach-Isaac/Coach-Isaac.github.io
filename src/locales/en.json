@@ -7,7 +7,11 @@
     "book": "Book",
     "language": "Language",
     "theme_dark": "Dark mode",
-    "theme_light": "Light mode"
+    "theme_light": "Light mode",
+    "landmark_main": "Main menu",
+    "landmark_tabs": "Tab bar",
+    "landmark_footer": "Footer links",
+    "landmark_coaches": "Coaches"
   },
   "home": {
     "hero_title": "Stuck?\nLet's find your way forward.",
@@ -126,16 +130,13 @@
     "card_principles_desc": "Coaches are partners, not experts. We listen deeply and ask questions. The ultimate goal is to inspire your own commitment to action."
   },
   "about": {
-    "title": "About Coach Isaac",
-    "intro": "This is a unique invitation for collaboration, aiming to support your personal growth. Let's explore and open up new possibilities through conversation.",
-    "bio_title": "My Journey & Commitment",
-    "bio_content": "I am a professional coach currently undergoing International Coaching Federation (ICF) certification training, working towards the Associate Certified Coach (ACC) credential. In my practice, I strictly adhere to the high ethical standards and core values of the ICF, committed to providing a safe, trusting, and productive environment for dialogue.",
-    "icf_title": "ICF & Professional Credentials",
+    "icf_title": "The ICF credential path",
     "icf_desc": "The ICF sets rigorous standards for the global coaching profession. Advancing from ACC to PCC involves not just accumulated hours, but a continuous refinement of the 'Coaching Mindset', 'Maintains Presence', and 'Deep Listening'.",
     "credentials": {
-      "acc": "ACC (Associate Certified Coach): Entry level, requiring 60+ training hours and 100+ experience hours.",
+      "acc_title": "ACC in training",
+      "acc": "ACC (Associate Certified Coach): Entry level, requiring 60+ training hours and 100+ experience hours. All three coaches are working towards it now.",
       "pcc_title": "PCC Goal",
-      "pcc": "PCC (Professional Certified Coach): Professional level, requiring 125+ training hours and 500+ experience hours (the team's next goal).",
+      "pcc": "PCC (Professional Certified Coach): Professional level, requiring 125+ training hours and 500+ experience hours (the goal after ACC).",
       "mindset": "Coaching Mindset: The coach is a partner, not an expert. We believe clients have the potential for self-growth and problem-solving."
     }
   },
@@ -185,15 +186,15 @@
     "agreement_items": [
       {
         "title": "Recording & Transcripts",
-        "desc": "To facilitate ICF core competency assessment for the coach's ACC credentialing, sessions will be recorded and may be transcribed."
+        "desc": "For the ICF core competency assessment in the coach's ACC application, sessions are recorded, and may be transcribed, with your consent. You can decline recording and still have your session."
       },
       {
         "title": "Client Consent",
-        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for association review."
+        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for the coach's ICF credential review."
       },
       {
         "title": "Strict Confidentiality",
-        "desc": "As ICF coaches, we adhere to the Gold Standard of ICF Ethics. We guarantee your conversations are strictly confidential and will not be disclosed to third parties, used solely for the ICF certification process."
+        "desc": "We follow the ICF Code of Ethics and keep your conversations strictly confidential. Apart from recordings and transcripts you agree to for the coach's ICF credential review, nothing is shared with any third party. Your privacy and trust matter deeply to us."
       },
       {
         "title": "Client Responsibility",
@@ -201,7 +202,7 @@
       },
       {
         "title": "Scheduling & Attendance",
-        "desc": "Sessions are held online and scheduled by mutual agreement. Please give at least 24 hours notice for cancellations. Consistent attendance is key to progress."
+        "desc": "Sessions are mainly online and scheduled by mutual agreement. Please give at least 24 hours notice for cancellations. Consistent attendance is key to progress."
       },
       {
         "title": "Scope of Coaching",
@@ -228,7 +229,7 @@
       },
       {
         "q": "Is what I share kept confidential?",
-        "a": "Yes. We follow the ICF Code of Ethics and do not share your conversations with third parties. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review."
+        "a": "Yes. We follow the ICF Code of Ethics. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent, and used only for that review; beyond that, nothing you share goes to any third party. You can decline recording and still have your session."
       },
       {
         "q": "How is coaching different from counseling?",
@@ -243,7 +244,7 @@
       },
       {
         "title": "Regular Sessions",
-        "desc": "Approx. 3 to 6 one-on-one sessions (online/offline), 45 mins each. Deep exploration and progress tracking."
+        "desc": "Approx. 3 to 6 one-on-one sessions, mainly online, 45 mins each. Deep exploration and progress tracking."
       },
       {
         "title": "Transformation & Action",
@@ -253,7 +254,7 @@
     "cta_button": "Book a Session →",
     "cta_book": "Book a Session",
     "coaches_cta_title": "Find Your Coach",
-    "coaches_cta_subtitle": "Choose the coach that feels right for you and reach out through their contact"
+    "coaches_cta_subtitle": "Pick a coach and press \"Book a Session\" to fill in the form, or email first if you have questions."
   },
   "coach_pauline": {
     "title": "Life Vision & Enhancement Coach",
@@ -342,6 +343,7 @@
   "profile": {
     "cta_title": "Want to talk with {name}?",
     "cta_desc": "A 45-minute online session — a coffee, a drink or a book as a thank-you is all we ask.",
+    "cta_note": "Sessions are recorded with your consent for the coach's ICF credential review; you can decline and still have your session.",
     "contact": "Contact"
   },
   "site": {
@@ -376,7 +378,11 @@
       },
       {
         "title": "Session content",
-        "body": "What you share in sessions is kept confidential. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review."
+        "body": "What you share in sessions is kept confidential. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review. You can decline recording and still have your session."
+      },
+      {
+        "title": "Emailing a coach directly",
+        "body": "If you email a coach directly, only that coach receives it; it is stored by the coach's email provider (such as Gmail) and used only to answer you."
       },
       {
         "title": "Keeping and deleting",

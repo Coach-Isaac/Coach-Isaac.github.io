@@ -20,6 +20,15 @@ const ctaName = computed(() => {
   return /^[A-Za-z]/.test(name) ? ` ${name} ` : name
 })
 
+// Chinese name first in Chinese, English first in English, matching the coach cards.
+const nameParts = computed(() => {
+  const { englishName, chineseName } = coach.value
+  if (!chineseName) return { main: englishName, sub: null }
+  return locale.value.startsWith('zh')
+    ? { main: chineseName, sub: englishName }
+    : { main: englishName, sub: chineseName }
+})
+
 const socialName = computed(() => {
   const platform = coach.value.social.type === 'instagram' ? 'Instagram' : 'LinkedIn'
   return `${platform}: ${coach.value.social.label}`
@@ -47,8 +56,8 @@ const sideSections = computed(() => [
         </div>
         <div class="hero-text">
           <h1 class="name">
-            {{ coach.englishName }}
-            <span v-if="coach.chineseName" class="name-zh">{{ coach.chineseName }}</span>
+            {{ nameParts.main }}
+            <span v-if="nameParts.sub" class="name-sub">{{ nameParts.sub }}</span>
           </h1>
           <p class="role">{{ t(key('title')) }}</p>
           <div class="tags">
@@ -112,6 +121,7 @@ const sideSections = computed(() => [
         <div>
           <h2>{{ t('profile.cta_title', { name: ctaName }) }}</h2>
           <p>{{ t('profile.cta_desc') }}</p>
+          <p class="cta-note">{{ t('profile.cta_note') }}</p>
         </div>
         <a :href="coach.bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
       </section>
@@ -213,7 +223,7 @@ const sideSections = computed(() => [
   gap: 0.25rem 0.6rem;
 }
 
-.name-zh {
+.name-sub {
   font-size: 0.7em;
   opacity: 0.85;
 }
@@ -422,6 +432,11 @@ const sideSections = computed(() => [
 .cta-card p {
   margin: 0;
   opacity: 0.88;
+}
+
+.cta-card .cta-note {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
 }
 
 /* ===== ≥ 600px ===== */

@@ -14,7 +14,7 @@ const isServices = computed(() => route.path === '/services' || route.path.start
 </script>
 
 <template>
-  <nav class="tabbar">
+  <nav class="tabbar" :aria-label="t('nav.landmark_tabs')">
     <RouterLink to="/" class="tab" :class="{ on: isHome }" :aria-current="isHome ? 'page' : null">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
       <span>{{ t('nav.home') }}</span>

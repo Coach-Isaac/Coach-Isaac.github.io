@@ -31,6 +31,11 @@ const router = createRouter({
       redirect: '/coaches/isaac'
     },
     {
+      // GitHub Pages serves index.html at this path too; show home instead of the 404 page.
+      path: '/index.html',
+      redirect: '/'
+    },
+    {
       path: '/coaches/isaac',
       name: 'coach-isaac',
       component: CoachProfileView,
