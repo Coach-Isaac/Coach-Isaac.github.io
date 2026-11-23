@@ -357,6 +357,39 @@
     "desc": "The link may be mistyped, or the page has moved.",
     "home": "Back to home"
   },
+  "privacy": {
+    "title": "Privacy",
+    "updated": "Last updated: November 24, 2026",
+    "intro": "We care about your privacy. This page explains what information we receive when you use this site and book a session, how we use it, and how you can see or delete it.",
+    "sections": [
+      {
+        "title": "Site analytics",
+        "body": "We use Cloudflare Web Analytics to see how many people visit and which pages help. It uses no cookies and does not track individuals; we only see anonymous totals such as page views, country and device type."
+      },
+      {
+        "title": "Outside services",
+        "body": "Fonts come from Google Fonts and the analytics script from Cloudflare. When a page loads, your browser connects to their servers."
+      },
+      {
+        "title": "Settings kept in your browser",
+        "body": "Your language and light or dark mode choice are stored only in your own browser and never sent to us."
+      },
+      {
+        "title": "Booking form",
+        "body": "Booking uses Google Forms, so your answers are stored by Google. Coach Isaac receives the form and passes only what is needed to arrange the session to the coach you chose. We use this information only to arrange and contact you about sessions, and do not share it with any other third party."
+      },
+      {
+        "title": "Session content",
+        "body": "What you share in sessions is kept confidential. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review."
+      },
+      {
+        "title": "Keeping and deleting",
+        "body": "We keep your information only as long as it is needed. You can email us at any time to see, correct or delete it."
+      }
+    ],
+    "contact_title": "Contact us",
+    "contact_body": "Questions about this page or your information? Email us:"
+  },
   "footer": {
     "tagline": "ICF coaches in training · bilingual EN/ZH",
     "contact_title": "Contact us",

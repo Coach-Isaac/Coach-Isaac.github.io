@@ -61,7 +61,11 @@ watchEffect(() => {
         </nav>
         <a :href="bookingUrl" target="_blank" rel="noopener" class="footer-cta">{{ t('nav.free_trial_cta') }}</a>
       </div>
-      <p class="footer-copy">&copy; {{ year }} Coach Isaac. All rights reserved.</p>
+      <p class="footer-copy">
+        &copy; {{ year }} Coach Isaac. All rights reserved.
+        <span aria-hidden="true">·</span>
+        <RouterLink to="/privacy">{{ t('privacy.title') }}</RouterLink>
+      </p>
     </footer>
 
     <BottomTabBar />
@@ -192,6 +196,18 @@ main {
   border-top: 1px solid var(--border-color);
   font-size: 0.8rem;
   text-align: center;
+}
+
+.footer-copy a {
+  display: inline-block;
+  padding: 0.5rem 0.25rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-copy a:hover {
+  color: var(--color-primary);
 }
 
 @media (min-width: 768px) {

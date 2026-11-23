@@ -60,6 +60,12 @@ const pages = [
     title: pageTitle(text('services.title')),
     description: text('services.philosophy'),
   },
+  {
+    path: '/privacy',
+    file: 'privacy.html',
+    title: pageTitle(text('privacy.title')),
+    description: text('privacy.intro'),
+  },
 ]
 
 const escapeHtml = (s) =>
