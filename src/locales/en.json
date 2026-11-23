@@ -54,7 +54,7 @@
       },
       {
         "icon": "☕",
-        "text": "Symbolic Fee"
+        "text": "A coffee as thanks"
       }
     ]
   },
@@ -250,10 +250,6 @@
         "desc": "Translating exploration into concrete action plans, sparking your commitment to achieve desired results."
       }
     ],
-    "special_offer_title": "Certification-Period Offer",
-    "special_offer_desc": "As part of our certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a coffee, a drink or a book' — a small token of our shared commitment to this exploration.",
-    "offer_headline": "Symbolic Fee\nA coffee, a drink or a book",
-    "offer_note": "45 min online · Symbolic fee",
     "cta_button": "Book a Session →",
     "cta_book": "Book a Session",
     "coaches_cta_title": "Find Your Coach",
