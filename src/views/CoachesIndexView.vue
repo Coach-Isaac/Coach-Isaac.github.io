@@ -52,7 +52,7 @@ const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
         <p class="cred-desc">{{ t('about.icf_desc') }}</p>
         <div class="cred-grid">
           <div class="cred-card">
-            <span class="cred-badge">ICF / ACC</span>
+            <span class="cred-badge">{{ t('about.credentials.acc_title') }}</span>
             <p>{{ t('about.credentials.acc') }}</p>
           </div>
           <div class="cred-card">
@@ -242,14 +242,16 @@ const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
   color: var(--text-main);
 }
 
+/* "In training" reads as a status, not an earned credential: outlined, not solid. */
 .cred-badge {
   display: inline-block;
   font-size: 0.78rem;
   font-weight: 700;
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  background: var(--color-primary);
-  color: var(--bg-color);
+  background: transparent;
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 1.5px var(--color-primary);
 }
 
 .cred-badge.goal {

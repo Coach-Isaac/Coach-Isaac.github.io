@@ -188,8 +188,15 @@ button:hover {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-secondary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* On the navy gradient bands (home hero, profile header, profile booking card) a navy ring would vanish. */
+.hero :focus-visible,
+.profile-hero :focus-visible,
+.cta-card :focus-visible {
+  outline-color: var(--on-hero);
 }
 
 .card {

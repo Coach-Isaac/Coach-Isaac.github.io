@@ -2,12 +2,31 @@ import { ref, watchEffect } from 'vue'
 
 const STORAGE_KEY = 'theme-preference'
 
+// Storage can be blocked (site data disabled, some in-app WebViews) and then throws.
+// This module runs before the app mounts, so an uncaught error would leave the page blank.
+function readStored() {
+  try {
+    return localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
+  }
+}
+
+function writeStored(value) {
+  try {
+    if (value === null) localStorage.removeItem(STORAGE_KEY)
+    else localStorage.setItem(STORAGE_KEY, value)
+  } catch {
+    // The choice then lasts only for this visit.
+  }
+}
+
 function getSystemDark() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
 function getInitialDark() {
-  const stored = localStorage.getItem(STORAGE_KEY)
+  const stored = readStored()
   if (stored === 'dark') return true
   if (stored === 'light') return false
   return getSystemDark()
@@ -27,18 +46,18 @@ watchEffect(() => {
 
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
 mediaQuery.addEventListener('change', (e) => {
-  if (!localStorage.getItem(STORAGE_KEY)) {
+  if (!readStored()) {
     isDark.value = e.matches
   }
 })
 
 function toggle() {
   isDark.value = !isDark.value
-  localStorage.setItem(STORAGE_KEY, isDark.value ? 'dark' : 'light')
+  writeStored(isDark.value ? 'dark' : 'light')
 }
 
 function resetToSystem() {
-  localStorage.removeItem(STORAGE_KEY)
+  writeStored(null)
   isDark.value = getSystemDark()
 }
 

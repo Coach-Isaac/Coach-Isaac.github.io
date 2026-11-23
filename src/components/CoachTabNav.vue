@@ -1,15 +1,18 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
+import { coaches } from '../data/coaches'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const route = useRoute()
 
 const isActive = (path) => route.path === path
+// Same short name the profile's booking card uses ("阿哲" in Chinese, "Vincent" in English).
+const shortName = (c) => (locale.value.startsWith('zh') ? c.shortName.zh : c.shortName.en)
 </script>
 
 <template>
-  <nav class="coach-tabs">
+  <nav class="coach-tabs" :aria-label="t('nav.landmark_coaches')">
     <RouterLink
       to="/coaches"
       class="tab-item"
@@ -18,25 +21,13 @@ const isActive = (path) => route.path === path
       {{ t('coaches_index.tab_all') }}
     </RouterLink>
     <RouterLink
-      to="/coaches/isaac"
+      v-for="c in coaches"
+      :key="c.id"
+      :to="c.route"
       class="tab-item"
-      :class="{ active: isActive('/coaches/isaac') }"
+      :class="{ active: isActive(c.route) }"
     >
-      Isaac
-    </RouterLink>
-    <RouterLink
-      to="/coaches/pauline"
-      class="tab-item"
-      :class="{ active: isActive('/coaches/pauline') }"
-    >
-      Pauline
-    </RouterLink>
-    <RouterLink
-      to="/coaches/vincent"
-      class="tab-item"
-      :class="{ active: isActive('/coaches/vincent') }"
-    >
-      Vincent
+      {{ shortName(c) }}
     </RouterLink>
   </nav>
 </template>
@@ -84,6 +75,14 @@ const isActive = (path) => route.path === path
   .tab-item {
     padding: 0 0.7rem;
     font-size: 0.85rem;
+  }
+}
+
+/* Keep all four tabs on one line on the narrowest phones (320px, English) */
+@media (max-width: 359px) {
+  .tab-item {
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
   }
 }
 </style>

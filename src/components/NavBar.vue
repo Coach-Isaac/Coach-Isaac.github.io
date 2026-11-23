@@ -10,10 +10,11 @@ const { locale, t } = useI18n()
 const route = useRoute()
 const bookingUrl = BOOKING_URL
 
+// `name` is what screen readers announce; each language is named in itself.
 const languages = [
-  { code: 'en', short: 'EN' },
-  { code: 'zh-TW', short: '繁' },
-  { code: 'zh-CN', short: '简' },
+  { code: 'en', short: 'EN', name: 'English' },
+  { code: 'zh-TW', short: '繁', name: '繁體中文' },
+  { code: 'zh-CN', short: '简', name: '简体中文' },
 ]
 
 const langOpen = ref(false)
@@ -56,7 +57,7 @@ const { isDark, toggle } = useTheme()
 </script>
 
 <template>
-  <nav class="navbar">
+  <nav class="navbar" :aria-label="t('nav.landmark_main')">
     <div class="nav-inner">
       <RouterLink to="/" class="nav-brand">Coach <span>Isaac</span></RouterLink>
 
@@ -75,6 +76,8 @@ const { isDark, toggle } = useTheme()
             type="button"
             :class="{ active: locale === lang.code }"
             :aria-pressed="locale === lang.code"
+            :aria-label="lang.name"
+            :lang="lang.code"
             @click="changeLanguage(lang.code)"
           >{{ lang.short }}</button>
         </div>
@@ -95,6 +98,9 @@ const { isDark, toggle } = useTheme()
               :key="lang.code"
               type="button"
               :class="{ active: locale === lang.code }"
+              :aria-pressed="locale === lang.code"
+              :aria-label="lang.name"
+              :lang="lang.code"
               @click="changeLanguage(lang.code)"
             >{{ lang.short }}</button>
           </div>
