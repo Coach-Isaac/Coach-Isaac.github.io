@@ -58,6 +58,12 @@ const router = createRouter({
       meta: { titleKey: 'services.title' }
     },
     {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('./views/PrivacyView.vue'),
+      meta: { titleKey: 'privacy.title' }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('./views/NotFoundView.vue'),
