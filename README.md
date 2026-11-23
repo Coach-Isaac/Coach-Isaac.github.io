@@ -1,5 +1,25 @@
-# Vue 3 + Vite
+# Coach Isaac
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Website for three ICF coaches in training who offer a 45-minute online intro session.
+Live at https://coach-isaac.github.io/ (English, 繁體中文, 简体中文).
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Develop
+
+```
+npm ci
+npm run dev      # local dev server
+npm run build    # vite build, then scripts/page-meta.js writes per-page HTML and sitemap.xml
+npm run preview  # serve the build locally
+```
+
+## Where things live
+
+- Page text in three languages: `src/locales/{en,zh-TW,zh-CN}.json`
+- Coach details and booking links: `src/data/coaches.js`
+- Pages: `src/views/`, shared parts: `src/components/`
+- Plans and acceptance criteria for past changes: `docs/`
+
+## Deploy
+
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes it to the
+`gh-pages` branch that GitHub Pages serves.
