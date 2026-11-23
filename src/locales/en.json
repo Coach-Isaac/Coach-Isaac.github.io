@@ -14,7 +14,7 @@
     "hero_subtitle": "Not advice, not therapy — coaching helps you find your own answers. Bilingual EN/ZH, online.",
     "hero_badge": "🌿 ICF Coaches in Training",
     "hero_learn_more": "What is coaching? →",
-    "hero_note": "The price of a coffee · 45 min online",
+    "hero_note": "A coffee, a drink or a book as a thank-you · 45 min online",
     "coaches_title": "Meet the coaches",
     "coaches_subtitle": "Three coaches, each with their own focus",
     "testimonials_title": "What clients say",
@@ -224,8 +224,8 @@
       }
     ],
     "special_offer_title": "Certification-Period Offer",
-    "special_offer_desc": "As part of our certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
-    "offer_headline": "Symbolic Fee\nA coffee or a book",
+    "special_offer_desc": "As part of our certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a coffee, a drink or a book' — a small token of our shared commitment to this exploration.",
+    "offer_headline": "Symbolic Fee\nA coffee, a drink or a book",
     "offer_note": "45 min online · Symbolic fee",
     "cta_button": "Book a Session →",
     "cta_book": "Book a Session",
@@ -318,7 +318,7 @@
   },
   "profile": {
     "cta_title": "Want to talk with {name}?",
-    "cta_desc": "A 45-minute online session for the price of a coffee.",
+    "cta_desc": "A 45-minute online session — a coffee, a drink or a book as a thank-you is all we ask.",
     "contact": "Contact"
   },
   "not_found": {
