@@ -1,9 +1,9 @@
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
+import { coaches, BOOKING_URL as bookingUrl } from '../data/coaches'
 const { t, tm, rt } = useI18n()
-
-const bookingUrl = 'https://forms.gle/t65d74KfDD28cQkaA'
 
 const infoCards = [
   { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
@@ -11,7 +11,11 @@ const infoCards = [
   { titleKey: 'coaching.card_vs_consult_title', descKey: 'coaching.distinction_2_desc' },
 ]
 
-// ③ Trust strip SVG icons — mapped by locale icon emoji key
+
+// Locale names may contain "\n" (e.g. "林依雯\nPauline Lin"); show them on one line in the small cards.
+const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
+
+// Trust strip SVG icons — mapped by locale icon emoji key
 const svgIcons = {
   '🏅': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>',
   '💬': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
@@ -20,24 +24,10 @@ const svgIcons = {
   '☕': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
 }
 
-// ④ Mobile booking bar — show after hero exits viewport
-const heroRef = ref(null)
-const showBar = ref(false)
-
-let heroObserver = null
 let fadeObserver = null
 
 onMounted(() => {
-  // ④ Watch hero: show bar when hero is off-screen
-  if (heroRef.value) {
-    heroObserver = new IntersectionObserver(
-      ([entry]) => { showBar.value = !entry.isIntersecting },
-      { threshold: 0.1 }
-    )
-    heroObserver.observe(heroRef.value)
-  }
-
-  // ⑤ Fade-in: one-time reveal per element
+  // Scroll fade-in: one-time reveal per element
   const fadeEls = document.querySelectorAll('.fade-in-section')
   if (fadeEls.length > 0) {
     fadeObserver = new IntersectionObserver(
@@ -55,530 +45,596 @@ onMounted(() => {
   }
 })
 
-// 當 bar 顯示時，在 body 加 class，讓 footer 和 TOP 按鈕自動上移
-watch(showBar, (val) => {
-  document.body.classList.toggle('has-mobile-bar', val)
-})
-
 onUnmounted(() => {
-  heroObserver?.disconnect()
   fadeObserver?.disconnect()
-  document.body.classList.remove('has-mobile-bar')
 })
 </script>
 
 <template>
-  <div class="home-container fade-in-up">
+  <div class="home fade-in-up">
     <!-- Hero -->
-    <section class="hero" ref="heroRef">
-      <!-- ① Geometric decoration -->
-      <div class="hero-deco hero-deco-1" aria-hidden="true"></div>
-      <div class="hero-deco hero-deco-2" aria-hidden="true"></div>
-      <span class="hero-deco-symbol" aria-hidden="true">✦</span>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="hero-tag">{{ t('home.hero_badge') }}</span>
+          <h1>{{ t('home.hero_title') }}</h1>
+          <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
+          <div class="hero-actions">
+            <a :href="bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
+            <a href="#what-is-coaching" class="btn btn-ghost">{{ t('home.hero_learn_more') }}</a>
+          </div>
+          <p class="hero-note">{{ t('home.hero_note') }}</p>
+        </div>
 
-      <span class="hero-tag">{{ t('home.hero_badge') }}</span>
-      <h1>{{ t('home.hero_title') }}</h1>
-      <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
-      <div class="hero-actions">
-        <a :href="bookingUrl" target="_blank" rel="noopener" class="btn-hero-primary">{{ t('nav.free_trial_cta') }}</a>
-        <a href="#what-is-coaching" class="btn-hero-secondary">{{ t('home.hero_learn_more') }}</a>
+        <!-- Desktop: coach cards beside the hero text -->
+        <div class="hero-coaches">
+          <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
+            <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
+            <span class="coach-info">
+              <span class="coach-name">{{ coachName(c) }}</span>
+              <span class="coach-title">{{ t(`${c.prefix}.title`) }}</span>
+              <span class="coach-tags">
+                <span v-for="tag in c.tags" :key="tag" class="tag">{{ t(`${c.prefix}.${tag}`) }}</span>
+              </span>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </RouterLink>
+        </div>
       </div>
-      <p class="hero-note">{{ t('home.hero_note') }}</p>
     </section>
 
-    <!-- Trust Strip -->
-    <section class="trust-strip">
-      <div v-for="item in tm('home.trust')" :key="rt(item.text)" class="trust-item">
-        <!-- ③ SVG icons mapped by icon key -->
-        <span class="trust-icon" v-html="svgIcons[rt(item.icon)] || rt(item.icon)"></span>
-        {{ rt(item.text) }}
+    <!-- Trust strip -->
+    <section class="section trust-section">
+      <div class="container">
+        <ul class="trust">
+          <li v-for="item in tm('home.trust')" :key="rt(item.text)">
+            <span class="trust-icon" v-html="svgIcons[rt(item.icon)] || rt(item.icon)"></span>
+            {{ rt(item.text) }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Mobile: coach cards as their own section -->
+    <section class="section coaches-section">
+      <div class="container">
+        <h2 class="section-title">{{ t('home.coaches_title') }}</h2>
+        <p class="section-sub">{{ t('home.coaches_subtitle') }}</p>
+        <div class="coach-list">
+          <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
+            <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
+            <span class="coach-info">
+              <span class="coach-name">{{ coachName(c) }}</span>
+              <span class="coach-title">{{ t(`${c.prefix}.title`) }}</span>
+              <span class="coach-tags">
+                <span v-for="tag in c.tags" :key="tag" class="tag">{{ t(`${c.prefix}.${tag}`) }}</span>
+              </span>
+            </span>
+            <span class="go" aria-hidden="true">›</span>
+          </RouterLink>
+        </div>
       </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials-section fade-in-section">
-      <div class="page-container">
-        <h2 class="testimonials-title">{{ t('home.testimonials_title') }}</h2>
+    <section class="section testimonials-section fade-in-section">
+      <div class="container">
+        <h2 class="section-title">{{ t('home.testimonials_title') }}</h2>
         <div class="testimonials-grid">
-          <!-- ② Large quote marks via ::before on .testimonial-card -->
-          <div
+          <figure
             v-for="(item, i) in tm('home.testimonials')"
             :key="i"
-            class="testimonial-card fade-in-section"
-            :style="{ transitionDelay: i * 0.1 + 's' }"
+            class="testimonial-card"
           >
-            <p class="testimonial-quote">"{{ rt(item.quote) }}"</p>
-            <div class="testimonial-author">
-              <span class="author-name">— {{ rt(item.name) }}</span>
+            <blockquote>{{ rt(item.quote) }}</blockquote>
+            <figcaption>
+              <span class="author-name">{{ rt(item.name) }}</span>
               <span class="author-context">{{ rt(item.context) }}</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is coaching -->
+    <section id="what-is-coaching" class="section coaching-section fade-in-section">
+      <div class="container">
+        <h2 class="section-title">{{ t('coaching.title') }}</h2>
+        <p class="intro-desc">{{ t('coaching.description') }}</p>
+
+        <div class="info-grid">
+          <div v-for="card in infoCards" :key="card.titleKey" class="info-card">
+            <h3>{{ t(card.titleKey) }}</h3>
+            <p>{{ t(card.descKey) }}</p>
+          </div>
+        </div>
+
+        <div class="sub-block">
+          <h3 class="sub-title">{{ t('coaching.target_audience_title') }}</h3>
+          <p class="section-sub">{{ t('coaching.target_audience_desc') }}</p>
+          <div class="card-grid">
+            <div v-for="(item, index) in tm('coaching.target_audience_list')" :key="index" class="feature-card">
+              <h4>{{ rt(item.title) }}</h4>
+              <p>{{ rt(item.desc) }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-block">
+          <h3 class="sub-title">{{ t('coaching.core_principles_title') }}</h3>
+          <div class="card-grid">
+            <div v-for="(item, index) in tm('coaching.principles')" :key="index" class="feature-card principle-card">
+              <span class="principle-no">{{ index + 1 }}</span>
+              <h4>{{ rt(item.title) }}</h4>
+              <p>{{ rt(item.desc) }}</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- What is Coaching -->
-    <section id="what-is-coaching" class="what-is-coaching page-container fade-in-section">
-      <h2>{{ t('coaching.title') }}</h2>
-      <p class="intro-desc">{{ t('coaching.description') }}</p>
-
-      <div class="info-cards-grid fade-in-section">
-        <div v-for="card in infoCards" :key="card.titleKey" class="info-card">
-          <h4>{{ t(card.titleKey) }}</h4>
-          <p>{{ t(card.descKey) }}</p>
-        </div>
-      </div>
-
-      <div class="target-audience-section fade-in-section">
-        <h3>{{ t('coaching.target_audience_title') }}</h3>
-        <p class="section-intro">{{ t('coaching.target_audience_desc') }}</p>
-        <div class="cards-grid">
-          <div v-for="(item, index) in tm('coaching.target_audience_list')" :key="index" class="feature-card audience-card">
-            <h4>{{ rt(item.title) }}</h4>
-            <p>{{ rt(item.desc) }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="principles-section fade-in-section">
-        <h3>{{ t('coaching.core_principles_title') }}</h3>
-        <div class="cards-grid">
-          <div v-for="(item, index) in tm('coaching.principles')" :key="index" class="feature-card">
-            <h4>{{ rt(item.title) }}</h4>
-            <p>{{ rt(item.desc) }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
-
-  <!-- ④ Mobile booking bar — Teleport to body to escape transform ancestor -->
-  <Teleport to="body">
-    <a
-      v-show="showBar"
-      :href="bookingUrl"
-      target="_blank"
-      rel="noopener"
-      class="mobile-booking-bar"
-      aria-label="預約初次對話"
-    >
-      {{ t('services.cta_book') }} →
-    </a>
-  </Teleport>
 </template>
 
 <style scoped>
-.home-container {
+.home {
   width: 100%;
+  text-align: left;
 }
 
-/* ===== HERO ===== */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  box-sizing: border-box;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 50px;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.btn-accent {
+  background: var(--color-secondary);
+  color: var(--accent-ink);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.btn-accent:hover {
+  color: var(--accent-ink);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  color: var(--on-hero);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--on-hero) 65%, transparent);
+}
+
+.btn-ghost:hover {
+  color: var(--on-hero);
+  background: color-mix(in srgb, var(--on-hero) 12%, transparent);
+}
+
+/* ===== Hero ===== */
 .hero {
   background: var(--hero-gradient);
-  text-align: center;
-  padding: 5rem 2rem 4rem;
-  color: #fff;
+  color: var(--on-hero);
   position: relative;
   overflow: hidden;
 }
 
-@media (max-width: 600px) {
-  .hero {
-    padding: 3rem 1.5rem 2.5rem;
-  }
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--on-hero) 7%, transparent);
+  pointer-events: none;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  pointer-events: none;
+  width: 320px;
+  height: 320px;
+  top: -120px;
+  right: -110px;
 }
 
-/* ① Geometric decoration */
-.hero-deco {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  pointer-events: none;
+.hero::after {
+  width: 200px;
+  height: 200px;
+  bottom: -90px;
+  left: -70px;
 }
 
-.hero-deco-1 {
-  width: 180px;
-  height: 180px;
-  bottom: -40px;
-  left: -40px;
-}
-
-.hero-deco-2 {
-  width: 100px;
-  height: 100px;
-  top: 30px;
-  left: 20%;
-}
-
-.hero-deco-symbol {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.8rem;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.25);
-  pointer-events: none;
-  user-select: none;
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem max(1.25rem, env(safe-area-inset-right, 0px)) 2.25rem max(1.25rem, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
 }
 
 .hero-tag {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  padding: 0.35rem 1rem;
-  border-radius: 20px;
-  margin-bottom: 1.5rem;
-  position: relative;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--on-hero) 15%, transparent);
 }
 
 .hero h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
+  font-size: clamp(1.85rem, 7.4vw, 3.1rem);
   line-height: 1.25;
-  color: #fff;
-  margin: 0 auto 1.25rem;
-  max-width: 700px;
-  position: relative;
+  margin: 1rem 0 0.9rem;
+  color: var(--on-hero);
+  white-space: pre-line;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.88);
-  max-width: 520px;
-  margin: 0 auto 2rem;
+  font-size: 1rem;
   line-height: 1.75;
-  position: relative;
+  margin: 0;
+  max-width: 34em;
+  opacity: 0.9;
 }
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.btn-hero-primary {
-  background: #fff;
-  color: var(--color-primary);
-  padding: 0.85rem 2rem;
-  border-radius: 28px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-hero-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  color: var(--color-primary);
-}
-
-.btn-hero-secondary {
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.65);
-  padding: 0.75rem 1.75rem;
-  border-radius: 28px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.btn-hero-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0.9rem;
 }
 
 .hero-note {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.65);
   margin: 0;
-  position: relative;
-}
-
-/* ===== TRUST STRIP ===== */
-.trust-strip {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 1rem 2rem;
-  background: var(--trust-strip-bg, #fff);
-  border-bottom: 1px solid var(--trust-strip-border, var(--border-color));
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-}
-
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
   font-size: 0.82rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-/* ③ SVG icon sizing */
-.trust-icon {
-  display: flex;
-  align-items: center;
-  color: var(--color-primary);
   opacity: 0.75;
 }
 
-/* ===== WHAT IS COACHING ===== */
-.what-is-coaching {
-  padding-top: 3.5rem;
-  padding-bottom: 3rem;
+.hero-coaches {
+  display: none;
 }
 
-.what-is-coaching h2 {
-  text-align: center;
-  margin-bottom: 1.25rem;
-  color: var(--color-primary);
-  font-size: 1.8rem;
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.what-is-coaching h2::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--color-secondary);
-  border-radius: 2px;
-  margin: 0.5rem auto 0;
-}
-
-.intro-desc {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-/* 2x2 info cards */
-.info-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 600px) {
-  .info-cards-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.info-card {
-  background: var(--bg-card);
+/* ===== Coach cards (hero + mobile section) ===== */
+.coach-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  padding: 1.5rem;
-}
-
-.info-card h4 {
-  margin: 0 0 0.6rem 0;
-  color: var(--color-primary);
-  font-size: 1rem;
-  font-weight: 700;
-  padding-left: 0.75rem;
-  border-left: 3px solid var(--color-secondary);
-}
-
-.info-card p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-
-.what-is-coaching h3 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  border-left: 4px solid var(--color-secondary);
-  padding-left: 1rem;
-}
-
-.target-audience-section {
-  margin: 3rem 0;
-}
-
-.section-intro {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-
-  .hero h1 {
-    font-size: 3rem;
-  }
-}
-
-.feature-card {
-  background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
+  text-decoration: none;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.feature-card:hover {
-  transform: translateY(-4px);
+.coach-card:hover {
+  color: var(--text-main);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-card);
 }
 
-.feature-card h4 {
-  color: var(--color-secondary);
-  margin-top: 0;
+.avatar {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-soft);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.coach-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.coach-name {
+  font-weight: 700;
   font-size: 1rem;
-  margin-bottom: 0.5rem;
 }
 
-.audience-card h4 {
+.coach-title {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.coach-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.3rem;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  background: var(--color-soft);
   color: var(--color-primary);
 }
 
-.principles-section {
-  margin-top: 1rem;
-}
-
-/* ===== TESTIMONIALS ===== */
-.testimonials-section {
-  background: var(--bg-card);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  padding: 4rem 0;
-}
-
-@media (max-width: 600px) {
-  .testimonials-section {
-    padding: 2.5rem 0;
-  }
-}
-
-.testimonials-title {
-  text-align: center;
-  font-size: 1.8rem;
+.go {
+  margin-left: auto;
+  font-size: 1.5rem;
+  line-height: 1;
   color: var(--color-primary);
-  margin-bottom: 2.5rem;
-  position: relative;
 }
 
-.testimonials-title::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--color-secondary);
-  border-radius: 2px;
-  margin: 0.5rem auto 0;
+/* ===== Sections ===== */
+.section {
+  padding: 2.5rem 0;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 5.5vw, 2rem);
+  color: var(--text-main);
+  margin: 0 0 0.4rem;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+
+.trust-section {
+  padding: 1.25rem 0 0;
+}
+
+.trust {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: var(--color-soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.trust-icon {
+  display: flex;
+  color: var(--color-primary);
+}
+
+.coach-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Testimonials */
+.testimonials-section .section-title {
+  margin-bottom: 1.25rem;
 }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-@media (max-width: 600px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
+  gap: 1rem;
 }
 
 .testimonial-card {
-  background: var(--bg-color);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--color-surface);
   border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1.25rem;
   position: relative;
-  overflow: hidden;
 }
 
-/* ② Large decorative quote mark */
 .testimonial-card::before {
   content: '\201C';
-  position: absolute;
-  top: -0.5rem;
-  left: 1rem;
-  font-size: 6rem;
-  line-height: 1;
+  font-family: Georgia, serif;
+  font-size: 3.5rem;
+  line-height: 0.6;
+  height: 1.5rem;
   color: var(--color-secondary);
-  opacity: 0.18;
-  font-family: var(--font-heading);
-  pointer-events: none;
-  user-select: none;
 }
 
-.testimonial-quote {
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.75;
+.testimonial-card blockquote {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
   color: var(--text-main);
-  margin: 0 0 1.5rem;
-  font-family: var(--font-heading);
-  position: relative;
 }
 
-.testimonial-author {
+.testimonial-card figcaption {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  position: relative;
+  gap: 0.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .author-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
-  color: var(--text-main);
 }
 
 .author-context {
+  font-size: 0.8rem;
   color: var(--text-muted);
-  font-size: 0.82rem;
 }
 
-/* ===== ⑤ SCROLL FADE-IN ===== */
+/* What is coaching */
+.coaching-section {
+  background: var(--color-surface);
+  border-top: 1px solid var(--border-color);
+  padding-bottom: 3rem;
+}
+
+.intro-desc {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+  max-width: 46em;
+  margin: 0.5rem 0 1.75rem;
+}
+
+.info-grid,
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.info-card {
+  padding: 1.35rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-soft);
+}
+
+.info-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.info-card p,
+.feature-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.sub-block {
+  margin-top: 2.5rem;
+}
+
+.sub-title {
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-main);
+}
+
+.feature-card {
+  padding: 1.35rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.feature-card h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.principle-no {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ===== ≥ 600px ===== */
+@media (min-width: 600px) {
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .info-grid,
+  .card-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== ≥ 768px ===== */
+@media (min-width: 768px) {
+  .hero-inner {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== ≥ 960px: two-column hero, coaches move into it ===== */
+@media (min-width: 960px) {
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-coaches {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-xl);
+    background: color-mix(in srgb, var(--on-hero) 10%, transparent);
+  }
+
+  .coaches-section {
+    display: none;
+  }
+
+  .info-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Scroll fade-in ===== */
 @media (prefers-reduced-motion: no-preference) {
   .fade-in-section {
     opacity: 0;
@@ -589,44 +645,6 @@ onUnmounted(() => {
   .fade-in-section.is-visible {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-</style>
-
-<!-- ④ Mobile booking bar — global styles for Teleported element -->
-<style>
-.mobile-booking-bar {
-  display: none;
-}
-
-@media (max-width: 767px) {
-  .mobile-booking-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0.9rem 1.5rem;
-    padding-bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
-    background: linear-gradient(135deg, #4a6741, #3d5636);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    letter-spacing: 0.3px;
-  }
-
-  /* 當 bar 出現時，footer 和 TOP 按鈕往上移 */
-  body.has-mobile-bar footer {
-    padding-bottom: calc(2rem + 56px + env(safe-area-inset-bottom, 0px));
-  }
-
-  body.has-mobile-bar .scroll-to-top {
-    bottom: calc(1.5rem + 56px + env(safe-area-inset-bottom, 0px));
   }
 }
 </style>

@@ -1,16 +1,22 @@
 {
   "nav": {
-    "home": "About Coaching",
+    "home": "Home",
     "about": "Our Coaches",
     "services": "Services",
-    "free_trial_cta": "✨ Book a Session"
+    "free_trial_cta": "✨ Book a Session",
+    "book": "Book",
+    "language": "Language",
+    "theme_dark": "Dark mode",
+    "theme_light": "Light mode"
   },
   "home": {
     "hero_title": "Stuck?\nLet's find your way forward.",
-    "hero_subtitle": "Not advice, not therapy — coaching helps you discover your own answers. ICF certified coaches in training, bilingual EN/ZH.",
+    "hero_subtitle": "Not advice, not therapy — coaching helps you find your own answers. Bilingual EN/ZH, online.",
     "hero_badge": "🌿 ICF Coaches in Training",
     "hero_learn_more": "What is coaching? →",
-    "hero_note": "Symbolic fee · 45 min online",
+    "hero_note": "The price of a coffee · 45 min online",
+    "coaches_title": "Meet the coaches",
+    "coaches_subtitle": "Three coaches, each with their own focus",
     "testimonials_title": "What clients say",
     "testimonials": [
       {
@@ -56,16 +62,16 @@
     "title": "What is Coaching?",
     "description": "The word 'Coach' might suggest instruction or advice, but the core spirit of professional coaching is quite the opposite. It is not top-down direction, but an equal 'partnership of exploration.' This relationship aims to empower you to find strength and answers from within.",
     "hiking_metaphor_title": "The Hiking Guide Metaphor",
-    "hiking_metaphor_desc": "A coach is like a 'hiking guide'. The guide knows the terrain and can point out potential paths and landscapes, but ultimately, 'the hiker decides which path to take'. My role is to accompany you, helping you see your own strength, supporting your journey, not controlling it.",
+    "hiking_metaphor_desc": "A coach is like a 'hiking guide'. The guide knows the terrain and can point out potential paths and landscapes, but ultimately, 'the hiker decides which path to take'. The coach's role is to accompany you, helping you see your own strength, supporting your journey, not controlling it.",
     "core_principles_title": "Core Principles",
     "principles": [
       {
         "title": "Partner, Not Expert",
-        "desc": "The coach is your 'partner in exploration', not an expert providing all the answers. We believe everyone has innate potential for self-growth and problem-solving, and my job is to help you uncover that potential."
+        "desc": "The coach is your 'partner in exploration', not an expert providing all the answers. We believe everyone has innate potential for self-growth and problem-solving, and the coach's job is to help you uncover that potential."
       },
       {
         "title": "Listening & Questioning",
-        "desc": "I will not give advice or instruction. Instead, through deep listening and curious questioning, I create a safe, non-judgmental space for you to discover your own solutions."
+        "desc": "The coach won't give advice or instruction. Instead, through deep listening and curious questioning, the coach creates a safe, non-judgmental space for you to discover your own solutions."
       },
       {
         "title": "Sparking Commitment",
@@ -114,7 +120,7 @@
     "card_guide_title": "The Guide Metaphor",
     "card_science_title": "The Science Behind It",
     "card_vs_therapy_title": "vs. Therapy",
-    "card_vs_consult_title": "vs. Consulting / Mentoring",
+    "card_vs_consult_title": "vs. Consulting",
     "card_vs_mentor_title": "Coaching vs. Mentoring",
     "card_principles_title": "The 3 Core Principles",
     "card_principles_desc": "Coaches are partners, not experts. We listen deeply and ask questions. The ultimate goal is to inspire your own commitment to action."
@@ -128,7 +134,8 @@
     "icf_desc": "The ICF sets rigorous standards for the global coaching profession. Advancing from ACC to PCC involves not just accumulated hours, but a continuous refinement of the 'Coaching Mindset', 'Maintains Presence', and 'Deep Listening'.",
     "credentials": {
       "acc": "ACC (Associate Certified Coach): Entry level, requiring 60+ training hours and 100+ experience hours.",
-      "pcc": "PCC (Professional Certified Coach): Professional level, requiring 125+ training hours and 500+ experience hours (My target goal).",
+      "pcc_title": "PCC Goal",
+      "pcc": "PCC (Professional Certified Coach): Professional level, requiring 125+ training hours and 500+ experience hours (the team's next goal).",
       "mindset": "Coaching Mindset: The coach is a partner, not an expert. We believe clients have the potential for self-growth and problem-solving."
     }
   },
@@ -173,12 +180,12 @@
   },
   "services": {
     "title": "Services & Process",
-    "philosophy": "My coaching practice is built on trust, respect, and a deep belief in your capacity for growth. I stand as your partner in exploration, genuinely believing in your potential. My goal is to guide and support you with an open, curious, and client-centered mindset, helping you discover your own solutions.",
+    "philosophy": "Our coaching practice is built on trust, respect, and a deep belief in your capacity for growth. We stand as your partners in exploration, genuinely believing in your potential. Our goal is to guide and support you with an open, curious, and client-centered mindset, helping you discover your own solutions.",
     "agreement_title": "Coaching Agreement & Ethics",
     "agreement_items": [
       {
         "title": "Recording & Transcripts",
-        "desc": "To facilitate ICF core competency assessment for my ACC credentialing, sessions will be recorded and may be transcribed."
+        "desc": "To facilitate ICF core competency assessment for the coach's ACC credentialing, sessions will be recorded and may be transcribed."
       },
       {
         "title": "Client Consent",
@@ -186,7 +193,7 @@
       },
       {
         "title": "Strict Confidentiality",
-        "desc": "As an ICF professional coach, I adhere to the Gold Standard of ICF Ethics. I guarantee your conversations are strictly confidential and will not be disclosed to third parties, used solely for the ICF certification process."
+        "desc": "As ICF coaches, we adhere to the Gold Standard of ICF Ethics. We guarantee your conversations are strictly confidential and will not be disclosed to third parties, used solely for the ICF certification process."
       },
       {
         "title": "Client Responsibility",
@@ -204,24 +211,24 @@
     "process_title": "How it Works",
     "process_steps": [
       {
-        "title": "1. Discovery Session",
+        "title": "Discovery Session",
         "desc": "The first session to establish the 'Coaching Agreement', clarifying 'Where you want to go' and 'What you hope to achieve'."
       },
       {
-        "title": "2. Regular Sessions",
+        "title": "Regular Sessions",
         "desc": "Approx. 3 to 6 one-on-one sessions (online/offline), 45 mins each. Deep exploration and progress tracking."
       },
       {
-        "title": "3. Transformation & Action",
+        "title": "Transformation & Action",
         "desc": "Translating exploration into concrete action plans, sparking your commitment to achieve desired results."
       }
     ],
-    "special_offer_title": "Limited Time Offer",
-    "special_offer_desc": "As part of my certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
+    "special_offer_title": "Certification-Period Offer",
+    "special_offer_desc": "As part of our certification journey, this service is offered as a complete coaching engagement of 3–6 sessions. The fee is a symbolic 'a cup of coffee or a book' — a small token of our shared commitment to this exploration.",
     "offer_headline": "Symbolic Fee\nA coffee or a book",
     "offer_note": "45 min online · Symbolic fee",
-    "cta_button": "Contact us to book →",
-    "cta_book": "Book an Intro Call",
+    "cta_button": "Book a Session →",
+    "cta_book": "Book a Session",
     "coaches_cta_title": "Find Your Coach",
     "coaches_cta_subtitle": "Choose the coach that feels right for you and reach out through their contact"
   },
@@ -230,7 +237,7 @@
     "name": "Pauline Lin",
     "tag_self": "Self-Discovery",
     "tag_transition": "Career Transition",
-    "intro": "I believe everyone holds their own answers. A coach's role is to accompany you currently through deep listening and powerful questioning to see the situation clearly and move towards the change you truly desire.",
+    "intro": "I believe everyone holds their own answers. A coach's role is to accompany you through deep listening and powerful questioning to see the situation clearly and move towards the change you truly desire.",
     "background_title": "Professional Background",
     "background_list": [
       "HR & Organizational Development",
@@ -240,7 +247,7 @@
       "Lumina Spark Certified Practitioner"
     ],
     "about_title": "About Me",
-    "about_quote": "Many stuck points are not due to lack of ability, but because expectations and inner conflicts haven't been sorted out.",
+    "about_quote": "\"Many stuck points are not due to lack of ability, but because expectations and inner conflicts haven't been sorted out.\"",
     "about_content": "I believe everyone holds their own answers. A coach's role is to accompany you through deep listening and powerful questioning to see the current situation clearly, clarify stuck points, and move towards the change you truly desire.",
     "focus_title": "Coaching Focus",
     "focus_list": [
@@ -248,14 +255,14 @@
       "Self-Labeling & Limiting Beliefs",
       "Workplace Challenges, Decision-making Difficulties & Inner Conflicts"
     ],
-    "focus_quote": "A coach isn't here to tell you what to do, but to help you find the choices you are willing to be responsible for.",
+    "focus_quote": "\"A coach isn't here to tell you what to do, but to help you find the choices you are willing to be responsible for.\"",
     "style_title": "My Coaching Style",
     "style_list": [
       "Gentle but Direct: I will appropriately challenge limiting narratives.",
       "Safety with Logic: My safety isn't just emotional soothing, but ensuring your logic is caught and your inner self respected."
     ],
     "style_core": "In coaching conversations, I care about one thing: Helping you translate vague feelings into clear, understandable language.",
-    "practice_title": "Practice Coaching Service",
+    "practice_title": "Coaching Services",
     "practice_content": "I am currently in the coaching certification phase. Suitable for:",
     "practice_list": [
       "Those wanting to experience coaching conversations",
@@ -287,7 +294,7 @@
       "The Greater Process"
     ],
     "focus_quote": "\"Doubts about the future... What happened to me? Why are they like that? My next step/direction in the AI era?\"",
-    "style_title": "Coaching Style",
+    "style_title": "My Coaching Style",
     "style_list": [
       "Humor & Sharp Insight (Smiling + A bit of seriousness)",
       "The Elder & The Child (Tolerance/Safety + Humility/Respect)"
@@ -309,7 +316,17 @@
   "common": {
     "view_profile": "View Profile"
   },
+  "profile": {
+    "cta_title": "Want to talk with {name}?",
+    "cta_desc": "A 45-minute online session for the price of a coffee.",
+    "contact": "Contact"
+  },
+  "not_found": {
+    "title": "Page not found",
+    "desc": "The link may be mistyped, or the page has moved.",
+    "home": "Back to home"
+  },
   "footer": {
-    "updating": "This site is continually being updated."
+    "tagline": "ICF coaches in training · bilingual EN/ZH"
   }
 }
