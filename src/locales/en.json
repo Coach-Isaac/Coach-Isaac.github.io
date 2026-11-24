@@ -185,12 +185,8 @@
     "agreement_title": "Coaching Agreement & Ethics",
     "agreement_items": [
       {
-        "title": "Recording & Transcripts",
-        "desc": "For the ICF core competency assessment in the coach's ACC application, sessions are recorded, and may be transcribed, with your consent. You can decline recording and still have your session."
-      },
-      {
-        "title": "Client Consent",
-        "desc": "Recordings will only be made with your full permission, ensuring you agree to their use for the coach's ICF credential review."
+        "title": "Recording & Consent",
+        "desc": "For the ICF core competency assessment in the coach's ACC application, sessions are recorded, and may be transcribed, only if you agree. It's your choice: you can decline and still have your session."
       },
       {
         "title": "Strict Confidentiality",

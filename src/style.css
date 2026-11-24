@@ -1,6 +1,8 @@
 :root {
   font-family: 'Inter', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
-  --font-heading: 'Noto Serif TC', 'Songti TC', 'PMingLiU', Georgia, serif;
+  /* System serif fonts only: a web CJK serif cost ~0.9 MB on first visit. Georgia covers Latin letters;
+     phones without a CJK serif (e.g. iPhone) fall back to their default sans for Chinese. */
+  --font-heading: Georgia, 'Songti TC', 'STSong', 'PMingLiU', 'Noto Serif CJK TC', 'Source Han Serif TC', serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -45,7 +47,7 @@
 }
 
 :root:lang(zh-CN) {
-  --font-heading: 'Noto Serif SC', 'Songti SC', Georgia, serif;
+  --font-heading: Georgia, 'Songti SC', 'STSong', 'SimSun', 'Noto Serif CJK SC', 'Source Han Serif SC', serif;
   font-family: 'Inter', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif;
 }
 

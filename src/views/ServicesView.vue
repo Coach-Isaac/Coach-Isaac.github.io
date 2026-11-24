@@ -8,11 +8,10 @@ const { t, tm, rt } = useI18n()
 
 const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 
-// Icons for the six agreement items, in locale order:
-// recording, consent, confidentiality, responsibility, scheduling, scope.
+// Icons for the five agreement items, in locale order (keep in sync when items are added or reordered):
+// recording & consent, confidentiality, responsibility, scheduling, scope.
 const agreementIcons = [
   '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/>',
-  '<path d="M20 6 9 17l-5-5"/>',
   '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
   '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
@@ -482,6 +481,11 @@ const agreementIcons = [
 @media (min-width: 768px) {
   .agreement {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* An odd last item spans the row instead of sitting alone */
+  .agreement li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 
