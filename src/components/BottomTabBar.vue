@@ -1,29 +1,30 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { BOOKING_URL } from '../data/coaches'
+import { useLocalePath } from '../composables/useLocalePath'
 
 const { t } = useI18n()
-const route = useRoute()
+const { lp, basePath } = useLocalePath()
 const bookingUrl = BOOKING_URL
 
-const isHome = computed(() => route.path === '/')
-const isCoaches = computed(() => route.path === '/coaches' || route.path.startsWith('/coaches/'))
-const isServices = computed(() => route.path === '/services' || route.path.startsWith('/services/'))
+const isHome = computed(() => basePath.value === '/')
+const isCoaches = computed(() => basePath.value === '/coaches' || basePath.value.startsWith('/coaches/'))
+const isServices = computed(() => basePath.value === '/services' || basePath.value.startsWith('/services/'))
 </script>
 
 <template>
   <nav class="tabbar" :aria-label="t('nav.landmark_tabs')">
-    <RouterLink to="/" class="tab" :class="{ on: isHome }" :aria-current="isHome ? 'page' : null">
+    <RouterLink :to="lp('/')" class="tab" :class="{ on: isHome }" :aria-current="isHome ? 'page' : null">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
       <span>{{ t('nav.home') }}</span>
     </RouterLink>
-    <RouterLink to="/coaches" class="tab" :class="{ on: isCoaches }" :aria-current="isCoaches ? 'page' : null">
+    <RouterLink :to="lp('/coaches')" class="tab" :class="{ on: isCoaches }" :aria-current="isCoaches ? 'page' : null">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg>
       <span>{{ t('nav.about') }}</span>
     </RouterLink>
-    <RouterLink to="/services" class="tab" :class="{ on: isServices }" :aria-current="isServices ? 'page' : null">
+    <RouterLink :to="lp('/services')" class="tab" :class="{ on: isServices }" :aria-current="isServices ? 'page' : null">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.5" cy="6" r="1"/><circle cx="3.5" cy="12" r="1"/><circle cx="3.5" cy="18" r="1"/></svg>
       <span>{{ t('nav.services') }}</span>
     </RouterLink>

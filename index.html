@@ -2,12 +2,14 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <!-- Runs before first paint: marks that scripts work (enables scroll fade-ins), applies a saved
-         light/dark choice so pre-rendered pages do not flash the system theme, and hides the
-         pre-rendered page when it is not this visitor's (another address, e.g. GitHub's 404.html copy,
-         or likely another language). src/main.js uses the same path rule, re-renders and shows the
-         page; the language check is a loose copy of detectClientLocale in src/i18n.js. -->
-    <script>(function(){var d=document.documentElement,l=null;d.classList.add('js');try{var t=localStorage.getItem('theme-preference');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);l=localStorage.getItem('locale-preference')}catch(e){}if(!l){var n=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();l=/bot\/|\bbot\b|crawler|spider|slurp/i.test(navigator.userAgent)||(n.indexOf('zh')===0&&!/^zh[-_](cn|sg|my)|hans/.test(n))?'zh-TW':'other'}var p=location.pathname.replace(/(.)\/$/,'$1');if(l!==d.getAttribute('data-prerender-locale')||p!==d.getAttribute('data-prerender-path'))d.classList.add('prerender-pending')})()</script>
+    <!-- Runs before first paint: marks that scripts work (enables scroll fade-ins); applies a saved
+         light/dark choice so pre-rendered pages do not flash the system theme; sends visitors who once
+         picked English or Simplified Chinese from the zh-TW home page to that language's home (only
+         an explicit choice is stored, never browser detection, and crawlers have none; arriving from
+         another page of this site, e.g. a link opened in a new tab, is never redirected); and hides the
+         pre-rendered page when it is not this address's (GitHub's 404.html copy of the home page),
+         using the same path rule as src/main.js, which then renders and shows the right page. -->
+    <script>(function(){var d=document.documentElement,l=null;d.classList.add('js');try{var t=localStorage.getItem('theme-preference');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);l=localStorage.getItem('locale-preference')}catch(e){}var p=location.pathname.replace(/(.)\/$/,'$1');if((p==='/'||p==='/index.html')&&(l==='en'||l==='zh-CN')&&document.referrer.indexOf(location.origin+'/')!==0){d.classList.add('prerender-pending');location.replace('/'+l+'/'+location.search+location.hash);return}if(p!==d.getAttribute('data-prerender-path'))d.classList.add('prerender-pending')})()</script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

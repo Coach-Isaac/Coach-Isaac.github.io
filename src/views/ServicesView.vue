@@ -1,10 +1,12 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '../composables/useLocalePath'
 import { RouterLink } from 'vue-router'
 import ContactIcon from '../components/ContactIcon.vue'
 import { coaches } from '../data/coaches'
 
 const { t, tm, rt } = useI18n()
+const { lp } = useLocalePath()
 
 const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 
@@ -77,7 +79,7 @@ const agreementIcons = [
         <p class="block-sub">{{ t('services.coaches_cta_subtitle') }}</p>
         <div class="coach-grid">
           <article v-for="c in coaches" :key="c.id" class="coach-card">
-            <RouterLink :to="c.route" class="card-top">
+            <RouterLink :to="lp(c.route)" class="card-top">
               <span class="avatar">
                 <img v-if="c.photo" :src="c.photo" alt="" />
                 <span v-else aria-hidden="true">{{ c.initial }}</span>
@@ -100,7 +102,7 @@ const agreementIcons = [
                   <ContactIcon :type="c.social.type" />{{ c.social.type === 'instagram' ? 'Instagram' : 'LinkedIn' }}
                 </a>
               </div>
-              <RouterLink :to="c.route" class="more">{{ t('common.view_profile') }} →</RouterLink>
+              <RouterLink :to="lp(c.route)" class="more">{{ t('common.view_profile') }} →</RouterLink>
             </div>
           </article>
         </div>

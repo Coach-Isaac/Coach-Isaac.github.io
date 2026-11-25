@@ -21,6 +21,18 @@
     "hero_badge": "One-to-one coaching sessions",
     "hero_learn_more": "What is coaching? →",
     "hero_note": "A coffee, a drink or a book as a thank-you · 45 min online",
+    "topics_title": "Where would you like to make progress?",
+    "topics_desc": "Work, relationships, everyday life, or a goal you want to reach: you can start from whatever matters to you.",
+    "topics_example": "For example",
+    "topics_note": "These are only examples, not fixed service packages, and you don't need to know exactly what to talk about yet. Bring anything you care about, want to explore or want to move forward on. Your coach helps you think, notice and choose, but does not give therapy, medical, financial or legal advice.",
+    "topics": [
+      { "title": "Career and work", "items": "Career development, changing jobs and career choices, promotion and professional growth, performance and feeling stuck at work, role changes, work–life balance", "question": "I want to change jobs, but I'm not sure what I really want." },
+      { "title": "People and relationships", "items": "Parents and children, partners and family, friends and colleagues, managers and teams, communication and conflict, personal boundaries", "question": "I want to talk with my child in a better way." },
+      { "title": "Dreams and personal goals", "items": "Finding the goals you really want, making important choices, self-awareness, personal growth, following through, direction in life", "question": "I've had a dream for a long time, but I don't know where to start." },
+      { "title": "Money and income", "items": "Clarifying income goals, exploring ways to earn more, your relationship with money and money habits, career and income choices", "question": "I'd like to earn more, but I haven't found a direction that suits me." },
+      { "title": "Health and everyday life", "items": "Health and fitness goals, exercise and eating habits, self-discipline and keeping going, time management, quality of life", "question": "I want healthier habits that I can actually keep." },
+      { "title": "Business and leadership", "items": "Company growth and new ventures, business goals, managing a team, leadership, decisions and strategic thinking", "question": "I want to become the kind of manager my team needs." }
+    ],
     "coaches_title": "Meet the coaches",
     "coaches_subtitle": "Three coaches, each with their own focus",
     "testimonials_title": "What clients say",
@@ -229,6 +241,10 @@
       {
         "q": "How is coaching different from counseling?",
         "a": "Coaching is a forward-focused partnership. Through listening and questions, your coach helps you clarify your goals, find your own answers and act on them. It is not therapy or counseling; if you need deeper mental health support, your coach will help refer you to the right professional."
+      },
+      {
+        "q": "Can I book without a clear goal?",
+        "a": "Yes. Many people start knowing only that there is something they want to think through, or that they feel stuck. The first session can start from where things are now, and you and your coach work out together what you want to focus on."
       }
     ],
     "process_title": "How it Works",
@@ -344,7 +360,15 @@
   "site": {
     "brand": "Stepflect",
     "home_title": "Stepflect {'|'} One-to-One Coaching Sessions",
-    "page_title": "{page} {'|'} Stepflect"
+    "page_title": "{page} {'|'} Stepflect",
+    "home_description": "Stepflect offers one-to-one coaching. Through coaching conversations we help you sort out your thinking, explore possibilities and find your own direction, so you make progress in your career, relationships, life, business and personal goals. Sessions in English and Chinese, mostly online.",
+    "og_title": "Stepflect {'|'} Your goals. Your way. Your progress.",
+    "og_description": "One-to-one coaching conversations to sort out your thinking, explore possibilities and find your own direction. 45-minute introductory session, in English or Chinese, mostly online.",
+    "og_image_alt": "Stepflect 進一程 logo with the line 前進，不只有一種方式 (There is more than one way forward). One-to-one coaching",
+    "services_page_title": "Coaching Sessions and Process",
+    "services_description": "The 45-minute introductory coaching session is mostly online, in English or Chinese, with a coffee, a drink or a book as thanks. How sessions work, recording and confidentiality, how to book, and common questions.",
+    "coach_page_name": "{name}, {title}",
+    "service_name": "One-to-One Coaching"
   },
   "not_found": {
     "title": "Page not found",

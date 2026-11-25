@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vite build --ssr src/entry-server.js --outDir node_modules/.cache/stepflect-ssr --emptyOutDir && node scripts/page-meta.js && node scripts/prerender.js",
+    "build": "vite build && vite build --ssr src/entry-server.js --outDir node_modules/.cache/stepflect-ssr --emptyOutDir && node scripts/page-meta.js && node scripts/prerender.js && node scripts/verify-dist.js",
     "preview": "vite preview"
   },
   "dependencies": {

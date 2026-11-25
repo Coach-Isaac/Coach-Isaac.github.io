@@ -114,8 +114,8 @@
   color-scheme: dark;
 }
 
-/* When the pre-rendered HTML may not be what this visitor gets (another language, or GitHub Pages'
-   404.html copy of the home page), keep it hidden until src/main.js has rendered the right page.
+/* When the pre-rendered HTML is not this address's page (GitHub Pages' 404.html copy of the home page,
+   or a "/x.html" address), keep it hidden until src/main.js has rendered the right page.
    The class comes from the inline script in index.html. */
 html.prerender-pending #app {
   visibility: hidden;

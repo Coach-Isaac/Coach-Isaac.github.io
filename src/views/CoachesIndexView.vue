@@ -1,10 +1,12 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '../composables/useLocalePath'
 import { RouterLink } from 'vue-router'
 import CoachTabNav from '../components/CoachTabNav.vue'
 import { coaches } from '../data/coaches'
 
 const { t } = useI18n()
+const { lp } = useLocalePath()
 const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
 </script>
 
@@ -24,7 +26,7 @@ const coachName = (c) => t(`${c.prefix}.name`).replace(/\n/g, ' ')
         <RouterLink
           v-for="c in coaches"
           :key="c.id"
-          :to="c.route"
+          :to="lp(c.route)"
           class="coach-card"
           :aria-label="`${coachName(c)} — ${t('common.view_profile')}`"
         >
