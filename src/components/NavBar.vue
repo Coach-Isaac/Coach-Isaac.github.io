@@ -5,6 +5,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
 import { LOCALE_STORAGE_KEY } from '../i18n'
 import { BOOKING_URL } from '../data/coaches'
+import BrandLogo from './BrandLogo.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()
@@ -59,7 +60,7 @@ const { isDark, toggle } = useTheme()
 <template>
   <nav class="navbar" :aria-label="t('nav.landmark_main')">
     <div class="nav-inner">
-      <RouterLink to="/" class="nav-brand">Coach <span>Isaac</span></RouterLink>
+      <RouterLink to="/" class="nav-brand" :aria-label="t('site.brand')"><BrandLogo /></RouterLink>
 
       <div class="nav-links">
         <RouterLink to="/" exact-active-class="is-active">{{ t('nav.home') }}</RouterLink>
@@ -147,16 +148,11 @@ const { isDark, toggle } = useTheme()
 }
 
 .nav-brand {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  white-space: nowrap;
+  --brand-size: 28px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
-}
-
-.nav-brand span {
-  color: var(--accent-text);
 }
 
 .nav-links {
@@ -290,6 +286,10 @@ const { isDark, toggle } = useTheme()
     height: 68px;
     padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
     padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+
+  .nav-brand {
+    --brand-size: 34px;
   }
 
   .nav-links,

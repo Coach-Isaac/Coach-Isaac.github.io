@@ -16,6 +16,14 @@
 
   --hero-gradient: linear-gradient(135deg, #1F3A5F 0%, #2A4D78 55%, #2F5A8A 100%);
   --on-hero: #ffffff;
+
+  /* Stepflect logo (BrandLogo.vue). The accent is the coral darkened to 3:1 on the page background;
+     the muted cells are decoration and stay lighter on purpose. See docs/design-spec.md. */
+  --brand-logo-primary: #1F3A5F;
+  --brand-logo-accent: #EB6B4A;
+  --brand-logo-muted: #7B8BA1;
+  --brand-wordmark: var(--text-main);
+  --brand-wordmark-sub: var(--text-muted);
   --shadow-card: 0 6px 20px rgba(31, 58, 95, 0.10);
   --shadow-soft: 0 1px 3px rgba(31, 58, 95, 0.08);
   --radius-sm: 10px;
@@ -73,6 +81,9 @@
     --text-main: #E6ECF4;
     --text-muted: #9AA7B8;
     --border-color: #263447;
+    --brand-logo-primary: #8FB3E0;
+    --brand-logo-accent: #FF8C6E;
+    --brand-logo-muted: #597190;
     color-scheme: dark;
   }
 }
@@ -97,6 +108,9 @@
   --text-main: #E6ECF4;
   --text-muted: #9AA7B8;
   --border-color: #263447;
+  --brand-logo-primary: #8FB3E0;
+  --brand-logo-accent: #FF8C6E;
+  --brand-logo-muted: #597190;
   color-scheme: dark;
 }
 

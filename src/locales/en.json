@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "Our Coaches",
     "services": "Services",
-    "free_trial_cta": "✨ Book a Session",
+    "free_trial_cta": "Book a Session",
+    "book_intro_cta": "Book an Introductory Coaching Session",
     "book": "Book",
     "language": "Language",
     "theme_dark": "Dark mode",
@@ -14,9 +15,10 @@
     "landmark_coaches": "Coaches"
   },
   "home": {
-    "hero_title": "Stuck?\nLet's find your way forward.",
-    "hero_subtitle": "Not advice, not therapy — coaching helps you find your own answers. Bilingual EN/ZH, mainly online.",
-    "hero_badge": "🌿 ICF Coaches in Training",
+    "hero_title": "Your goals. Your way. Your progress.",
+    "hero_lede": "There is more than one way forward.",
+    "hero_subtitle": "Whether you want to understand yourself better, find a way through a hard stretch, or move toward a goal, our one-to-one coaching conversations help you sort out your thinking, explore other possibilities, find a direction that fits you, and act on the choices you make.",
+    "hero_badge": "One-to-one coaching sessions",
     "hero_learn_more": "What is coaching? →",
     "hero_note": "A coffee, a drink or a book as a thank-you · 45 min online",
     "coaches_title": "Meet the coaches",
@@ -79,14 +81,12 @@
       },
       {
         "title": "Sparking Commitment",
-        "desc": "The ultimate goal of coaching conversations is to 'spark commitment'. Through dialogue, we explore possibilities and translate them into concrete action plans to achieve your desires."
+        "desc": "The aim of coaching conversations is to 'spark commitment'. Through dialogue, we explore possibilities together, and you decide which of them to turn into a concrete plan of action."
       }
     ],
-    "neuroscience_title": "The Science Behind Coaching",
-    "neuroscience_desc": "Neuroscience confirms that the brain loves to learn and build new neural pathways. The core function of coaching is to help clients 'create new habits' to replace old ones, rather than fighting them. This change based on intrinsic motivation is more energy-efficient and sustainable than relying solely on willpower.",
     "distinctions_title": "Distinctions from Other Professions",
     "distinction_1_title": "Therapy",
-    "distinction_1_desc": "Focuses on past trauma and healing vs Coaching focuses on future possibilities and action.",
+    "distinction_1_desc": "Counseling and therapy address mental health and may involve assessment and treatment. Coaching does not diagnose or treat; it helps you explore where you want to go, make your own choices and act on them. When it would help, your coach will suggest seeing a mental health professional.",
     "distinction_2_title": "Consulting",
     "distinction_2_desc": "Provides expert answers and diagnosis vs Coaching believes clients have their own answers.",
     "distinction_3_title": "Mentoring",
@@ -107,8 +107,8 @@
         "desc": "Coaching isn't just about achieving goals, but who you become in the process. For those seeking self-awareness, challenging blind spots, and meaningful change."
       },
       {
-        "title": "Those in life transitions, challenges, or 'Survival Mode'",
-        "desc": "Whether feeling stuck in survival mode, seeking structure amidst chaos, or wanting 'go-forward healing', coaching helps reconnect with your inner self."
+        "title": "Those in a time of transition or challenge",
+        "desc": "Whether your life or work is changing, you face a new challenge, or you want to find your own pace again, coaching conversations help you take stock and see your direction more clearly."
       },
       {
         "title": "Those wanting to enhance leadership or relationships",
@@ -122,7 +122,6 @@
     "climber_metaphor_title": "The Climber's Mindset",
     "climber_metaphor_desc": "People seeking a coach are like climbers preparing for a new path. They don't want someone to carry their backpack or carry them to the summit. They want a guide who knows the terrain to point out paths, but ultimately, the climber retains the decision of which way to go, building strength along the way.",
     "card_guide_title": "The Guide Metaphor",
-    "card_science_title": "The Science Behind It",
     "card_vs_therapy_title": "vs. Therapy",
     "card_vs_consult_title": "vs. Consulting",
     "card_vs_mentor_title": "Coaching vs. Mentoring",
@@ -190,7 +189,7 @@
       },
       {
         "title": "Strict Confidentiality",
-        "desc": "We follow the ICF Code of Ethics and keep your conversations strictly confidential. Apart from recordings and transcripts you agree to for the coach's ICF credential review, nothing is shared with any third party. Your privacy and trust matter deeply to us."
+        "desc": "We follow the ICF Code of Ethics and keep your conversations strictly confidential. Apart from recordings and transcripts you agree to for the coach's ICF credential review, nothing is shared with any third party. Your privacy and trust matter deeply to us. Under the ICF Code of Ethics, confidentiality does not cover illegal activity, disclosure required by law, or imminent danger to you or others."
       },
       {
         "title": "Client Responsibility",
@@ -225,7 +224,7 @@
       },
       {
         "q": "Is what I share kept confidential?",
-        "a": "Yes. We follow the ICF Code of Ethics. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent, and used only for that review; beyond that, nothing you share goes to any third party. You can decline recording and still have your session."
+        "a": "Yes. We follow the ICF Code of Ethics. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent, and used only for that review; beyond that, nothing you share goes to any third party. You can decline recording and still have your session. Under the ICF Code of Ethics, confidentiality does not cover illegal activity, disclosure required by law, or imminent danger to you or others."
       },
       {
         "q": "How is coaching different from counseling?",
@@ -244,7 +243,7 @@
       },
       {
         "title": "Transformation & Action",
-        "desc": "Translating exploration into concrete action plans, sparking your commitment to achieve desired results."
+        "desc": "Turning what you explore into an action plan you choose, committing to it and getting started."
       }
     ],
     "cta_button": "Book a Session →",
@@ -343,8 +342,9 @@
     "contact": "Contact"
   },
   "site": {
-    "home_title": "Coach Isaac {'|'} Book an intro coaching session",
-    "page_title": "{page} {'|'} Coach Isaac"
+    "brand": "Stepflect",
+    "home_title": "Stepflect {'|'} One-to-One Coaching Sessions",
+    "page_title": "{page} {'|'} Stepflect"
   },
   "not_found": {
     "title": "Page not found",
@@ -353,7 +353,7 @@
   },
   "privacy": {
     "title": "Privacy",
-    "updated": "Last updated: November 24, 2026",
+    "updated": "Last updated: November 25, 2026",
     "intro": "We care about your privacy. This page explains what information we receive when you use this site and book a session, how we use it, and how you can see or delete it.",
     "sections": [
       {
@@ -370,11 +370,11 @@
       },
       {
         "title": "Booking form",
-        "body": "Booking uses Google Forms, so your answers are stored by Google. Coach Isaac receives the form and passes only what is needed to arrange the session to the coach you chose. We use this information only to arrange and contact you about sessions, and do not share it with any other third party."
+        "body": "Booking uses Google Forms, so your answers are stored by Google. Isaac, one of our coaches, receives the form and passes only what is needed to arrange the session to the coach you chose. We use this information only to arrange and contact you about sessions, and do not share it with any other third party."
       },
       {
         "title": "Session content",
-        "body": "What you share in sessions is kept confidential. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review. You can decline recording and still have your session."
+        "body": "What you share in sessions is kept confidential. For the coach's ICF credential review, sessions are recorded, and may be transcribed, only with your consent; these are used only for that review. You can decline recording and still have your session. Under the ICF Code of Ethics, confidentiality does not cover illegal activity, disclosure required by law, or imminent danger to you or others."
       },
       {
         "title": "Emailing a coach directly",
@@ -389,9 +389,11 @@
     "contact_body": "Questions about this page or your information? Email us:"
   },
   "footer": {
+    "slogan": "There is more than one way forward.",
     "tagline": "ICF coaches in training · bilingual EN/ZH",
     "contact_title": "Contact us",
-    "contact_desc": "Questions before you book? Feel free to email us first.",
-    "contact_coaches": "Contact a coach directly →"
+    "contact_coaches": "Contact a coach directly →",
+    "disclaimer": "Coaching is not counseling or medical care, and it cannot replace professional mental health or medical support.",
+    "crisis": "If you are thinking about harming yourself, in Taiwan you can call the {hotline} Mental Health Hotline (24 hours, free); elsewhere, please contact your local emergency services or a crisis line."
   }
 }
