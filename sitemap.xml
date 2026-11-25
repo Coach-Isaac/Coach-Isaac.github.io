@@ -1,10 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://coach-isaac.github.io/</loc></url>
-  <url><loc>https://coach-isaac.github.io/coaches</loc></url>
-  <url><loc>https://coach-isaac.github.io/coaches/isaac</loc></url>
-  <url><loc>https://coach-isaac.github.io/coaches/pauline</loc></url>
-  <url><loc>https://coach-isaac.github.io/coaches/vincent</loc></url>
-  <url><loc>https://coach-isaac.github.io/services</loc></url>
-  <url><loc>https://coach-isaac.github.io/privacy</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://coach-isaac.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/coaches</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/coaches</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/coaches</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/coaches/isaac</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/isaac" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/coaches/isaac</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/isaac" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/coaches/isaac</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/isaac" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/isaac" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/coaches/pauline</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/pauline" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/coaches/pauline</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/pauline" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/coaches/pauline</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/pauline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/pauline" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/coaches/vincent</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/vincent" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/coaches/vincent</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/vincent" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/coaches/vincent</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/coaches/vincent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/coaches/vincent" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/services</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/services" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/services" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/services</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/services" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/services" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/services" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/services" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/privacy" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/zh-CN/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/privacy" />
+  </url>
+  <url>
+    <loc>https://coach-isaac.github.io/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://coach-isaac.github.io/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://coach-isaac.github.io/zh-CN/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://coach-isaac.github.io/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://coach-isaac.github.io/privacy" />
+  </url>
 </urlset>
