@@ -138,8 +138,8 @@ function jsonLd(page, locale, head) {
         description: text(locale, 'site.og_description'),
         provider: { '@id': ORG },
         url: url('/services', locale),
-        availableLanguage: ['zh', 'en'],
-        availableChannel: { '@type': 'ServiceChannel', serviceUrl: BOOKING_URL },
+        // availableLanguage belongs to the channel; schema.org does not define it on Service.
+        availableChannel: { '@type': 'ServiceChannel', serviceUrl: BOOKING_URL, availableLanguage: ['zh', 'en'] },
       },
       ...persons,
       pageNode,
