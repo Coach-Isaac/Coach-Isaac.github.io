@@ -106,7 +106,7 @@ One `@graph` per page with stable `@id`s, so every page describes the same entit
 |---|---|---|
 | WebSite | `/#website` | name Stepflect, alternateName Stepflect 進一程 / 進一程 |
 | Organization | `/#organization` | the coaching team brand; logo `icon-192.png`; members = the coaches. No address, legal name or registration (none exists). No `sameAs`: the brand has no official social accounts yet. |
-| Service | `/#service` | one-to-one coaching; provider = Organization; languages zh, en; booking form as the channel. No price, offer or rating. |
+| Service | `/#service` | one-to-one coaching; provider = Organization; the booking form as the channel (ServiceChannel, with `availableLanguage` zh, en — schema.org has no `availableLanguage` on Service itself). No price, offer or rating. |
 | Person ×3 | `/coaches/<id>#person` | name, Chinese name, job title and intro from the locale files, `sameAs` = the social link shown on their page, memberOf = Organization. No credentials beyond what the site states. |
 | WebPage / ProfilePage | `<page url>#webpage` | ProfilePage on coach pages (mainEntity = the coach) |
 
