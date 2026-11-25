@@ -100,7 +100,8 @@
 3. 結構化資料是否加 Service／Person。
 4. 手動選了和系統相反主題的使用者，載入時會短暫看到系統主題（改版前就有）；是否在 `<head>` 加同步設定。
 5. 另外兩位教練是否同意以 Stepflect 共同品牌呈現。
-6. Logo 參考圖要不要放進 `docs/design-references/`。
+
+Logo 參考圖已放在 `docs/design-references/`（2026-11-25）。
 
 ## 10. 上線檢查清單
 
