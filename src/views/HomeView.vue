@@ -651,14 +651,15 @@ onUnmounted(() => {
 }
 
 /* ===== Scroll fade-in ===== */
+/* Only when scripts run (html.js, set in index.html): without them the sections must stay visible. */
 @media (prefers-reduced-motion: no-preference) {
-  .fade-in-section {
+  html.js .fade-in-section {
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
-  .fade-in-section.is-visible {
+  html.js .fade-in-section.is-visible {
     opacity: 1;
     transform: translateY(0);
   }

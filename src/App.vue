@@ -14,8 +14,11 @@ const route = useRoute()
 const bookingUrl = BOOKING_URL
 const year = new Date().getFullYear()
 
+// The pre-rendered HTML already carries lang and <title>; these keep them right while browsing.
+const inBrowser = typeof document !== 'undefined'
+
 watch(locale, (lang) => {
-  document.documentElement.lang = lang
+  if (inBrowser) document.documentElement.lang = lang
 }, { immediate: true })
 
 // Browser tab title per page and language, e.g. "林依雯 Pauline Lin｜Stepflect 進一程".
@@ -27,6 +30,7 @@ const pageName = computed(() => {
 })
 
 watchEffect(() => {
+  if (!inBrowser) return
   document.title = pageName.value
     ? t('site.page_title', { page: pageName.value })
     : t('site.home_title')
@@ -67,7 +71,7 @@ watchEffect(() => {
         <div class="footer-notice">
           <p>{{ t('footer.disclaimer') }}</p>
           <p>
-            <i18n-t keypath="footer.crisis" tag="span">
+            <i18n-t keypath="footer.crisis" tag="span" scope="global">
               <template #hotline><a href="tel:1925" class="hotline">1925</a></template>
             </i18n-t>
           </p>

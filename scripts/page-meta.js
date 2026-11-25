@@ -5,13 +5,14 @@
 // coaches/isaac.html is served at /coaches/isaac with HTTP 200, so the URLs stay the same.
 // The page body is still rendered by the Vue app; only <head> differs between the files.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { coaches } from '../src/data/coaches.js'
 
 const SITE = 'https://coach-isaac.github.io'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const dist = join(root, 'dist')
+// DIST_DIR lets a check build go elsewhere without touching the preview's dist/.
+const dist = resolve(root, process.env.DIST_DIR || 'dist')
 
 // Share previews use zh-TW, the site's default language and the one index.html is written in.
 const zh = JSON.parse(readFileSync(join(root, 'src/locales/zh-TW.json'), 'utf8'))

@@ -32,27 +32,33 @@ function getInitialDark() {
   return getSystemDark()
 }
 
-const isDark = ref(getInitialDark())
+// The build also loads this module to pre-render pages, where there is no window; the theme is
+// then left to the browser (CSS media query plus the inline script in index.html).
+const inBrowser = typeof window !== 'undefined'
+
+const isDark = ref(inBrowser ? getInitialDark() : false)
 
 function applyTheme(dark) {
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
 }
 
-applyTheme(isDark.value)
-
-watchEffect(() => {
+if (inBrowser) {
   applyTheme(isDark.value)
-})
 
-const followSystem = (e) => {
-  if (!readStored()) {
-    isDark.value = e.matches
+  watchEffect(() => {
+    applyTheme(isDark.value)
+  })
+
+  const followSystem = (e) => {
+    if (!readStored()) {
+      isDark.value = e.matches
+    }
   }
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+  // Safari before 14 only has the older addListener; calling addEventListener there would throw and blank the page.
+  if (mediaQuery.addEventListener) mediaQuery.addEventListener('change', followSystem)
+  else mediaQuery.addListener?.(followSystem)
 }
-const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-// Safari before 14 only has the older addListener; calling addEventListener there would throw and blank the page.
-if (mediaQuery.addEventListener) mediaQuery.addEventListener('change', followSystem)
-else mediaQuery.addListener?.(followSystem)
 
 function toggle() {
   isDark.value = !isDark.value
