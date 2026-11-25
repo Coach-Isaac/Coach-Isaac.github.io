@@ -5,28 +5,41 @@ import BottomTabBar from './components/BottomTabBar.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
 import ContactIcon from './components/ContactIcon.vue'
 import BrandLogo from './components/BrandLogo.vue'
+import LanguageHint from './components/LanguageHint.vue'
 import { RouterView, RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { BOOKING_URL, CONTACT_EMAIL, findCoach } from './data/coaches'
+import { useLocalePath } from './composables/useLocalePath'
 
 const { t, locale } = useI18n()
 const route = useRoute()
+const { lp } = useLocalePath()
 const bookingUrl = BOOKING_URL
 const year = new Date().getFullYear()
 
+// The pre-rendered HTML already carries lang and <title>; these keep them right while browsing.
+const inBrowser = typeof document !== 'undefined'
+
 watch(locale, (lang) => {
-  document.documentElement.lang = lang
+  if (inBrowser) document.documentElement.lang = lang
 }, { immediate: true })
 
-// Browser tab title per page and language, e.g. "林依雯 Pauline Lin｜Stepflect 進一程".
+// Browser tab title per page and language, e.g. "林依雯 Pauline Lin・人生願景與提升教練｜Stepflect 進一程".
+// Must match what scripts/page-meta.js writes into the pre-rendered <title>.
 const pageName = computed(() => {
   const coach = route.meta.coachId && findCoach(route.meta.coachId)
-  if (coach) return t(`${coach.prefix}.name`).replace(/\n/g, ' ')
+  if (coach) {
+    return t('site.coach_page_name', {
+      name: t(`${coach.prefix}.name`).replace(/\n/g, ' '),
+      title: t(`${coach.prefix}.title`),
+    })
+  }
   if (route.meta.titleKey) return t(route.meta.titleKey)
   return null
 })
 
 watchEffect(() => {
+  if (!inBrowser) return
   document.title = pageName.value
     ? t('site.page_title', { page: pageName.value })
     : t('site.home_title')
@@ -36,6 +49,7 @@ watchEffect(() => {
 <template>
   <div class="app-layout">
     <NavBar />
+    <LanguageHint />
 
     <main>
       <RouterView />
@@ -44,21 +58,21 @@ watchEffect(() => {
     <footer class="site-footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <RouterLink to="/" class="footer-logo" :aria-label="t('site.brand')"><BrandLogo /></RouterLink>
+          <RouterLink :to="lp('/')" class="footer-logo" :aria-label="t('site.brand')"><BrandLogo /></RouterLink>
           <p class="footer-slogan">{{ t('footer.slogan') }}</p>
           <p class="footer-tagline">{{ t('footer.tagline') }}</p>
         </div>
         <nav class="footer-links" :aria-label="t('nav.landmark_footer')">
-          <RouterLink to="/">{{ t('nav.home') }}</RouterLink>
-          <RouterLink to="/coaches">{{ t('nav.about') }}</RouterLink>
-          <RouterLink to="/services">{{ t('nav.services') }}</RouterLink>
+          <RouterLink :to="lp('/')">{{ t('nav.home') }}</RouterLink>
+          <RouterLink :to="lp('/coaches')">{{ t('nav.about') }}</RouterLink>
+          <RouterLink :to="lp('/services')">{{ t('nav.services') }}</RouterLink>
         </nav>
         <div class="footer-contact">
           <h2>{{ t('footer.contact_title') }}</h2>
           <a :href="`mailto:${CONTACT_EMAIL}`" class="contact-email">
             <ContactIcon type="email" />{{ CONTACT_EMAIL }}
           </a>
-          <RouterLink to="/services#coaches" class="contact-coaches">{{ t('footer.contact_coaches') }}</RouterLink>
+          <RouterLink :to="lp('/services#coaches')" class="contact-coaches">{{ t('footer.contact_coaches') }}</RouterLink>
         </div>
         <!-- Short label: the long one squeezes the brand column on tablets and small desktops. -->
         <a :href="bookingUrl" target="_blank" rel="noopener" class="footer-cta">{{ t('nav.free_trial_cta') }}</a>
@@ -67,7 +81,7 @@ watchEffect(() => {
         <div class="footer-notice">
           <p>{{ t('footer.disclaimer') }}</p>
           <p>
-            <i18n-t keypath="footer.crisis" tag="span">
+            <i18n-t keypath="footer.crisis" tag="span" scope="global">
               <template #hotline><a href="tel:1925" class="hotline">1925</a></template>
             </i18n-t>
           </p>
@@ -75,7 +89,7 @@ watchEffect(() => {
         <p class="footer-copy">
           &copy; {{ year }} {{ t('site.brand') }}
           <span aria-hidden="true">·</span>
-          <RouterLink to="/privacy">{{ t('privacy.title') }}</RouterLink>
+          <RouterLink :to="lp('/privacy')">{{ t('privacy.title') }}</RouterLink>
         </p>
       </div>
     </footer>

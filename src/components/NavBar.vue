@@ -1,14 +1,16 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { useTheme } from '../composables/useTheme'
+import { useLocalePath } from '../composables/useLocalePath'
 import { LOCALE_STORAGE_KEY } from '../i18n'
+import { localePath } from '../locale-paths'
 import { BOOKING_URL } from '../data/coaches'
 import BrandLogo from './BrandLogo.vue'
 
 const { locale, t } = useI18n()
-const route = useRoute()
+const { lp, basePath } = useLocalePath()
 const bookingUrl = BOOKING_URL
 
 // `name` is what screen readers announce; each language is named in itself.
@@ -21,8 +23,11 @@ const languages = [
 const langOpen = ref(false)
 const langMenuRef = ref(null)
 
-const changeLanguage = (lang) => {
-  locale.value = lang
+// Each language is a link to the same page in that language (pages without one, like 404, go to
+// that language's home). Clicking also remembers the choice, which the inline script in
+// index.html uses to send this visitor from the zh-TW home page to their language next time.
+const languageLink = (lang) => localePath(basePath.value || '/', lang)
+const rememberLanguage = (lang) => {
   langOpen.value = false
   try {
     localStorage.setItem(LOCALE_STORAGE_KEY, lang)
@@ -31,8 +36,9 @@ const changeLanguage = (lang) => {
   }
 }
 
-const isCoachesPage = computed(() => route.path === '/coaches' || route.path.startsWith('/coaches/'))
-const isServicesPage = computed(() => route.path === '/services' || route.path.startsWith('/services/'))
+const isHomePage = computed(() => basePath.value === '/')
+const isCoachesPage = computed(() => basePath.value === '/coaches' || basePath.value.startsWith('/coaches/'))
+const isServicesPage = computed(() => basePath.value === '/services' || basePath.value.startsWith('/services/'))
 
 const currentLanguageShort = computed(() => languages.find(l => l.code === locale.value)?.short ?? 'EN')
 
@@ -55,32 +61,39 @@ onUnmounted(() => {
 })
 
 const { isDark, toggle } = useTheme()
+
+// Pre-rendered HTML cannot know the visitor's theme, so the button starts as in that HTML
+// (light) and shows the real state once the page is live; otherwise hydration would mismatch.
+const mounted = ref(false)
+onMounted(() => { mounted.value = true })
+const showDark = computed(() => mounted.value && isDark.value)
 </script>
 
 <template>
   <nav class="navbar" :aria-label="t('nav.landmark_main')">
     <div class="nav-inner">
-      <RouterLink to="/" class="nav-brand" :aria-label="t('site.brand')"><BrandLogo /></RouterLink>
+      <RouterLink :to="lp('/')" class="nav-brand" :aria-label="t('site.brand')"><BrandLogo /></RouterLink>
 
       <div class="nav-links">
-        <RouterLink to="/" exact-active-class="is-active">{{ t('nav.home') }}</RouterLink>
-        <RouterLink to="/coaches" :class="{ 'is-active': isCoachesPage }" :aria-current="isCoachesPage ? 'page' : null">{{ t('nav.about') }}</RouterLink>
-        <RouterLink to="/services" :class="{ 'is-active': isServicesPage }" :aria-current="isServicesPage ? 'page' : null">{{ t('nav.services') }}</RouterLink>
+        <RouterLink :to="lp('/')" :class="{ 'is-active': isHomePage }" :aria-current="isHomePage ? 'page' : null">{{ t('nav.home') }}</RouterLink>
+        <RouterLink :to="lp('/coaches')" :class="{ 'is-active': isCoachesPage }" :aria-current="isCoachesPage ? 'page' : null">{{ t('nav.about') }}</RouterLink>
+        <RouterLink :to="lp('/services')" :class="{ 'is-active': isServicesPage }" :aria-current="isServicesPage ? 'page' : null">{{ t('nav.services') }}</RouterLink>
       </div>
 
       <div class="nav-right">
         <!-- Desktop: segmented language switch -->
         <div class="lang-segment" role="group" :aria-label="t('nav.language')">
-          <button
+          <RouterLink
             v-for="lang in languages"
             :key="lang.code"
-            type="button"
+            :to="languageLink(lang.code)"
             :class="{ active: locale === lang.code }"
-            :aria-pressed="locale === lang.code"
+            :aria-current="locale === lang.code ? 'true' : null"
             :aria-label="lang.name"
             :lang="lang.code"
-            @click="changeLanguage(lang.code)"
-          >{{ lang.short }}</button>
+            :hreflang="lang.code"
+            @click="rememberLanguage(lang.code)"
+          >{{ lang.short }}</RouterLink>
         </div>
 
         <!-- Mobile: compact language menu -->
@@ -94,26 +107,27 @@ const { isDark, toggle } = useTheme()
             @click="langOpen = !langOpen"
           >{{ currentLanguageShort }}</button>
           <div v-show="langOpen" class="lang-pop">
-            <button
+            <RouterLink
               v-for="lang in languages"
               :key="lang.code"
-              type="button"
+              :to="languageLink(lang.code)"
               :class="{ active: locale === lang.code }"
-              :aria-pressed="locale === lang.code"
+              :aria-current="locale === lang.code ? 'true' : null"
               :aria-label="lang.name"
               :lang="lang.code"
-              @click="changeLanguage(lang.code)"
-            >{{ lang.short }}</button>
+              :hreflang="lang.code"
+              @click="rememberLanguage(lang.code)"
+            >{{ lang.short }}</RouterLink>
           </div>
         </div>
 
         <button
           type="button"
           class="icon-btn"
-          :aria-label="isDark ? t('nav.theme_light') : t('nav.theme_dark')"
+          :aria-label="showDark ? t('nav.theme_light') : t('nav.theme_dark')"
           @click="toggle"
         >
-          <svg v-if="isDark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg v-if="showDark" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg v-else viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
 
@@ -214,9 +228,11 @@ const { isDark, toggle } = useTheme()
   padding: 3px;
 }
 
-.lang-segment button {
-  border: 0;
-  background: transparent;
+.lang-segment a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 600;
@@ -225,7 +241,7 @@ const { isDark, toggle } = useTheme()
   min-width: 36px;
 }
 
-.lang-segment button.active {
+.lang-segment a.active {
   background: var(--color-surface);
   color: var(--color-primary);
   box-shadow: var(--shadow-soft);
@@ -249,16 +265,17 @@ const { isDark, toggle } = useTheme()
   box-shadow: var(--shadow-card);
 }
 
-.lang-pop button {
-  border: 0;
-  background: transparent;
+.lang-pop a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-main);
   min-height: 44px;
   border-radius: 10px;
   font-weight: 600;
 }
 
-.lang-pop button.active {
+.lang-pop a.active {
   background: var(--color-soft);
   color: var(--color-primary);
 }

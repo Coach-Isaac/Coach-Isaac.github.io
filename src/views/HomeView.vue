@@ -3,7 +3,9 @@ import { onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 import { coaches, BOOKING_URL as bookingUrl } from '../data/coaches'
+import { useLocalePath } from '../composables/useLocalePath'
 const { t, tm, rt } = useI18n()
+const { lp } = useLocalePath()
 
 const infoCards = [
   { titleKey: 'coaching.card_guide_title', descKey: 'coaching.hiking_metaphor_desc' },
@@ -69,7 +71,7 @@ onUnmounted(() => {
 
         <!-- Desktop: coach cards beside the hero text -->
         <div class="hero-coaches">
-          <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
+          <RouterLink v-for="c in coaches" :key="c.id" :to="lp(c.route)" class="coach-card">
             <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
             <span class="coach-info">
               <span class="coach-name">{{ coachName(c) }}</span>
@@ -96,13 +98,30 @@ onUnmounted(() => {
       </div>
     </section>
 
+    <!-- Topics people bring to coaching: examples only, not service packages (docs/content-strategy.md) -->
+    <section class="section topics-section" aria-labelledby="topics-title">
+      <div class="container">
+        <h2 id="topics-title" class="section-title">{{ t('home.topics_title') }}</h2>
+        <p class="section-sub">{{ t('home.topics_desc') }}</p>
+        <ul class="topics-grid">
+          <li v-for="(topic, i) in tm('home.topics')" :key="i" class="topic-card">
+            <h3>{{ rt(topic.title) }}</h3>
+            <p class="topic-items">{{ rt(topic.items) }}</p>
+            <p class="topic-question"><span class="topic-label">{{ t('home.topics_example') }}</span>{{ rt(topic.question) }}</p>
+          </li>
+        </ul>
+        <p class="topics-note">{{ t('home.topics_note') }}</p>
+        <a :href="bookingUrl" target="_blank" rel="noopener" class="btn btn-accent topics-cta">{{ t('nav.book_intro_cta') }}</a>
+      </div>
+    </section>
+
     <!-- Mobile: coach cards as their own section -->
     <section class="section coaches-section">
       <div class="container">
         <h2 class="section-title">{{ t('home.coaches_title') }}</h2>
         <p class="section-sub">{{ t('home.coaches_subtitle') }}</p>
         <div class="coach-list">
-          <RouterLink v-for="c in coaches" :key="c.id" :to="c.route" class="coach-card">
+          <RouterLink v-for="c in coaches" :key="c.id" :to="lp(c.route)" class="coach-card">
             <span class="avatar" aria-hidden="true">{{ c.initial }}</span>
             <span class="coach-info">
               <span class="coach-name">{{ coachName(c) }}</span>
@@ -448,6 +467,65 @@ onUnmounted(() => {
   gap: 0.75rem;
 }
 
+/* Topics */
+.topics-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.topic-card {
+  padding: 1.35rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--border-color);
+}
+
+.topic-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.topic-items {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.topic-question {
+  margin: 0.9rem 0 0;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.topic-label {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-text);
+}
+
+.topics-note {
+  margin: 1.25rem 0 0;
+  max-width: 46em;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.topics-cta {
+  margin-top: 1.25rem;
+}
+
 /* Testimonials */
 .testimonials-section .section-title {
   margin-bottom: 1.25rem;
@@ -592,7 +670,8 @@ onUnmounted(() => {
 
   .info-grid,
   .card-grid,
-  .testimonials-grid {
+  .testimonials-grid,
+  .topics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -645,20 +724,22 @@ onUnmounted(() => {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .card-grid {
+  .card-grid,
+  .topics-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* ===== Scroll fade-in ===== */
+/* Only when scripts run (html.js, set in index.html): without them the sections must stay visible. */
 @media (prefers-reduced-motion: no-preference) {
-  .fade-in-section {
+  html.js .fade-in-section {
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
-  .fade-in-section.is-visible {
+  html.js .fade-in-section.is-visible {
     opacity: 1;
     transform: translateY(0);
   }

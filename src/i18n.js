@@ -4,6 +4,7 @@ import zhTW from './locales/zh-TW.json'
 import zhCN from './locales/zh-CN.json'
 
 export const LOCALE_STORAGE_KEY = 'locale-preference'
+export const DEFAULT_LOCALE = 'zh-TW'
 
 const messages = {
   en,
@@ -15,7 +16,7 @@ const messages = {
 // Crawlers get zh-TW so search results match the zh-TW share previews in the page <head>.
 function browserLocale() {
   // "bot/" and a whole-word "bot" match Googlebot/2.1, bingbot/2.0 etc. but not phone models like "CUBOT X30".
-  if (/bot\/|\bbot\b|crawler|spider|slurp/i.test(navigator.userAgent)) return 'zh-TW'
+  if (/bot\/|\bbot\b|crawler|spider|slurp/i.test(navigator.userAgent)) return DEFAULT_LOCALE
   const preferred = navigator.languages?.length ? navigator.languages : [navigator.language]
   for (const raw of preferred) {
     const tag = String(raw || '').toLowerCase()
@@ -25,8 +26,8 @@ function browserLocale() {
   return 'en'
 }
 
-// A language the visitor picked before wins over the browser's; detection itself saves nothing.
-function getInitialLocale() {
+// Browser only. A language the visitor picked before wins over the browser's; detection itself saves nothing.
+export function detectClientLocale() {
   try {
     const stored = localStorage.getItem(LOCALE_STORAGE_KEY)
     if (stored && Object.hasOwn(messages, stored)) return stored
@@ -36,11 +37,12 @@ function getInitialLocale() {
   return browserLocale()
 }
 
-const i18n = createI18n({
-  legacy: false, // Usage with Composition API
-  locale: getInitialLocale(),
-  fallbackLocale: 'en',
-  messages
-})
-
-export default i18n
+// One instance per app: the build renders pages in a fixed language, the browser in the visitor's.
+export function createAppI18n(locale) {
+  return createI18n({
+    legacy: false, // Usage with Composition API
+    locale,
+    fallbackLocale: 'en',
+    messages
+  })
+}

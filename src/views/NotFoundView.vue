@@ -1,9 +1,11 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '../composables/useLocalePath'
 import { RouterLink } from 'vue-router'
 import { BOOKING_URL as bookingUrl } from '../data/coaches'
 
 const { t } = useI18n()
+const { lp } = useLocalePath()
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const { t } = useI18n()
     <h1>{{ t('not_found.title') }}</h1>
     <p class="desc">{{ t('not_found.desc') }}</p>
     <div class="actions">
-      <RouterLink to="/" class="btn btn-primary">{{ t('not_found.home') }}</RouterLink>
+      <RouterLink :to="lp('/')" class="btn btn-primary">{{ t('not_found.home') }}</RouterLink>
       <a :href="bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
     </div>
   </section>

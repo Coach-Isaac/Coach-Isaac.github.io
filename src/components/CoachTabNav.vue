@@ -1,12 +1,13 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import { coaches } from '../data/coaches'
+import { useLocalePath } from '../composables/useLocalePath'
 
 const { t, locale } = useI18n()
-const route = useRoute()
+const { lp, basePath } = useLocalePath()
 
-const isActive = (path) => route.path === path
+const isActive = (path) => basePath.value === path
 // Same short name the profile's booking card uses ("阿哲" in Chinese, "Vincent" in English).
 const shortName = (c) => (locale.value.startsWith('zh') ? c.shortName.zh : c.shortName.en)
 </script>
@@ -14,7 +15,7 @@ const shortName = (c) => (locale.value.startsWith('zh') ? c.shortName.zh : c.sho
 <template>
   <nav class="coach-tabs" :aria-label="t('nav.landmark_coaches')">
     <RouterLink
-      to="/coaches"
+      :to="lp('/coaches')"
       class="tab-item"
       :class="{ active: isActive('/coaches') }"
     >
@@ -23,7 +24,7 @@ const shortName = (c) => (locale.value.startsWith('zh') ? c.shortName.zh : c.sho
     <RouterLink
       v-for="c in coaches"
       :key="c.id"
-      :to="c.route"
+      :to="lp(c.route)"
       class="tab-item"
       :class="{ active: isActive(c.route) }"
     >
