@@ -60,7 +60,8 @@ watchEffect(() => {
           </a>
           <RouterLink to="/services#coaches" class="contact-coaches">{{ t('footer.contact_coaches') }}</RouterLink>
         </div>
-        <a :href="bookingUrl" target="_blank" rel="noopener" class="footer-cta">{{ t('nav.book_intro_cta') }}</a>
+        <!-- Short label: the long one squeezes the brand column on tablets and small desktops. -->
+        <a :href="bookingUrl" target="_blank" rel="noopener" class="footer-cta">{{ t('nav.free_trial_cta') }}</a>
       </div>
       <div class="footer-bottom">
         <div class="footer-notice">
@@ -252,7 +253,7 @@ main {
   }
 
   .footer-top {
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(12rem, 1fr) auto auto;
     grid-template-areas: 'brand contact cta' 'links links links';
     align-items: start;
     column-gap: 2.5rem;
@@ -271,7 +272,7 @@ main {
 
 @media (min-width: 960px) {
   .footer-top {
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-columns: minmax(12rem, 1fr) auto auto auto;
     grid-template-areas: 'brand links contact cta';
     column-gap: 3rem;
   }
