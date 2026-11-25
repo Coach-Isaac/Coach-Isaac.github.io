@@ -58,9 +58,10 @@ onUnmounted(() => {
         <div class="hero-text">
           <span class="hero-tag">{{ t('home.hero_badge') }}</span>
           <h1>{{ t('home.hero_title') }}</h1>
+          <p class="lede">{{ t('home.hero_lede') }}</p>
           <p class="subtitle">{{ t('home.hero_subtitle') }}</p>
           <div class="hero-actions">
-            <a :href="bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.free_trial_cta') }}</a>
+            <a :href="bookingUrl" target="_blank" rel="noopener" class="btn btn-accent">{{ t('nav.book_intro_cta') }}</a>
             <a href="#what-is-coaching" class="btn btn-ghost">{{ t('home.hero_learn_more') }}</a>
           </div>
           <p class="hero-note">{{ t('home.hero_note') }}</p>
@@ -196,12 +197,16 @@ onUnmounted(() => {
   justify-content: center;
   gap: 0.4rem;
   min-height: 50px;
-  padding: 0 1.6rem;
+  padding: 0.6rem 1.6rem;
+  box-sizing: border-box;
   border-radius: 999px;
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
   text-decoration: none;
-  white-space: nowrap;
+  /* The English booking label is longer than a phone is wide, so it may wrap. */
+  white-space: normal;
   transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
@@ -279,9 +284,16 @@ onUnmounted(() => {
 .hero h1 {
   font-size: clamp(1.85rem, 7.4vw, 3.1rem);
   line-height: 1.25;
-  margin: 1rem 0 0.9rem;
+  margin: 1rem 0 0.6rem;
   color: var(--on-hero);
   white-space: pre-line;
+}
+
+.lede {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.9rem;
 }
 
 .subtitle {
@@ -598,6 +610,10 @@ onUnmounted(() => {
 
   .subtitle {
     font-size: 1.1rem;
+  }
+
+  .lede {
+    font-size: 1.35rem;
   }
 }
 

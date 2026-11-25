@@ -1,7 +1,8 @@
-# Coach Isaac
+# Stepflect｜進一程
 
-Website for three ICF coaches in training who offer a 45-minute online intro session.
-Live at https://coach-isaac.github.io/ (English, 繁體中文, 简体中文).
+Website for Stepflect, a team of three ICF coaches in training who offer a 45-minute online intro
+coaching session. Live at https://coach-isaac.github.io/ (English, 繁體中文, 简体中文).
+The site was called "Coach Isaac" until November 2026; the URL and repository name are unchanged.
 
 ## Develop
 
@@ -17,6 +18,9 @@ npm run preview  # serve the build locally
 - Page text in three languages: `src/locales/{en,zh-TW,zh-CN}.json`
 - Coach details and booking links: `src/data/coaches.js`
 - Pages: `src/views/`, shared parts: `src/components/`
+- Brand: `docs/brand-guide.md` (name, voice, wording rules), `docs/design-spec.md` (logo, colors,
+  assets); the logo component is `src/components/BrandLogo.vue`
+- Share image source: `docs/og-card.html` (screenshot at 1200×630 into `public/og-image.png`)
 - Plans and acceptance criteria for past changes: `docs/`
 
 ## Deploy

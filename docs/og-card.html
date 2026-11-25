@@ -6,63 +6,51 @@
 <title>og-image source</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-<!-- Source for public/og-image.png (1200x630). Screenshot this page at a 1200x630 viewport to regenerate. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<!-- Source for public/og-image.png (1200x630). Screenshot this page at a 1200x630 viewport to regenerate.
+     Fixed brand colors (the dark badge in docs/design-spec.md): share images ignore the visitor's theme. -->
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
   body {
-    position: relative;
-    background: linear-gradient(135deg, #1F3A5F 0%, #2A4D78 55%, #2F5A8A 100%);
-    color: #ffffff;
+    background: #1F3A5F;
+    color: #FFFFFF;
     font-family: 'Inter', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    padding: 72px 96px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 96px;
-    box-sizing: border-box;
+    justify-content: space-between;
   }
-  .circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.07); }
-  .c1 { width: 420px; height: 420px; right: -120px; top: -160px; }
-  .c2 { width: 260px; height: 260px; left: -90px; bottom: -120px; }
-  .badge {
-    align-self: flex-start;
-    font-size: 22px; font-weight: 600; letter-spacing: 0.04em;
-    padding: 10px 22px; border-radius: 999px;
-    background: rgba(255,255,255,0.15);
-  }
-  h1 {
-    margin: 30px 0 0;
-    font-family: 'Noto Serif TC', serif; font-weight: 700;
-    font-size: 72px; line-height: 1.25;
-  }
-  .rule { width: 72px; height: 5px; border-radius: 3px; background: #FF7A59; margin: 34px 0 26px; }
-  .sub { font-size: 28px; font-weight: 500; opacity: 0.92; }
-  .foot {
-    position: absolute; left: 96px; right: 96px; bottom: 48px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .brand { font-family: 'Noto Serif TC', serif; font-size: 30px; font-weight: 700; }
-  .brand span { color: #FF9F86; }
-  .url { font-size: 22px; font-weight: 600; letter-spacing: 0.06em; opacity: 0.75; }
-  .cta {
-    position: absolute; right: 96px; top: 64px;
-    background: #FF7A59; color: #1A1A1A;
-    font-size: 24px; font-weight: 700;
-    padding: 14px 28px; border-radius: 999px;
-  }
+  .logo { display: flex; align-items: center; gap: 28px; }
+  .logo svg { width: 92px; height: 92px; }
+  .words { display: flex; align-items: center; gap: 22px; }
+  .en { font-weight: 700; font-size: 55px; letter-spacing: -0.025em; }
+  .sep { width: 2px; height: 46px; background: #C7CED7; opacity: 0.55; }
+  .zh { font-family: 'PingFang TC', 'Noto Sans TC', sans-serif; font-weight: 600; font-size: 39px; letter-spacing: 0.14em; color: #C7CED7; }
+  .text { display: flex; flex-direction: column; gap: 18px; }
+  h1 { margin: 0; font-family: 'PingFang TC', 'Noto Sans TC', sans-serif; font-size: 68px; font-weight: 700; line-height: 1.2; }
+  .sub { margin: 0; font-family: 'PingFang TC', 'Noto Sans TC', sans-serif; font-size: 36px; font-weight: 500; color: #C7CED7; }
+  .line { margin: 0; padding-top: 22px; border-top: 2px solid #62758F; font-size: 26px; font-weight: 600; letter-spacing: 0.04em; color: #C7CED7; }
 </style>
 </head>
 <body>
-  <div class="circle c1"></div>
-  <div class="circle c2"></div>
-  <span class="cta">預約初次會談</span>
-  <span class="badge">🌿 ICF 認證培訓中的教練團隊</span>
-  <h1>卡關了嗎？<br>教練陪你找到前進的方向</h1>
-  <div class="rule"></div>
-  <div class="sub">一杯咖啡、飲料或一本書的心意 · 45 分鐘 · 線上進行 · 中英雙語</div>
-  <div class="foot">
-    <span class="brand">Coach <span>Isaac</span></span>
-    <span class="url">coach-isaac.github.io</span>
+  <div class="logo">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="5" y="44" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+      <rect x="24.5" y="24.5" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+      <rect x="44" y="5" width="15" height="15" rx="3.5" fill="#FF8C6E"/>
+      <g fill="none" stroke="#5D7DA6" stroke-width="2.4">
+        <rect x="45.25" y="25.75" width="12.5" height="12.5" rx="3.5"/>
+        <rect x="25.75" y="45.25" width="12.5" height="12.5" rx="3.5"/>
+        <rect x="45.25" y="45.25" width="12.5" height="12.5" rx="3.5"/>
+      </g>
+    </svg>
+    <div class="words"><span class="en">Stepflect</span><span class="sep"></span><span class="zh">進一程</span></div>
   </div>
+  <div class="text">
+    <h1>前進，不只有一種方式。</h1>
+    <p class="sub">在你重視的事情上，有所進展。</p>
+  </div>
+  <p class="line">一對一教練式對話・Coaching</p>
 </body>
 </html>

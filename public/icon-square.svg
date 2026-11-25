@@ -1,6 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- Full-bleed square version of favicon.svg; source for icon-192.png and apple-touch-icon.png,
-       which platforms crop to a circle or rounded square themselves. -->
+       which platforms crop to a circle or rounded square themselves, so the mark stays well inside. -->
   <rect width="64" height="64" fill="#1F3A5F"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" letter-spacing="-1"><tspan fill="#FFFFFF">C</tspan><tspan fill="#FF7A59">I</tspan></text>
+  <g transform="translate(13 13) scale(0.59375)">
+    <rect x="5" y="44" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+    <rect x="24.5" y="24.5" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+    <rect x="44" y="5" width="15" height="15" rx="3.5" fill="#FF8C6E"/>
+    <g fill="none" stroke="#5D7DA6" stroke-width="2.4">
+      <rect x="45.25" y="25.75" width="12.5" height="12.5" rx="3.5"/>
+      <rect x="25.75" y="45.25" width="12.5" height="12.5" rx="3.5"/>
+      <rect x="45.25" y="45.25" width="12.5" height="12.5" rx="3.5"/>
+    </g>
+  </g>
 </svg>
