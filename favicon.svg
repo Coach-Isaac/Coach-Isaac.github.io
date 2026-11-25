@@ -1,4 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle cx="32" cy="32" r="32" fill="#1F3A5F"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" letter-spacing="-1"><tspan fill="#FFFFFF">C</tspan><tspan fill="#FF7A59">I</tspan></text>
+  <!-- Stepflect dark badge with the small-size cut of the mark (same cells, heavier outlines).
+       Literal colors: a favicon cannot read the page's CSS variables. See docs/design-spec.md. -->
+  <rect width="64" height="64" rx="14" fill="#1F3A5F"/>
+  <g transform="translate(8 8) scale(0.75)">
+    <rect x="5" y="44" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+    <rect x="24.5" y="24.5" width="15" height="15" rx="3.5" fill="#8FB3E0"/>
+    <rect x="44" y="5" width="15" height="15" rx="3.5" fill="#FF8C6E"/>
+    <g fill="none" stroke="#5D7DA6" stroke-width="4">
+      <rect x="46" y="26.5" width="11" height="11" rx="3.5"/>
+      <rect x="26.5" y="46" width="11" height="11" rx="3.5"/>
+      <rect x="46" y="46" width="11" height="11" rx="3.5"/>
+    </g>
+  </g>
 </svg>
